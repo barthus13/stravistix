@@ -118,6 +118,5 @@
     "preserveConstEnums": true,
     "sourceMap": true,
     "inlineSources": true
-  },
-  "compileOnSave": false
+  }
 }
