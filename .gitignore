@@ -2,8 +2,10 @@
 *.git/
 */.gitignore
 **/node_modules/
+plugin/webapp/app/**/*.js
+plugin/**/*.map
+specs/**/*.js
 dist/
 package/
-specs/**/*.js
 chrome-win32/
 ftpConfig.json

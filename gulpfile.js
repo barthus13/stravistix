@@ -100,8 +100,32 @@ var OPTIONS_FILES = [
     'plugin/node_modules/moment/moment.js',
     'plugin/node_modules/angular-moment/angular-moment.js',
     'plugin/node_modules/file-saver/FileSaver.min.js',
-    'plugin/options/**/*',
-    '!plugin/options/**/*.ts' // Do not copy TypeScripts script using "!". They are compiled to JS files which are already copied to destination folder. (@see PLUGIN_TYPESCRIPT_SCRIPTS var)
+
+    'plugin/options/**/*', // TODO Should be removed on migration ng4 webapp
+    '!plugin/options/**/*.ts', // TODO Should be removed on migration ng4 webapp
+
+    /**
+     *  NEW NG4 webapp
+     */
+    'plugin/node_modules/core-js/client/shim.js',
+    'plugin/node_modules/zone.js/dist/zone.js',
+    'plugin/node_modules/systemjs/dist/system.src.js',
+
+    'plugin/node_modules/@angular/core/bundles/core.umd.js',
+    'plugin/node_modules/@angular/common/bundles/common.umd.js',
+    'plugin/node_modules/@angular/compiler/bundles/compiler.umd.js',
+    'plugin/node_modules/@angular/platform-browser/bundles/platform-browser.umd.js',
+    'plugin/node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
+    'plugin/node_modules/@angular/http/bundles/http.umd.js',
+    'plugin/node_modules/@angular/router/bundles/router.umd.js',
+    'plugin/node_modules/@angular/forms/bundles/forms.umd.js',
+
+    'plugin/node_modules/rxjs/**/*', // TODO Use only required
+    'plugin/node_modules/angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
+
+    'plugin/webapp/**/*',
+    '!plugin/webapp/**/*.ts' // Do not copy TypeScripts script using "!". They are compiled to JS files which are already copied to destination folder. (@see PLUGIN_TYPESCRIPT_SCRIPTS var)
+
 ];
 
 /**

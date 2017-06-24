@@ -111,6 +111,8 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
