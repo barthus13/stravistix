@@ -31,7 +31,6 @@ var plugins = require('gulp-load-plugins')();
 var util = require('gulp-util');
 var runSequence = require('run-sequence');
 var options = require('gulp-options');
-var ftp = require('vinyl-ftp');
 var git = require('gulp-git');
 var jeditor = require("gulp-json-editor");
 var typeScript = require("gulp-typescript");
@@ -51,8 +50,6 @@ var CURRENT_COMMIT = null;
 /**
  * Global folder variable
  */
-
-var PLUGIN_TYPESCRIPT_SCRIPTS = ['plugin/**/*.ts']; // CORE & OPTIONS
 
 var CORE_JAVASCRIPT_SCRIPTS = [
     'plugin/core/config/env.js',
@@ -120,12 +117,11 @@ var OPTIONS_FILES = [
     'plugin/node_modules/@angular/router/bundles/router.umd.js',
     'plugin/node_modules/@angular/forms/bundles/forms.umd.js',
 
-    'plugin/node_modules/rxjs/**/*', // TODO Use only required
+    'plugin/node_modules/rxjs/**/*', // TODO Use only required files
     'plugin/node_modules/angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
 
     'plugin/webapp/**/*',
     '!plugin/webapp/**/*.ts' // Do not copy TypeScripts script using "!". They are compiled to JS files which are already copied to destination folder. (@see PLUGIN_TYPESCRIPT_SCRIPTS var)
-
 ];
 
 /**
@@ -135,10 +131,7 @@ gulp.task('tsCompile', function () { // Compile Typescript and copy them to DIST
 
     util.log('Start TypeScript compilation... then copy files to destination folder.');
 
-    return gulp.src(PLUGIN_TYPESCRIPT_SCRIPTS, {
-        base: 'plugin/'
-    }).pipe(typeScript(tsProject)).pipe(gulp.dest(DIST_FOLDER));
-
+    return tsProject.src().pipe(tsProject()).pipe(gulp.dest(DIST_FOLDER));
 });
 
 
@@ -217,7 +210,7 @@ gulp.task('buildSpecs', ['build'], function () {
 
     return gulp.src([SPECS_FOLDER + '/**/*.ts'], {
         base: './'
-    }).pipe(typeScript(tsProject)).pipe(gulp.dest('./'));
+    }).pipe(tsProject()).pipe(gulp.dest('./'));
 
 });
 
@@ -300,63 +293,3 @@ gulp.task('watch', function () {
 // Clean dist/, package/, plugin/core/node_modules/
 gulp.task('clean', ['cleanPackage']);
 gulp.task('wipe', ['cleanRootNodeModules', 'cleanExtNodeModules', 'cleanPackage']);
-
-// FTP publish
-gulp.task('ftpPublish', ['package'], function () {
-
-    if (PACKAGE_NAME) {
-
-        util.log('FTP Publish of ' + PACKAGE_NAME);
-
-        var ftpConfig = {
-            host: 'yours',
-            user: 'yours',
-            pass: 'yours',
-            remotePath: '/'
-        };
-
-        if (!options.has('env') && !options.has('json')) {
-
-            throw new Error('Make sure to specify option "--json" or "--env"');
-
-        } else if (options.has('json')) {
-
-            if (fs.existsSync('./ftpConfig.json')) {
-                util.log('Using ftp config from ./ftpConfig.json file');
-                ftpConfig = JSON.parse(fs.readFileSync('./ftpConfig.json'));
-            } else {
-                throw new Error('Make sure to create ./ftpConfig.json with following config: ' + JSON.stringify(ftpConfig));
-            }
-
-        } else if (options.has('env')) {
-
-            if (process.env.FTP_HOST && process.env.FTP_USER && process.env.FTP_PASSWORD) {
-                ftpConfig.host = process.env.FTP_HOST;
-                ftpConfig.user = process.env.FTP_USER;
-                ftpConfig.pass = process.env.FTP_PASSWORD;
-                ftpConfig.remotePath = process.env.FTP_REMOTE_PATH;
-            } else {
-                throw new Error('Missing FTP_HOST, FTP_USER or FTP_PASSWORD environnment variables. FTP_REMOTE_PATH can be also specified.');
-            }
-        }
-
-        util.log('FTP Upload in progress...');
-
-        var globs = [PACKAGE_FOLDER + '/' + PACKAGE_NAME];
-
-        var conn = ftp.create({
-            host: ftpConfig.host,
-            user: ftpConfig.user,
-            password: ftpConfig.pass,
-            log: util.log
-        });
-
-        return gulp.src(globs, {
-            base: './package/',
-            buffer: false
-        }).pipe(conn.dest(ftpConfig.remotePath));
-
-    } else {
-        throw new Error('No package name found. Unable to publish');
-    }
-});

@@ -3,7 +3,7 @@
 /// <reference path="globals/chart.js/index.d.ts" />
 /// <reference path="globals/chrome/index.d.ts" />
 /// <reference path="globals/d3/index.d.ts" />
-/// <reference path="globals/es6-promise/index.d.ts" />
+/// <reference path="globals/es6-promise/index.d.ts" /> // TODO for deprecated feature?
 /// <reference path="globals/filesaver/index.d.ts" />
 /// <reference path="globals/filesystem/index.d.ts" />
 /// <reference path="globals/filewriter/index.d.ts" />

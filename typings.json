@@ -16,6 +16,6 @@
     "moment": "registry:dt/moment#2.11.1+20161010105546",
     "nvd3": "registry:dt/nvd3#1.8.1+20160919061516",
     "q": "registry:dt/q#0.0.0+20161004185634",
-    "underscore": "registry:dt/underscore#1.8.3+20161016154529"
+    "underscore": "registry:dt/underscore#1.8.3+20161016154529",
   }
 }

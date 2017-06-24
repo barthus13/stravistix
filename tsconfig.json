@@ -1,9 +1,6 @@
 {
   "files": [
     "typings/index.d.ts",
-    "typings/globals/chrome/index.d.ts",
-    "typings/globals/jquery/index.d.ts",
-    "typings/globals/underscore/index.d.ts",
     "typings/plugin.d.ts",
     "plugin/core/config/env.ts",
     "plugin/core/scripts/Background.ts",
@@ -58,7 +55,7 @@
     "plugin/core/scripts/modifiers/HidePremiumModifier.ts",
     "plugin/core/scripts/modifiers/HideFeedModifier.ts",
     "plugin/core/scripts/modifiers/DisplayFlyByFeedModifier.ts",
-	"plugin/core/scripts/modifiers/GoalsModifier.ts",
+    "plugin/core/scripts/modifiers/GoalsModifier.ts",
     "plugin/core/scripts/processors/ActivityComputer.ts",
     "plugin/core/modules/StorageManager.ts",
     "plugin/core/modules/jquery.appear.ts",
@@ -74,6 +71,8 @@
     "plugin/core/scripts/modifiers/ActivitySegmentTimeComparisonModifier.ts",
     "plugin/core/scripts/modifiers/SegmentRecentEffortsHRATimeModifier.ts",
     "plugin/core/scripts/modifiers/ActivitiesSyncModifier.ts",
+
+    // Old webapp
     "plugin/options/app/App.ts",
     "plugin/options/app/Config.ts",
     "plugin/options/app/controllers/MainController.ts",
@@ -99,14 +98,15 @@
     "plugin/options/app/directives/profileConfiguredRibbon.ts",
     "plugin/options/app/directives/restoreHistory.ts",
     "plugin/options/app/directives/swimFTPCalculator.ts",
-    "specs/processors/ActivityComputer.spec.ts",
-    "specs/processors/VacuumProcessor.spec.ts",
-    "specs/sync/ActivitiesSync.basics.spec.ts",
-    "specs/sync/ActivitiesSync.stubed.spec.ts"
+
+    // New webapp
+    "plugin/webapp/main.ts",
+    "plugin/webapp/app/app.module.ts",
+    "plugin/webapp/app/app.component.ts",
+    "plugin/webapp/app/app.component.spec.ts"
   ],
   "exclude": [
-    "node_modules/",
-    "plugin/node_modules/"
+    "node_modules"
   ],
   "compilerOptions": {
     "target": "es5",
@@ -117,6 +117,7 @@
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": true,
-    "inlineSources": true
+    "inlineSources": true,
+    "skipLibCheck": true
   }
 }
