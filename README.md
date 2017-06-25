@@ -114,14 +114,13 @@ gulp build
 ```
 Needed files will be copied from **plugin/** to **dist/** folder. 
 
-_Note: Make sure to declare your new resources in **gulpfile.js** to see them copied to **dist/** folder_ 
-
 To test the build in chrome, use now **dist/** folder as Unpacked Extension for development.
 
 You can automatically execute the _"gulp build"_ task on a file change with command:
 ```
 gulp watch
 ```
+_Note: Make sure to declare your new resources in **gulpfile.js** to see them copied to **dist/** folder_ 
 
 ### 3.2/ Create a package archive
 ```
