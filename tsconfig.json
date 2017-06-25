@@ -71,7 +71,6 @@
     "plugin/core/scripts/modifiers/ActivitySegmentTimeComparisonModifier.ts",
     "plugin/core/scripts/modifiers/SegmentRecentEffortsHRATimeModifier.ts",
     "plugin/core/scripts/modifiers/ActivitiesSyncModifier.ts",
-
     // Old webapp
     "plugin/options/app/App.ts",
     "plugin/options/app/Config.ts",
@@ -98,7 +97,6 @@
     "plugin/options/app/directives/profileConfiguredRibbon.ts",
     "plugin/options/app/directives/restoreHistory.ts",
     "plugin/options/app/directives/swimFTPCalculator.ts",
-
     // New webapp
     "plugin/webapp/main.ts",
     "plugin/webapp/app/app.module.ts",
@@ -108,7 +106,9 @@
   "exclude": [
     "node_modules"
   ],
+  "compileOnSave": true,
   "compilerOptions": {
+    "watch": true,
     "target": "es5",
     "module": "commonjs",
     "emitDecoratorMetadata": true,
@@ -119,6 +119,5 @@
     "sourceMap": true,
     "inlineSources": true,
     "skipLibCheck": true
-  },
-  "compileOnSave": true
+  }
 }
