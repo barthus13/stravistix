@@ -135,8 +135,23 @@ var OPTIONS_FILES = [
     '!plugin/webapp/**/*.ts' // Do not copy TypeScripts script using "!". They are compiled to JS files which are already copied to destination folder. (@see PLUGIN_TYPESCRIPT_SCRIPTS var)
 ];
 
+var INLINE_SOURCES = [
+    'plugin/webapp/main.js',
+    'plugin/webapp/main.js.map',
+    'plugin/core/**/*.js',
+    'plugin/core/**/*.map',
+    'plugin/webapp/app/**/*.js',
+    'plugin/webapp/app/**/*.map',
+    'plugin/webapp/e2e/**/*.js',
+    'plugin/webapp/e2e/**/*.map',
+    'plugin/options/app/**/*.map',
+    'plugin/options/app/**/*.map'
+];
+
 /**
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Gulp Tasks
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  */
 gulp.task('tsCompile', function () { // Compile Typescript and copy them to DIST_FOLDER
 
@@ -245,7 +260,13 @@ gulp.task('specs', ['buildSpecs'], function () {
     }).start();
 });
 
-gulp.task('cleanDistAll', function () {
+gulp.task('cleanInlineSources', function () {
+
+    util.log('Cleaning plugin/**/[*.js|*.map] compiled sources');
+    return gulp.src(INLINE_SOURCES).pipe(plugins.clean({force: true}));
+});
+
+gulp.task('cleanDistAll', ['cleanInlineSources'], function () {
 
     util.log('Cleaning dist/ folder completly');
     return gulp.src(DIST_FOLDER)
@@ -281,9 +302,6 @@ gulp.task('cleanRootNodeModules', ['clean'], function () {
         }));
 });
 
-/**
- * Defining tasks
- */
 // Do init install and build to dist/
 gulp.task('default', ['build']);
 
@@ -295,6 +313,7 @@ gulp.task('package', function (done) {
 });
 
 gulp.task('watch', function () {
+    util.log('Watching local sources and generate build to "dist/" folder');
     gulp.watch([
         'plugin/**/*',
         '!plugin/node_modules/**/*',
