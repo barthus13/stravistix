@@ -113,7 +113,7 @@ let releaseNotes: Array<IReleaseNote> = [
         message: '<i>Patch release: Now calculating TRIMP over elapsed time instead of moving time. TRIMP were not properly computed with activities without movements.<br/>You may need to perform a full sync of your synced history for the fitness trend feature. Memory management during synchronization of your history has been also improved.</i>',
         hotFixes: [],
         features: [
-            '<a href="' + Constants.OPTIONS_URL + '#/fitnessTrend" target="_blank">MultiSports Fitness Trend</a> can now use your cycling power meter to compute your fitness.',
+            '<a href="' + Constants.OPTIONS_URL + '#!/fitnessTrend" target="_blank">MultiSports Fitness Trend</a> can now use your cycling power meter to compute your fitness.',
             'Strava premium additional goal progress is back! Still "experimental". Activate it from Hidden feature section',
             'Renamed cycling stat "Punch Factor" to "Intensity" (= Weighted Power / FTP)'
         ],
@@ -125,7 +125,7 @@ let releaseNotes: Array<IReleaseNote> = [
     },
     {
         version: '5.4.1',
-        message: '<strong>5.4.1:</strong> <i>Bug fix release</i></br></br><strong>5.4.0 features reminder:</strong> <a href="' + Constants.OPTIONS_URL + '#/fitnessTrend" target="_blank">MultiSports Fitness Trend</a> now use your cycling power meter to compute your fitness when available.',
+        message: '<strong>5.4.1:</strong> <i>Bug fix release</i></br></br><strong>5.4.0 features reminder:</strong> <a href="' + Constants.OPTIONS_URL + '#!/fitnessTrend" target="_blank">MultiSports Fitness Trend</a> now use your cycling power meter to compute your fitness when available.',
         hotFixes: [],
         features: [
             'Fitness trend can now use your cycling power meter to compute your fitness.',
@@ -139,7 +139,7 @@ let releaseNotes: Array<IReleaseNote> = [
     },
     {
         version: '5.4.0',
-        message: '<a href="' + Constants.OPTIONS_URL + '#/fitnessTrend" target="_blank">MultiSports Fitness Trend</a> now use your cycling power meter to compute your fitness when available.</br></br>Swimming is not supported properly in fitness trend... Now taking care of swimmers ;) Still in Beta isn\'t it ?^^;)',
+        message: '<a href="' + Constants.OPTIONS_URL + '#!/fitnessTrend" target="_blank">MultiSports Fitness Trend</a> now use your cycling power meter to compute your fitness when available.</br></br>Swimming is not supported properly in fitness trend... Now taking care of swimmers ;) Still in Beta isn\'t it ?^^;)',
         hotFixes: [],
         features: [
             'Fitness trend can now use your cycling power meter to compute your fitness.',
@@ -151,7 +151,7 @@ let releaseNotes: Array<IReleaseNote> = [
     },
     {
         version: '5.3.1',
-        message: '<strong>5.3.1:</strong> <i>Strava premium additional goal has been delayed at the moment.</i></br></br><strong>5.3.0 features reminder:</strong> <i>New beta version of <a href="' + Constants.OPTIONS_URL + '#/fitnessTrend" target="_blank">MultiSports Fitness Trend</a></br></br>- Added form zones to fitness trend. Gives guidelines to train properly: Stay in the right training zone and avoid risky over load. Prepare for the race day. Manage your rest with accuracy. Etc...</br>- On next update (5.4.0): cycling power meter will be also used to compute your fitness trend (if you have this sensor).</i>',
+        message: '<strong>5.3.1:</strong> <i>Strava premium additional goal has been delayed at the moment.</i></br></br><strong>5.3.0 features reminder:</strong> <i>New beta version of <a href="' + Constants.OPTIONS_URL + '#!/fitnessTrend" target="_blank">MultiSports Fitness Trend</a></br></br>- Added form zones to fitness trend. Gives guidelines to train properly: Stay in the right training zone and avoid risky over load. Prepare for the race day. Manage your rest with accuracy. Etc...</br>- On next update (5.4.0): cycling power meter will be also used to compute your fitness trend (if you have this sensor).</i>',
         hotFixes: [],
         features: [
             'Added form zones to fitness trend.',
@@ -165,7 +165,7 @@ let releaseNotes: Array<IReleaseNote> = [
     },
     {
         version: '5.3.0',
-        message: '</br>New beta version of <a href="' + Constants.OPTIONS_URL + '#/fitnessTrend" target="_blank">MultiSports Fitness Trend</a></br></br>- Added form zones to fitness trend. Gives guidelines to train properly: Stay in the right training zone and avoid risky over load.</br>Prepare for the race day. Manage your rest with accuracy. Etc...</br></br>- On next update: cycling power meter will be also used to compute your fitness trend (if you have this sensor).',
+        message: '</br>New beta version of <a href="' + Constants.OPTIONS_URL + '#!/fitnessTrend" target="_blank">MultiSports Fitness Trend</a></br></br>- Added form zones to fitness trend. Gives guidelines to train properly: Stay in the right training zone and avoid risky over load.</br>Prepare for the race day. Manage your rest with accuracy. Etc...</br></br>- On next update: cycling power meter will be also used to compute your fitness trend (if you have this sensor).',
         hotFixes: [],
         features: [
             'Added form zones to fitness trend.',
@@ -177,7 +177,7 @@ let releaseNotes: Array<IReleaseNote> = [
     },
     {
         version: '5.2.0',
-        message: '</br><a href="' + Constants.OPTIONS_URL + '#/fitnessTrend" target="_blank">MultiSports Fitness Trend</a> in Beta for ALL!</br></br>',
+        message: '</br><a href="' + Constants.OPTIONS_URL + '#!/fitnessTrend" target="_blank">MultiSports Fitness Trend</a> in Beta for ALL!</br></br>',
         hotFixes: [],
         features: [
             'MultiSports Fitness Trend released as beta'
@@ -187,7 +187,7 @@ let releaseNotes: Array<IReleaseNote> = [
     },
     {
         version: '5.1.1',
-        message: '<a href="' + Constants.OPTIONS_URL + '#/fitnessTrend" target="_blank">MultiSports Fitness Trend Alpha <strong>V5</strong></a> here. Sync process fully reworked!. Last alpha testing version optimistically.</br></br>' +
+        message: '<a href="' + Constants.OPTIONS_URL + '#!/fitnessTrend" target="_blank">MultiSports Fitness Trend Alpha <strong>V5</strong></a> here. Sync process fully reworked!. Last alpha testing version optimistically.</br></br>' +
         '/!\\ Your <u>history</u> have been <u>cleared</u> on this update if you had synced one... Just sync again... Sry :/',
         hotFixes: [],
         features: [
@@ -201,7 +201,7 @@ let releaseNotes: Array<IReleaseNote> = [
     },
     {
         version: '5.1.0',
-        message: '<a href="' + Constants.OPTIONS_URL + '#/fitnessTrend" target="_blank">MultiSports Fitness Trend Alpha V4</a> live! Improvements + fixes. Short nights :D. Feature still in "test".</br>' +
+        message: '<a href="' + Constants.OPTIONS_URL + '#!/fitnessTrend" target="_blank">MultiSports Fitness Trend Alpha V4</a> live! Improvements + fixes. Short nights :D. Feature still in "test".</br>' +
         'Your history have been cleared if you had synced one... just sync again.',
         hotFixes: [],
         features: [
@@ -219,7 +219,7 @@ let releaseNotes: Array<IReleaseNote> = [
     },
     {
         version: '5.0.2',
-        message: '<i>"MultiSports Fitness Trend"</i> Alpha <strong>V3</strong> fast released! Include fixes of Alpha V2+V1... Feature works with all activities where you held a heart rate monitor. Not only cycling... </br><a href="' + Constants.OPTIONS_URL + '#/fitnessTrend" target="_blank">[You need to activate this alpha feature to use it]</a></br></br>Sticky note: <i>"Premium additional goal progress tracking"</i> disabled. Still few bugs around to fix :/ Feature is available in common settings by the way (hidden section)',
+        message: '<i>"MultiSports Fitness Trend"</i> Alpha <strong>V3</strong> fast released! Include fixes of Alpha V2+V1... Feature works with all activities where you held a heart rate monitor. Not only cycling... </br><a href="' + Constants.OPTIONS_URL + '#!/fitnessTrend" target="_blank">[You need to activate this alpha feature to use it]</a></br></br>Sticky note: <i>"Premium additional goal progress tracking"</i> disabled. Still few bugs around to fix :/ Feature is available in common settings by the way (hidden section)',
         hotFixes: [],
         features: [],
         hideFeatureReleaseNote: true,
@@ -229,7 +229,7 @@ let releaseNotes: Array<IReleaseNote> = [
     },
     {
         version: '5.0.1',
-        message: '<i>"MultiSports Fitness Trend"</i> Alpha V2 here! Mainly bugs fixed of Alpha V1... Thanks to testers! It works with all activities where you held a heart rate monitor. Not only cycling... </br><a href="' + Constants.OPTIONS_URL + '#/fitnessTrend" target="_blank">[You need to activate this alpha feature to use it]</a></br></br>Also disabled <i>"Premium additional goal progress tracking"</i>. Still few bugs around to fix :/ Feature is available in common settings by the way (hidden section)',
+        message: '<i>"MultiSports Fitness Trend"</i> Alpha V2 here! Mainly bugs fixed of Alpha V1... Thanks to testers! It works with all activities where you held a heart rate monitor. Not only cycling... </br><a href="' + Constants.OPTIONS_URL + '#!/fitnessTrend" target="_blank">[You need to activate this alpha feature to use it]</a></br></br>Also disabled <i>"Premium additional goal progress tracking"</i>. Still few bugs around to fix :/ Feature is available in common settings by the way (hidden section)',
         hotFixes: [],
         features: [
             'Added plugin permission for users having more than 5MB of history. They can now save locally their history (required by <i>"MultiSports Fitness Trend"</i>)',
@@ -242,10 +242,10 @@ let releaseNotes: Array<IReleaseNote> = [
     },
     {
         version: '5.0.0',
-        message: '<i>MultiSports Fitness Trend released as Alpha !<br /><br />After long days of work, It\'s now live! Yeah! <br/><br/>Working with all activities where you held a heart rate monitor. Not only cycling...</i><br/><br/><a href="' + Constants.OPTIONS_URL + '#/fitnessTrend" target="_blank">[Activate it here]</a>',
+        message: '<i>MultiSports Fitness Trend released as Alpha !<br /><br />After long days of work, It\'s now live! Yeah! <br/><br/>Working with all activities where you held a heart rate monitor. Not only cycling...</i><br/><br/><a href="' + Constants.OPTIONS_URL + '#!/fitnessTrend" target="_blank">[Activate it here]</a>',
         hotFixes: [],
         features: [
-            'MultiSports fitness trend. <a href="' + Constants.OPTIONS_URL + '#/fitnessTrend" target="_blank">Activate the alpha feature</a>'
+            'MultiSports fitness trend. <a href="' + Constants.OPTIONS_URL + '#!/fitnessTrend" target="_blank">Activate the alpha feature</a>'
         ],
         hideFeatureReleaseNote: false,
         fixes: [],
