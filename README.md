@@ -45,8 +45,8 @@ StravistiX is using bellow frameworks/libs/tools:
 * [Gulp](http://gulpjs.com/) task runner.
 * [Chart.js](http://www.chartjs.org/) Simple yet flexible JavaScript charting.
 * [underscore.js](http://underscorejs.org/) that provides a whole mess of useful functional programming helpers.
-* [AngularJS 1.*](https://angularjs.org/) for options page.
-* [Angular Material](https://material.angularjs.org) design 1.* for options page.
+* [Angular](https://angular.io/) for webapp
+* [Angular Material](https://material.angular.io) for webapp design
 * [TypeScript](https://www.typescriptlang.org) that adds typing & class-based syntax over javascript then compile back to JavaScript (ES5/ES2015/ES6).
 
 **[Learn TypeScript in 5 minutes](https://learnxinyminutes.com/docs/typescript/). Try it and buy it !**.
@@ -69,9 +69,9 @@ This will install required gulp plugins in order to run project tasks. Gulp plug
 ```
 gulp build
 ```
-First, this will download others JS dependencies (underscore, angularjs, chart.js, ...) specified in **plugin/package.json** file if not already downloaded.
+First, this will download others JS dependencies (underscore, angular, chart.js, ...) specified in **plugin/package.json** file if not already downloaded.
 
-Next, all the extensions files from **plugin/** will be copied to **dist/** folder.
+Next, all the needed files from **plugin/** will be copied to **dist/** folder.
 
 ### 2.5/ Loading the extension
 
@@ -92,15 +92,33 @@ Development must be done inside **plugin/** folder. You can code using TypeScrip
 >_Remember: [Here you can learn TypeScript in 5 minutes](https://learnxinyminutes.com/docs/typescript/)_
 >_Most IDE support TypeScript through plugins (Atom, Sublime, WebStorm, VisualStudio code, ...) @see https://www.typescriptlang.org/_
 
-In chrome, use **dist/** folder as Unpacked Extension for development
+Angular webapp (**plugin/webapp** folder) must be coded ideally with TypeScript @see [angular.io/guide/ts-to-js](https://angular.io/guide/ts-to-js)
 
-To apply files changes from **plugin/** to **dist/** you must run the build command:
+In chrome, use **plugin/** folder as Unpacked Extension for development
 
+To compile typescript project run:
 ```
-gulp build
+tsc
 ```
 
 You can automatically execute this task on a file change with command:
+```
+tsc --watch
+# OR
+tsc -w     
+```
+
+To build the app, simply run the following command:
+```
+gulp build
+```
+Needed files will be copied from **plugin/** to **dist/** folder. 
+
+_Note: Make sure to declare your new resources in **gulpfile.js** to see them copied to **dist/** folder_ 
+
+To test the build in chrome, use now **dist/** folder as Unpacked Extension for development.
+
+You can automatically execute the _"gulp build"_ task on a file change with command:
 ```
 gulp watch
 ```
@@ -115,14 +133,13 @@ This will create zip archive of **dist/** folder in **package/StravistiX\_vX.X.X
 ```
 gulp clean
 ```
-This will clean **dist/**, **package/** & **plugin/node_modules/** folders
+This will clean **dist/**, **package/** & **plugin/node_modules/** folders & *.js *.map compiled sources
 
 4/ Git repository structure and GitFlow
 ==========
 This project repository is fitted for **GitFlow** branches management workflow. Learn more @  http://nvie.com/posts/a-successful-git-branching-model/
 
-5/ Code Editor and Indentation plugin used
+5/ Code Editor
 ==========
-I used [**Atom**](https://atom.io/) editor with [**atom-typescript**](https://atom.io/packages/atom-typescript) and [**atom-beautify**](https://atom.io/packages/atom-beautify) plugin for code indentation.
+I used [**Visual Studio Code**](https://code.visualstudio.com/) editor.
 
-_Others Atom plugin list i recommend: https://gist.github.com/thomaschampagne/fa8fa9615b2fac236ac3_
