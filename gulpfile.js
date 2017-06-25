@@ -108,6 +108,7 @@ var OPTIONS_FILES = [
     'plugin/node_modules/zone.js/dist/zone.js',
     'plugin/node_modules/systemjs/dist/system.src.js',
 
+    // @angular bundles
     'plugin/node_modules/@angular/core/bundles/core.umd.js',
     'plugin/node_modules/@angular/common/bundles/common.umd.js',
     'plugin/node_modules/@angular/compiler/bundles/compiler.umd.js',
@@ -116,13 +117,20 @@ var OPTIONS_FILES = [
     'plugin/node_modules/@angular/http/bundles/http.umd.js',
     'plugin/node_modules/@angular/router/bundles/router.umd.js',
     'plugin/node_modules/@angular/forms/bundles/forms.umd.js',
-
     'plugin/node_modules/@angular/material/bundles/material.umd.js',
+    'plugin/node_modules/@angular/animations/bundles/animations.umd.min.js',
+    'plugin/node_modules/@angular/animations/bundles/animations-browser.umd.js',
     'plugin/node_modules/@angular/platform-browser/bundles/platform-browser-animations.umd.js',
 
-    'plugin/node_modules/rxjs/**/*', // TODO Use only required files
+    // @angular material theme
+    'plugin/node_modules/@angular/material/prebuilt-themes/indigo-pink.css',
+
+    //  other libraries
+    'plugin/node_modules/hammerjs/hammer.js',
+    'plugin/node_modules/rxjs/**/*.js', // RXJS
     'plugin/node_modules/angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
 
+    // webapp files
     'plugin/webapp/**/*',
     '!plugin/webapp/**/*.ts' // Do not copy TypeScripts script using "!". They are compiled to JS files which are already copied to destination folder. (@see PLUGIN_TYPESCRIPT_SCRIPTS var)
 ];
