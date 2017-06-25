@@ -119,5 +119,6 @@
     "sourceMap": true,
     "inlineSources": true,
     "skipLibCheck": true
-  }
+  },
+  "compileOnSave": true
 }

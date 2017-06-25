@@ -1,11 +1,23 @@
-import { NgModule }      from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import 'hammerjs';
+import {NgModule}      from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppComponent }  from './app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MdButtonModule, MdCheckboxModule, MdInputModule} from '@angular/material';
+
+import {AppComponent}  from './app.component';
 
 @NgModule({
-  imports:      [ BrowserModule ],
-  declarations: [ AppComponent ],
-  bootstrap:    [ AppComponent ]
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+
+        MdButtonModule, // TODO Move
+        MdCheckboxModule,
+        MdInputModule
+    ],
+    declarations: [AppComponent],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

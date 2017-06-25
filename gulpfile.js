@@ -117,6 +117,9 @@ var OPTIONS_FILES = [
     'plugin/node_modules/@angular/router/bundles/router.umd.js',
     'plugin/node_modules/@angular/forms/bundles/forms.umd.js',
 
+    'plugin/node_modules/@angular/material/bundles/material.umd.js',
+    'plugin/node_modules/@angular/platform-browser/bundles/platform-browser-animations.umd.js',
+
     'plugin/node_modules/rxjs/**/*', // TODO Use only required files
     'plugin/node_modules/angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
 
