@@ -3,22 +3,24 @@ module.exports = function (config) {
         browsers: ['PhantomJS'],
         frameworks: ['jasmine'],
         files: [
-            'dist/core/config/env.js',
-            'dist/core/modules/**/*.js',
-            'dist/node_modules/underscore/underscore-min.js',
-            'dist/node_modules/q/q.js',
-            'dist/node_modules/jquery/dist/jquery.js',
-            'dist/core/scripts/modifiers/extendedActivityData/views/AbstractDataView.js',
-            'dist/core/scripts/**/*.js',
+            'plugin/node_modules/underscore/underscore-min.js',
+            'plugin/node_modules/q/q.js',
+            'plugin/node_modules/jquery/dist/jquery.js',
+
+            'plugin/core/config/env.js',
+            'plugin/core/modules/**/*.js',
+            'plugin/core/scripts/modifiers/extendedActivityData/views/AbstractDataView.js',
+            'plugin/core/scripts/**/*.js',
+
             'specs/**/*.js',
             'specs/fixtures/**/*.json'
         ],
         exclude: [
-            'dist/core/scripts/Background.js',
-            'dist/core/scripts/Constants.js',
-            'dist/core/scripts/Content.js',
-            'dist/core/modules/jquery.appear.js',
-            'dist/core/scripts/ReleaseNotes.js'
+            'plugin/core/scripts/Background.js',
+            'plugin/core/scripts/Constants.js',
+            'plugin/core/scripts/Content.js',
+            'plugin/core/modules/jquery.appear.js',
+            'plugin/core/scripts/ReleaseNotes.js'
         ],
         preprocessors: {
             'specs/fixtures/**/*.json': ['json_fixtures']

@@ -8,21 +8,21 @@ package/
 chrome-win32/
 
 # core
-#plugin/core/**/*.js
-#plugin/core/**/*.map
+plugin/core/**/*.js
+plugin/core/**/*.map
 
 # Webapp new
-#plugin/webapp/main.js
-#plugin/webapp/main.js.map
-#plugin/webapp/app/**/*.js
-#plugin/webapp/e2e/**/*.js
-#plugin/webapp/app/**/*.map
-#plugin/webapp/e2e/**/*.map
+plugin/webapp/main.js
+plugin/webapp/main.js.map
+plugin/webapp/app/**/*.js
+plugin/webapp/e2e/**/*.js
+plugin/webapp/app/**/*.map
+plugin/webapp/e2e/**/*.map
 
 # Webapp old
-#plugin/options/**/*.js
-#plugin/options/**/*.map
+plugin/options/**/*.js
+plugin/options/**/*.map
 
 # specs
-#specs/**/*.js
-#specs/**/*.map
+specs/**/*.js
+specs/**/*.map

@@ -101,14 +101,22 @@
     "plugin/webapp/main.ts",
     "plugin/webapp/app/app.module.ts",
     "plugin/webapp/app/app.component.ts",
-    "plugin/webapp/app/app.component.spec.ts"
+    "plugin/webapp/app/app.component.spec.ts",
+
+    // specs
+    "specs/SpecsTools.ts",
+    "specs/Helper.spec.ts",
+    "specs/Follow.spec.ts",
+    "specs/processors/ActivityComputer.spec.ts",
+    "specs/processors/VacuumProcessor.spec.ts",
+    "specs/sync/ActivitiesSync.basics.spec.ts",
+    "specs/sync/ActivitiesSync.stubed.spec.ts"
   ],
   "exclude": [
     "node_modules"
   ],
   "compileOnSave": true,
   "compilerOptions": {
-    "watch": true,
     "target": "es5",
     "module": "commonjs",
     "emitDecoratorMetadata": true,
