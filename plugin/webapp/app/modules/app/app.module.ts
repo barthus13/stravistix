@@ -4,11 +4,11 @@ import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule, Routes} from '@angular/router';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MdButtonModule, MdCheckboxModule, MdInputModule, MdMenuModule, MdIconModule} from '@angular/material'; // TODO Regroup as module
+import {MaterialModule} from '../../modules/material/material.module';
 
-import {AppComponent}  from './app.component';
-import {HeroComponent}  from './hero.component';
-import {MagicComponent}  from './magic.component';
+import {AppComponent}  from '../../components/app/app.component';
+import {HeroComponent}  from '../../components/hero/hero.component';
+import {MagicComponent}  from '../../components/magic/magic.component';
 
 const appRoutes: Routes = [
     {path: 'hero', component: HeroComponent},
@@ -25,12 +25,7 @@ const appRoutes: Routes = [
         BrowserModule,
         RouterModule.forRoot(appRoutes, {useHash: true}), // TODO move in proper module
         BrowserAnimationsModule,
-        // TODO Move in proper module
-        MdButtonModule,
-        MdIconModule,
-        MdCheckboxModule,
-        MdInputModule,
-        MdMenuModule
+        MaterialModule
     ],
     declarations: [AppComponent, HeroComponent, MagicComponent],
     bootstrap: [AppComponent]
