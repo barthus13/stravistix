@@ -27,6 +27,7 @@
             '@angular/animations': 'npm:@angular/animations/bundles/animations.umd.min.js',
             '@angular/animations/browser': 'npm:@angular/animations/bundles/animations-browser.umd.js',
             '@angular/platform-browser/animations': 'npm:@angular/platform-browser/bundles/platform-browser-animations.umd.js',
+            '@angular/flex-layout' : 'npm:@angular/flex-layout/bundles/flex-layout.umd.js',
 
             // other libraries
             'hammerjs': 'npm:hammerjs/hammer.js',
