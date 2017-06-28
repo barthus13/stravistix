@@ -4,7 +4,8 @@
   "description": "Wrap the needed tools required to cook the StravistiX Web Plugin",
   "scripts": {
     "postinstall": "npm --prefix ./plugin install ./plugin",
-    "test": "gulp specs"
+    "test": "gulp specs",
+    "start": "gulp cleanInlineSources && tsc -w"
   },
   "repository": {
     "type": "git",

@@ -11,7 +11,7 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * TASKS GRAPH
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * clean       : cleanPackage => cleanDistAll => cleanExtNodeModules
+ * clean       : cleanPackage => cleanDistAll => cleanInlineSources
  * build       : writeManifest => tsCompileToDist
  * specs       : tscCommand
  * makeArchive : build

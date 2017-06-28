@@ -96,16 +96,9 @@ Angular webapp (**plugin/webapp** folder) must be coded ideally with TypeScript 
 
 In chrome, use **plugin/** folder as Unpacked Extension for development
 
-To compile typescript project run:
+To compile typescript project and listen for changes run:
 ```
-tsc
-```
-
-You can automatically execute this task on a file change with command:
-```
-tsc --watch
-# OR
-tsc -w     
+npm start
 ```
 
 To build the app, simply run the following command:
