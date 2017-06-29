@@ -1,14 +1,11 @@
 import {Component} from '@angular/core';
 
 @Component({
-    selector: 'webapp',
-    template: `
-        <h1>Angular Router</h1>
-        <nav>
-            <a routerLink="/magic" routerLinkActive="active">Magic</a>
-            <a routerLink="/hero" routerLinkActive="active">Hero</a>
-        </nav>
-        <router-outlet></router-outlet>
-    `,
+    selector: 'web-app',
+    templateUrl: './app.component.html'
 })
-export class AppComponent {}
+export class AppComponent {
+    public onMenuClicked(): void {
+        alert("onMenuClicked");
+    }
+}
