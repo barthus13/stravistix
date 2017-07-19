@@ -42,7 +42,7 @@ let releaseNotes: Array<IReleaseNote> = [
         message: 'New Year progressions improvements (Old version reactivated in Strava profile page) <strong>+</strong> Custom running power zones <strong>+</strong> Hide Virtual Rides',
         hotFixes: [],
         features: [
-            'Added New Year progression UI. <a href="' + Constants.OPTIONS_URL + '#/yearsProgress" target="_blank">Here</a> ',
+            'Added New Year progression UI. <a href="' + Constants.OPTIONS_URL + '#!/yearsProgress" target="_blank">Here</a> ',
             'Added custom running power zones (was linked to cycling power zones before)',
             'Added option to hide Virtual Rides from activity feed',
             'Added ribbon on top of page when plugin update occurs. Less annoying than the big update popup ;)',
@@ -59,7 +59,7 @@ let releaseNotes: Array<IReleaseNote> = [
         message: 'Added New Year progressions <strong>+</strong> Custom running power zones <strong>+</strong> Hide Virtual Rides',
         hotFixes: [],
         features: [
-            'Added New Year progression UI. <a href="' + Constants.OPTIONS_URL + '#/yearsProgress" target="_blank">Here</a> ',
+            'Added New Year progression UI. <a href="' + Constants.OPTIONS_URL + '#!/yearsProgress" target="_blank">Here</a> ',
             'Added custom running power zones (was linked to cycling power zones before)',
             'Added option to hide Virtual Rides from activity feed',
             'Added ribbon on top of page when plugin update occurs. Less annoying than the big update popup ;)',
@@ -311,11 +311,11 @@ let releaseNotes: Array<IReleaseNote> = [
         ],
     }, {
         version: '4.3.3',
-        message: 'Fixing bugs from 4.2.2</br></br><strong>NEW as BETA:</strong> Added running estimated paces & cycling estimated powers from your most painful effort on a segment. The feature visible on "Your recent efforts" graph displayed in segment pages. <div style="text-align: center;"><a href="' + Constants.OPTIONS_URL + '#/commonSettings" target="_blank">> Don\'t forget to activate beta/hidden feature at first <</a></div>',
+        message: 'Fixing bugs from 4.2.2</br></br><strong>NEW as BETA:</strong> Added running estimated paces & cycling estimated powers from your most painful effort on a segment. The feature visible on "Your recent efforts" graph displayed in segment pages. <div style="text-align: center;"><a href="' + Constants.OPTIONS_URL + '#!/commonSettings" target="_blank">> Don\'t forget to activate beta/hidden feature at first <</a></div>',
         hotFixes: [],
         features: [
-            'BETA: Cycling estimated powers based on your most painful effort on a segment. <a href="' + Constants.OPTIONS_URL + '#/commonSettings" target="_blank">Don\'t forget to activate beta/hidden feature at first</a>',
-            'BETA: Running estimated paces based on your most painful effort on a segment. <a href="' + Constants.OPTIONS_URL + '#/commonSettings" target="_blank">Don\'t forget to activate beta/hidden feature at first</a>',
+            'BETA: Cycling estimated powers based on your most painful effort on a segment. <a href="' + Constants.OPTIONS_URL + '#!/commonSettings" target="_blank">Don\'t forget to activate beta/hidden feature at first</a>',
+            'BETA: Running estimated paces based on your most painful effort on a segment. <a href="' + Constants.OPTIONS_URL + '#!/commonSettings" target="_blank">Don\'t forget to activate beta/hidden feature at first</a>',
             'Migrate 100% of the javascript code to <a href="https://www.typescriptlang.org/" target="_blank">Microsoft TypeScript</a>. An invisible enhancement for you. Futures features are now easiest to implement.'],
         hideFeatureReleaseNote: true,
         fixes: [
@@ -325,11 +325,11 @@ let releaseNotes: Array<IReleaseNote> = [
         ],
     }, {
         version: '4.3.2',
-        message: '<strong>NEW as BETA:</strong> Added running estimated paces & cycling estimated powers from your most painful effort on a segment. The feature visible on "Your recent efforts" graph displayed in segment pages. <div style="text-align: center;"><a href="' + Constants.OPTIONS_URL + '#/commonSettings" target="_blank">> Don\'t forget to activate beta/hidden feature at first <</a></div>',
+        message: '<strong>NEW as BETA:</strong> Added running estimated paces & cycling estimated powers from your most painful effort on a segment. The feature visible on "Your recent efforts" graph displayed in segment pages. <div style="text-align: center;"><a href="' + Constants.OPTIONS_URL + '#!/commonSettings" target="_blank">> Don\'t forget to activate beta/hidden feature at first <</a></div>',
         hotFixes: [],
         features: [
-            'BETA: Cycling estimated powers based on your most painful effort on a segment. <a href="' + Constants.OPTIONS_URL + '#/commonSettings" target="_blank">Don\'t forget to activate beta/hidden feature at first</a>',
-            'BETA: Running estimated paces based on your most painful effort on a segment. <a href="' + Constants.OPTIONS_URL + '#/commonSettings" target="_blank">Don\'t forget to activate beta/hidden feature at first</a>',
+            'BETA: Cycling estimated powers based on your most painful effort on a segment. <a href="' + Constants.OPTIONS_URL + '#!/commonSettings" target="_blank">Don\'t forget to activate beta/hidden feature at first</a>',
+            'BETA: Running estimated paces based on your most painful effort on a segment. <a href="' + Constants.OPTIONS_URL + '#!/commonSettings" target="_blank">Don\'t forget to activate beta/hidden feature at first</a>',
             'Migrate 100% of the javascript code to <a href="https://www.typescriptlang.org/" target="_blank">Microsoft TypeScript</a>. An invisible enhancement for you. Futures features are now easiest to implement.'],
         hideFeatureReleaseNote: false,
         fixes: ['Fixed broken heat map link in StravistiX burger menu'],
