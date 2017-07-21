@@ -45,12 +45,12 @@ class RemoteLinksModifier implements IModifier {
 
         $("#pagenav").append($(html)).each(() => {
 
-            $('[data-remote-views]').click((evt: Event) => {
+            $('[data-remote-views]').click((evt: JQuery.Event) => {
                 evt.preventDefault();
                 evt.stopPropagation();
             });
 
-            $('#stravistix_remote_title').click((evt: Event) => {
+            $('#stravistix_remote_title').click((evt: JQuery.Event) => {
 
                 evt.preventDefault();
                 evt.stopPropagation();

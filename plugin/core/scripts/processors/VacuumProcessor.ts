@@ -246,7 +246,7 @@ class VacuumProcessor {
 
         if (parsingTime) {
             // Remove text from date, format time to hh:mm:ss
-            cleanData = <string> Helper.HHMMSStoSeconds(cleanData);
+            cleanData = Helper.HHMMSStoSeconds(cleanData).toString();
 
             if (_.isNaN(cleanData)) {
                 return null;

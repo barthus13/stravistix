@@ -799,7 +799,7 @@ class ActivityBestSplitsModifier implements IModifier {
             saveSplitsConfiguration(splitsArray);
         });
 
-        $("#best-split-new-add").click((e: Event) => {
+        $("#best-split-new-add").click((e: JQuery.Event) => {
             e.preventDefault();
             let splitLength = parseInt($("#best-split-new-length").val());
             if (splitLength < 1) {

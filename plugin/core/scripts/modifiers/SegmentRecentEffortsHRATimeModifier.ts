@@ -444,7 +444,7 @@ class SegmentRecentEffortsHRATimeModifier implements IModifier {
 
                     // insert the elements into the SVG
                     let firstMark = chart.find("circle").eq(0);
-                    firstMark.before(mappedMarks);
+                    firstMark.before(<any> mappedMarks);
 
                     let bestMark = chart.find("circle").filter(".personal-best-mark");
                     bestMark.after(lines);

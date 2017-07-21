@@ -88,13 +88,13 @@ class WindyTyModifier implements IModifier {
 
         $("#pagenav").append($(html)).each(() => {
 
-            $('[data-wheater-windyty]').click((evt: Event) => {
+            $('[data-wheater-windyty]').click((evt: JQuery.Event) => {
                 evt.preventDefault();
                 evt.stopPropagation();
                 this.showWeather($(evt.target).attr('data-wheater-windyty'));
             });
 
-            $('#stravistix_weather_title').click((evt) => {
+            $('#stravistix_weather_title').click((evt: JQuery.Event) => {
 
                 evt.preventDefault();
                 evt.stopPropagation();

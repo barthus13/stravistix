@@ -16,11 +16,13 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
+    "lib" : ["es2015", "es2015.iterable", "dom", "webworker"],
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": true,
-    "inlineSources": true
+    "inlineSources": true,
+    "skipLibCheck": true
   },
   "compileOnSave": false
 }

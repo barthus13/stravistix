@@ -13,7 +13,7 @@ class ReliveCCModifier implements IModifier {
 
         $("#pagenav").append($(html)).each(() => {
 
-            $('#stravistix_relivecc').click((evt: Event) => {
+            $('#stravistix_relivecc').click((evt: JQuery.Event) => {
 
                 evt.preventDefault();
                 evt.stopPropagation();
