@@ -1,5 +1,10 @@
-///<reference path="views/HeaderView.ts"/>
-abstract class AbstractExtendedDataModifier {
+import * as _ from "underscore";
+import {AbstractDataView} from "./views/AbstractDataView";
+import {HeaderView} from "./views/HeaderView";
+import {HeartRateDataView} from "./views/HeartRateDataView";
+import {FeaturedDataView} from "./views/FeaturedDataView";
+
+export abstract class AbstractExtendedDataModifier {
 
     public static TYPE_ACTIVITY: number = 0;
     public static TYPE_SEGMENT: number = 1;

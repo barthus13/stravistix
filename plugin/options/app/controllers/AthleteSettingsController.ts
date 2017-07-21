@@ -1,6 +1,7 @@
 import angular = require("angular");
 import IDialogService = angular.material.IDialogService;
 import * as _ from "underscore";
+import {ChromeStorageService} from "../services/ChromeStorageService";
 
 interface IGenderList {
     type: string;

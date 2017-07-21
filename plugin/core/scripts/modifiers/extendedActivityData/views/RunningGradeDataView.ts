@@ -1,4 +1,6 @@
-class RunningGradeDataView extends AbstractGradeDataView {
+import {AbstractGradeDataView} from "./AbstractGradeDataView";
+
+export class RunningGradeDataView extends AbstractGradeDataView {
 
     constructor(gradeData: IGradeData, units: string) {
         super(gradeData, units);

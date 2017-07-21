@@ -1,3 +1,4 @@
+// TODO TYPES Delete below paths for imports?
 /// <reference path="../plugin/core/modules/StorageManager.ts" />
 /// <reference path="../plugin/core/config/env.ts" />
 /// <reference path="../plugin/core/scripts/UserSettings.ts" />

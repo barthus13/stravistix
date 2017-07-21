@@ -1,4 +1,5 @@
-class RunningCadenceDataView extends AbstractCadenceDataView {
+import {AbstractCadenceDataView} from "./AbstractCadenceDataView";
+export class RunningCadenceDataView extends AbstractCadenceDataView {
 
     protected userSettings: IUserSettings;
 

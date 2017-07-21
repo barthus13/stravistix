@@ -1,4 +1,6 @@
-class SpeedDataView extends AbstractDataView {
+import {AbstractDataView} from "./AbstractDataView";
+
+export class SpeedDataView extends AbstractDataView {
 
     protected speedData: ISpeedData;
 

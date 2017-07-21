@@ -1,4 +1,7 @@
-class HeartRateDataView extends AbstractDataView {
+import * as _ from "underscore";
+import {AbstractDataView} from "./AbstractDataView";
+
+export class HeartRateDataView extends AbstractDataView {
 
     protected heartRateData: IHeartRateData;
 

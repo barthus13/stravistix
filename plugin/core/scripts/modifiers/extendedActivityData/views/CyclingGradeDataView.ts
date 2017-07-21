@@ -1,4 +1,7 @@
-class CyclingGradeDataView extends AbstractGradeDataView {
+import * as _ from "underscore";
+import {AbstractGradeDataView} from "./AbstractGradeDataView";
+
+export class CyclingGradeDataView extends AbstractGradeDataView {
 
     constructor(gradeData: IGradeData, units: string) {
         super(gradeData, units);

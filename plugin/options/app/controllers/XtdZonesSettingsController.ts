@@ -1,3 +1,7 @@
+import * as _ from "underscore";
+import {IScope} from "angular";
+import {ChromeStorageService} from "../services/ChromeStorageService";
+
 interface IXtdData {
     name: string;
     value: string;
@@ -20,7 +24,7 @@ class XtdZonesSettingsController {
 
     static $inject = ['$scope', '$location', '$routeParams', 'ChromeStorageService'];
 
-    constructor($scope: IXtdZonesSettingsScope, $location: ILocationService, $routeParams: any, chromeStorageService: ChromeStorageService) {
+    constructor($scope: IXtdZonesSettingsScope, $routeParams: any, chromeStorageService: ChromeStorageService) {
 
         // List of Xtended data to be customize
         $scope.xtdListOptions = [{

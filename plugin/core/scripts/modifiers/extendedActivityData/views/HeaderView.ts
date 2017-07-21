@@ -1,4 +1,7 @@
-class HeaderView extends AbstractDataView {
+import * as _ from "underscore";
+import {AbstractDataView} from "./AbstractDataView";
+
+export class HeaderView extends AbstractDataView {
 
     protected basicInfo: IActivityBasicInfo;
 

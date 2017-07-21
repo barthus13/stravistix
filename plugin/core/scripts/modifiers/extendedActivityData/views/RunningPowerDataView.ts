@@ -1,4 +1,5 @@
-class RunningPowerDataView extends AbstractDataView {
+import {AbstractDataView} from "./AbstractDataView";
+export class RunningPowerDataView extends AbstractDataView {
 
     protected powerData: IPowerData;
 

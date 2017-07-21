@@ -1,4 +1,8 @@
-abstract class AbstractDataView {
+import * as _ from "underscore";
+import {LinearTickOptions} from "chart.js";
+import Chart = require("chart.js");
+
+export abstract class AbstractDataView {
 
     protected units: string;
     protected chart: any;
