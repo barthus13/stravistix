@@ -5,7 +5,7 @@ import {ChromeStorageService} from "../services/ChromeStorageService";
 import IControllerConstructor = angular.IControllerConstructor;
 import Injectable = angular.Injectable;
 
-class FitnessTrendController {
+export class FitnessTrendController {
 
     static $inject = ['$rootScope', '$scope', 'ChromeStorageService', 'FitnessDataService'];
 

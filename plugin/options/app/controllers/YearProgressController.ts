@@ -1,6 +1,9 @@
+import * as _ from "underscore";
+import * as angular from "angular";
+import * as d3 from "d3";
 import moment = require("moment");
 import {Moment} from "moment";
-import * as _ from "underscore";
+import {ChromeStorageService} from "../services/ChromeStorageService";
 
 interface IYearProgress {
     year: number;
@@ -135,7 +138,7 @@ class YearProgressController {
 
     public static $inject = ['$scope', 'ChromeStorageService', '$mdDialog'];
 
-    constructor($scope: any, chromeStorageService: ChromeStorageService, $mdDialog: IDialogService) {
+    constructor($scope: any, chromeStorageService: ChromeStorageService, $mdDialog: angular.material.IDialogService) {
 
         let yearProgressComputer: YearProgressComputer = new YearProgressComputer();
 

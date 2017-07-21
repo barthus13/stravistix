@@ -1,4 +1,4 @@
-/// <reference path="../typings/index.d.ts" />
+// TODO types rem?
 /// <reference path="../typings/plugin.d.ts" />
 
 describe('Generate Athlete Update', () => {

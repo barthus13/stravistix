@@ -1,6 +1,10 @@
-import moment = require("moment");
-import {IScope} from "angular";
+import * as _ from "underscore";
+import * as d3 from "d3";
+import * as moment from "moment";
+import * as angular from "angular";
+import {ILocationService, IScope, IWindowService} from "angular";
 import {IFitnessActivity} from "../../services/FitnessDataService";
+import {FitnessTrendController} from "../../controllers/FitnessTrendController";
 
 interface IFitnessTrendGraphScope extends IScope {
     nvd3api: any;
@@ -57,7 +61,7 @@ class FitnessTrendGraph {
 
     static $inject: string[] = ['$scope', '$colors', '$window', '$mdDialog', '$location'];
 
-    constructor(public $scope: IFitnessTrendGraphScope, public $colors: IColors, public $window: IWindowService, public $mdDialog: IDialogService, public $location: ILocationService) {
+    constructor(public $scope: IFitnessTrendGraphScope, public $colors: IColors, public $window: IWindowService, public $mdDialog: angular.material.IDialogService, public $location: ILocationService) {
 
         let onGraphDrawTimeStart: number;
         let onGraphDrawnTimeDone: number;

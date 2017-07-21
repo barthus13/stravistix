@@ -1,3 +1,8 @@
+import * as _ from "underscore";
+import {IWindowService} from "angular";
+import {FitnessTrendController} from "../../controllers/FitnessTrendController";
+import {IFitnessActivity, IFitnessActivityTable} from "../../services/FitnessDataService";
+
 class FitnessTrendTable {
 
     static $inject: string[] = ['$scope', '$window'];

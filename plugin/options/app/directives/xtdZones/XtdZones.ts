@@ -1,5 +1,5 @@
 import * as _ from "underscore";
-import angular = require("angular");
+import * as angular from "angular";;
 import {ChromeStorageService} from "../../services/ChromeStorageService";
 import {IAnchorScrollService, ILocationService} from "angular";
 

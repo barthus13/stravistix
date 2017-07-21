@@ -1,9 +1,10 @@
-import moment = require("moment");
-import {IPromise} from "angular";
-import {Moment} from "moment";
 import * as _ from "underscore";
+import * as moment from "moment";
+import {IPromise, IQService} from "angular";
+import {Moment} from "moment";
+import {ChromeStorageService} from "./ChromeStorageService";
 
-interface IActivitiesWithFitness {
+export interface IActivitiesWithFitness {
     id: number;
     date: Date; // TODO Store Moment instead?!
     timestamp: number;
@@ -16,7 +17,7 @@ interface IActivitiesWithFitness {
     swimStressScore?: number;
 }
 
-interface IActivitiesWithFitnessDaysOff {
+export interface IActivitiesWithFitnessDaysOff {
     ids: Array<number>;
     date: Date;
     timestamp: number;
@@ -45,7 +46,7 @@ export interface IFitnessActivity {
     previewDay: boolean;
 }
 
-interface IFitnessActivityTable extends IFitnessActivity {
+export interface IFitnessActivityTable extends IFitnessActivity {
     activitiesNameStr: string;
 }
 

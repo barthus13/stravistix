@@ -1,3 +1,8 @@
+import * as _ from "underscore";
+import {IScope, ILocationService, IWindowService} from "angular";
+import {ChromeStorageService} from "../services/ChromeStorageService";
+import {AthleteSettingsController} from "../controllers/AthleteSettingsController";
+
 interface IProfileConfiguredRibbonScope extends IScope {
     checkLocalSyncedAthleteProfileEqualsRemote: () => void;
     isProfileConfigured: boolean;

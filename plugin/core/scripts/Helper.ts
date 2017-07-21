@@ -21,7 +21,7 @@ class Helper {
         return speedUnitData;
     }
 
-    public static HHMMSStoSeconds(str: string): string { // TODO Must return number WTF ?!
+    public static HHMMSStoSeconds(str: string): number {
 
         let p: Array<string> = str.split(':'),
             s: any = 0,
@@ -31,7 +31,7 @@ class Helper {
             s += m * parseInt(p.pop(), 10);
             m *= 60;
         }
-        return (<string>s);
+        return s;
     }
 
     public static secondsToHHMMSS(secondsParam: number, trimLeadingZeros?: boolean): string {

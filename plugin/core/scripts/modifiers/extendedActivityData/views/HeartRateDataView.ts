@@ -1,5 +1,6 @@
 import * as _ from "underscore";
 import {AbstractDataView} from "./AbstractDataView";
+import {StravistiX} from "../../../StravistiX";
 
 export class HeartRateDataView extends AbstractDataView {
 

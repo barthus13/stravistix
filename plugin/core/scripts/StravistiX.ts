@@ -1,3 +1,4 @@
+// TODO TYPE remove below?
 /// <reference path="../../../typings/plugin.d.ts" />
 
 import * as _ from "underscore";
@@ -5,7 +6,7 @@ import {AbstractExtendedDataModifier} from "./modifiers/extendedActivityData/Abs
 import {CyclingExtendedDataModifier} from "./modifiers/extendedActivityData/CyclingExtendedDataModifier";
 import {RunningExtendedDataModifier} from "./modifiers/extendedActivityData/RunningExtendedDataModifier";
 
-class StravistiX {
+export class StravistiX {
 
     public static instance: StravistiX = null;
 

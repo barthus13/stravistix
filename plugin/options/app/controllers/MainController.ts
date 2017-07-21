@@ -1,20 +1,14 @@
 import * as _ from "underscore";
-import moment = require("moment");
+import * as angular from "angular";
+import * as moment from "moment";
 import {ChromeStorageService} from "../services/ChromeStorageService";
-
-import angular = require("angular");
-import ILocationService = angular.ILocationService;
-import IDialogService = angular.material.IDialogService;
-import ISidenavService = angular.material.ISidenavService;
-import IWindowService = angular.IWindowService;
-import IIntervalService = angular.IIntervalService;
-import IMedia = angular.material.IMedia;
+import {IIntervalService, ILocationService, IWindowService} from "angular";
 
 class MainController {
 
     static $inject = ['$rootScope', 'ChromeStorageService', '$scope', '$location', '$mdSidenav', '$colors', '$mdDialog', '$window', '$interval', '$mdMedia'];
 
-    constructor($rootScope: any, chromeStorageService: ChromeStorageService, $scope: any, $location: ILocationService, $mdSidenav: ISidenavService, $colors: any, $mdDialog: IDialogService, $window: IWindowService, $interval: IIntervalService, $mdMedia: IMedia) {
+    constructor($rootScope: any, chromeStorageService: ChromeStorageService, $scope: any, $location: ILocationService, $mdSidenav: angular.material.ISidenavService, $colors: any, $mdDialog: angular.material.IDialogService, $window: IWindowService, $interval: IIntervalService, $mdMedia: angular.material.IMedia) {
 
         $scope.colors = $colors;
 

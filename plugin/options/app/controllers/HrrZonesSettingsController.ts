@@ -1,3 +1,5 @@
+import {ChromeStorageService} from "../services/ChromeStorageService";
+
 class HrrZonesSettingsController {
 
     static $inject = ['$scope', 'ChromeStorageService', 'AvoidInputKeysService'];

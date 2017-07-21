@@ -1,3 +1,8 @@
+import * as _ from "underscore";
+import * as angular from "angular";
+import {ChromeStorageService} from "../services/ChromeStorageService";
+import {IWindowService, IScope} from "angular";
+
 class RestoreHistoryController {
 
     static $inject = ['ChromeStorageService', '$scope', '$window'];
