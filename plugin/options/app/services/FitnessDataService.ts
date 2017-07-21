@@ -1,5 +1,6 @@
-import Moment = moment.Moment;
-import IPromise = angular.IPromise;
+import moment = require("moment");
+import {IPromise} from "angular";
+import {Moment} from "moment";
 
 interface IActivitiesWithFitness {
     id: number;
