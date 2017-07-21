@@ -1,3 +1,9 @@
+import * as _ from "underscore";
+import angular = require("angular");
+import {ILocationService, ISCEService} from "angular";
+import IDialogService = angular.material.IDialogService;
+import {ChromeStorageService} from "../services/ChromeStorageService";
+
 class CommonSettingsController {
 
     static $inject = ['$scope', 'CommonSettingsService', 'ChromeStorageService', '$location', '$mdDialog', '$sce'];

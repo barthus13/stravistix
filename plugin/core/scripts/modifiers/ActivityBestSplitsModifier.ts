@@ -714,7 +714,7 @@ class ActivityBestSplitsModifier implements IModifier {
             "</tr>" +
             "</tfoot>" +
             "<tbody class='splits-list'>" +
-            "</tbody" +
+            "</tbody>" +
             "</table>");
 
         bestSplitsSection.append(splitsTable);

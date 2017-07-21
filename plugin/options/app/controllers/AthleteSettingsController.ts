@@ -1,3 +1,7 @@
+import angular = require("angular");
+import IDialogService = angular.material.IDialogService;
+import * as _ from "underscore";
+
 interface IGenderList {
     type: string;
 }
@@ -8,7 +12,7 @@ class AthleteSettingsController {
 
     public static $inject = ['$rootScope', '$scope', 'ChromeStorageService', 'AvoidInputKeysService', '$mdDialog', '$window'];
 
-    constructor($rootScope: any, $scope: any, chromeStorageService: ChromeStorageService, AvoidInputKeysService: IAvoidInputKeysService, $mdDialog: IDialogService, $window: IWindowService) {
+    constructor($rootScope: any, $scope: any, chromeStorageService: ChromeStorageService, AvoidInputKeysService: IAvoidInputKeysService, $mdDialog: IDialogService) {
 
         $scope.genderList = [{
             type: 'men',

@@ -1,3 +1,8 @@
+import * as _ from "underscore";
+import angular = require("angular");
+import {ChromeStorageService} from "../../services/ChromeStorageService";
+import {IAnchorScrollService, ILocationService} from "angular";
+
 class XtdZones {
 
     public static maxZonesCount: number = 50;
@@ -5,7 +10,7 @@ class XtdZones {
 
     public static $inject: string[] = ['$scope', 'ChromeStorageService', '$mdDialog', '$location', '$anchorScroll'];
 
-    constructor(public $scope: any, public chromeStorageService: ChromeStorageService, public $mdDialog: IDialogService, public $location: ILocationService, public $anchorScroll: IAnchorScrollService) {
+    constructor(public $scope: any, public chromeStorageService: ChromeStorageService, public $mdDialog: angular.material.IDialogService, public $location: ILocationService, public $anchorScroll: IAnchorScrollService) {
 
         $scope.addZone = ($event: MouseEvent) => {
 
@@ -91,7 +96,7 @@ class XtdZones {
 
         $scope.resetZone = ($event: MouseEvent) => {
 
-            let confirm: IConfirmDialog = $mdDialog.confirm()
+            let confirm: angular.material.IConfirmDialog = $mdDialog.confirm()
                 .title('Reset zones')
                 .textContent('You are going to reset ' + $scope.xtdDataSelected.name + ' zones to default factory values. Are you sure?')
                 .targetEvent($event)
@@ -140,7 +145,7 @@ class XtdZones {
         $scope.setupStep = ($event: MouseEvent) => {
 
             $mdDialog.show({
-                controller: ($scope: any, $mdDialog: IDialogService, localStep: number, localZoneType: string) => {
+                controller: ($scope: any, $mdDialog: angular.material.IDialogService, localStep: number, localZoneType: string) => {
 
                     $scope.step = localStep;
                     $scope.zoneType = localZoneType;
@@ -173,7 +178,7 @@ class XtdZones {
 
             let exportData = angular.toJson($scope.xtdZones);
 
-            let exportPrompt: IPromptDialog = $mdDialog.prompt()
+            let exportPrompt: angular.material.IPromptDialog = $mdDialog.prompt()
                 .title('Exporting ' + $scope.xtdDataSelected.name + ' zones')
                 .textContent('Copy data inside field.')
                 .ariaLabel('Copy data inside field.')

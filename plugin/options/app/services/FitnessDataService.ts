@@ -1,6 +1,7 @@
 import moment = require("moment");
 import {IPromise} from "angular";
 import {Moment} from "moment";
+import * as _ from "underscore";
 
 interface IActivitiesWithFitness {
     id: number;
@@ -28,7 +29,7 @@ interface IActivitiesWithFitnessDaysOff {
     previewDay: boolean;
 }
 
-interface IFitnessActivity {
+export interface IFitnessActivity {
     ids: Array<number>;
     date: string;
     timestamp: number;
@@ -48,7 +49,7 @@ interface IFitnessActivityTable extends IFitnessActivity {
     activitiesNameStr: string;
 }
 
-class FitnessDataService {
+export class FitnessDataService {
 
     public static FUTURE_DAYS_PREVIEW: number = 14;
 

@@ -1,7 +1,9 @@
+import * as _ from "underscore";
 import IQService = angular.IQService;
 import IDeferred = angular.IDeferred;
+import {IPromise} from "angular";
 
-class ChromeStorageService {
+export class ChromeStorageService {
 
     protected $q: IQService;
 

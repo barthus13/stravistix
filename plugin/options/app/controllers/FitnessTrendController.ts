@@ -1,5 +1,10 @@
+import * as _ from "underscore";
+import {FitnessDataService, IFitnessActivity} from "../services/FitnessDataService";
+import {ChromeStorageService} from "../services/ChromeStorageService";
+
 import IControllerConstructor = angular.IControllerConstructor;
 import Injectable = angular.Injectable;
+
 class FitnessTrendController {
 
     static $inject = ['$rootScope', '$scope', 'ChromeStorageService', 'FitnessDataService'];

@@ -1,3 +1,7 @@
+import moment = require("moment");
+import {Moment} from "moment";
+import * as _ from "underscore";
+
 interface IYearProgress {
     year: number;
     progressions: Array<IProgression>;

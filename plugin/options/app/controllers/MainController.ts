@@ -1,14 +1,12 @@
+import * as _ from "underscore";
+import moment = require("moment");
+import {ChromeStorageService} from "../services/ChromeStorageService";
+
+import angular = require("angular");
 import ILocationService = angular.ILocationService;
 import IDialogService = angular.material.IDialogService;
 import ISidenavService = angular.material.ISidenavService;
 import IWindowService = angular.IWindowService;
-import IScope = angular.IScope;
-import ITimeoutService = angular.ITimeoutService;
-import ISCEService = angular.ISCEService;
-import IAnchorScrollService = angular.IAnchorScrollService;
-import IAnchorScrollProvider = angular.IAnchorScrollProvider;
-import IConfirmDialog = angular.material.IConfirmDialog;
-import IPromptDialog = angular.material.IPromptDialog;
 import IIntervalService = angular.IIntervalService;
 import IMedia = angular.material.IMedia;
 

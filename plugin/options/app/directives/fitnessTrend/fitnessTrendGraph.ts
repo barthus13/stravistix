@@ -1,3 +1,7 @@
+import moment = require("moment");
+import {IScope} from "angular";
+import {IFitnessActivity} from "../../services/FitnessDataService";
+
 interface IFitnessTrendGraphScope extends IScope {
     nvd3api: any;
     userFTP: number;
