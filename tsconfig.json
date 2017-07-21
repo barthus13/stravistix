@@ -16,7 +16,7 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "lib" : ["es2015", "es2015.iterable", "dom", "webworker"],
+    "lib" : ["dom", "es6", "webworker"],
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,

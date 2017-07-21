@@ -31,11 +31,9 @@ var plugins = require('gulp-load-plugins')();
 var util = require('gulp-util');
 var runSequence = require('run-sequence');
 var options = require('gulp-options');
-var ftp = require('vinyl-ftp');
 var git = require('gulp-git');
 var jeditor = require("gulp-json-editor");
 var typeScript = require("gulp-typescript");
-var tsProject = typeScript.createProject("tsconfig.json");
 var karmaServer = require('karma').Server;
 
 /**
@@ -108,8 +106,8 @@ var OPTIONS_FILES = [
  * Gulp Tasks
  */
 gulp.task('tsCompile', function () { // Compile Typescript and copy them to DIST_FOLDER
-
-    util.log('Start TypeScript compilation... then copy files to destination folder.');
+    util.log('Start Remote TypeScript compilation... Compiled files will be copied to "dest/" folder.');
+    var tsProject = typeScript.createProject("tsconfig.json", {rootDir: 'plugin/'});
     return tsProject.src().pipe(tsProject()).pipe(gulp.dest(DIST_FOLDER));
 
 });
@@ -273,63 +271,3 @@ gulp.task('watch', function () {
 // Clean dist/, package/, plugin/core/node_modules/
 gulp.task('clean', ['cleanPackage']);
 gulp.task('wipe', ['cleanRootNodeModules', 'cleanExtNodeModules', 'cleanPackage']);
-
-// FTP publish
-gulp.task('ftpPublish', ['package'], function () {
-
-    if (PACKAGE_NAME) {
-
-        util.log('FTP Publish of ' + PACKAGE_NAME);
-
-        var ftpConfig = {
-            host: 'yours',
-            user: 'yours',
-            pass: 'yours',
-            remotePath: '/'
-        };
-
-        if (!options.has('env') && !options.has('json')) {
-
-            throw new Error('Make sure to specify option "--json" or "--env"');
-
-        } else if (options.has('json')) {
-
-            if (fs.existsSync('./ftpConfig.json')) {
-                util.log('Using ftp config from ./ftpConfig.json file');
-                ftpConfig = JSON.parse(fs.readFileSync('./ftpConfig.json'));
-            } else {
-                throw new Error('Make sure to create ./ftpConfig.json with following config: ' + JSON.stringify(ftpConfig));
-            }
-
-        } else if (options.has('env')) {
-
-            if (process.env.FTP_HOST && process.env.FTP_USER && process.env.FTP_PASSWORD) {
-                ftpConfig.host = process.env.FTP_HOST;
-                ftpConfig.user = process.env.FTP_USER;
-                ftpConfig.pass = process.env.FTP_PASSWORD;
-                ftpConfig.remotePath = process.env.FTP_REMOTE_PATH;
-            } else {
-                throw new Error('Missing FTP_HOST, FTP_USER or FTP_PASSWORD environnment variables. FTP_REMOTE_PATH can be also specified.');
-            }
-        }
-
-        util.log('FTP Upload in progress...');
-
-        var globs = [PACKAGE_FOLDER + '/' + PACKAGE_NAME];
-
-        var conn = ftp.create({
-            host: ftpConfig.host,
-            user: ftpConfig.user,
-            password: ftpConfig.pass,
-            log: util.log
-        });
-
-        return gulp.src(globs, {
-            base: './package/',
-            buffer: false
-        }).pipe(conn.dest(ftpConfig.remotePath));
-
-    } else {
-        throw new Error('No package name found. Unable to publish');
-    }
-});

@@ -211,7 +211,6 @@ class Helper {
         return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
     };
 
-
     public static secondsToDHM(sec_num: number, trimZeros?: boolean): string {
         let days: number = Math.floor(sec_num / 86400);
         let hours: number = Math.floor((sec_num - (days * 86400)) / 3600);
