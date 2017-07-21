@@ -1,13 +1,15 @@
-interface ICommonSettingsService {
+import {app} from "../App";
+
+export interface ICommonSettingsService {
     provideSections: () => Array<ISection>;
 }
 
-interface ISection {
+export interface ISection {
     sectionTitle: string;
     sectionContent: Array<ISectionContent>;
 }
 
-interface ISectionContent {
+export interface ISectionContent {
     optionKey: string;
     optionType: string;
     optionTitle: string;

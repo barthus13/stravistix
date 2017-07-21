@@ -2,6 +2,8 @@ import * as _ from "underscore";
 import * as angular from "angular";;
 import {ChromeStorageService} from "../services/ChromeStorageService";
 import {ISwimCalculationMethod, SwimFTPCalculator} from "../directives/swimFTPCalculator";
+import {app} from "../App";
+import {IAvoidInputKeysService} from "../services/AvoidInputKeysService";
 
 interface IGenderList {
     type: string;

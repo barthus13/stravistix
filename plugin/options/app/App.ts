@@ -1,8 +1,9 @@
-import IModule = angular.IModule;
+import {IModule} from "angular";
+import * as angular from "angular";
 
-let app: IModule = angular.module("App", ['ngRoute', 'ngMaterial', 'ngSanitize', 'ngAnimate', 'nvd3', 'md.data.table', 'angularMoment']);
+export let app: IModule = angular.module("App", ['ngRoute', 'ngMaterial', 'ngSanitize', 'ngAnimate', 'nvd3', 'md.data.table', 'angularMoment']);
 
-interface IColors {
+export interface IColors {
     strava: string;
     ctl: string;
     tsb: string;

@@ -1,4 +1,6 @@
 import {ChromeStorageService} from "../services/ChromeStorageService";
+import {app} from "../App";
+import {IAvoidInputKeysService} from "../services/AvoidInputKeysService";
 
 class HrrZonesSettingsController {
 

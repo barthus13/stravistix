@@ -2,6 +2,8 @@ import * as _ from "underscore";
 import * as angular from "angular";;
 import {ILocationService, ISCEService} from "angular";
 import {ChromeStorageService} from "../services/ChromeStorageService";
+import {app} from "../App";
+import {ICommonSettingsService, ISection, ISectionContent} from "../services/CommonSettingsService";
 
 class CommonSettingsController {
 

@@ -3,6 +3,8 @@ import * as angular from "angular";
 import * as moment from "moment";
 import {ChromeStorageService} from "../services/ChromeStorageService";
 import {IIntervalService, ILocationService, IWindowService} from "angular";
+import {app} from "../App";
+import {ReleaseNotesService} from "../services/ReleaseNotesService";
 
 class MainController {
 

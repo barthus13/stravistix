@@ -2,6 +2,7 @@ import * as _ from "underscore";
 import * as angular from "angular";
 import {ChromeStorageService} from "../../services/ChromeStorageService";
 import {IAnchorScrollService, ILocationService} from "angular";
+import {app} from "../../App";
 
 class HrrZones {
 

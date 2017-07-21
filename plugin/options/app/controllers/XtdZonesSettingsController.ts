@@ -1,6 +1,7 @@
 import * as _ from "underscore";
 import {IScope} from "angular";
 import {ChromeStorageService} from "../services/ChromeStorageService";
+import {app} from "../App";
 
 interface IXtdData {
     name: string;

@@ -2,6 +2,7 @@ import * as _ from "underscore";
 import {IWindowService} from "angular";
 import {FitnessTrendController} from "../../controllers/FitnessTrendController";
 import {IFitnessActivity, IFitnessActivityTable} from "../../services/FitnessDataService";
+import {app} from "../../App";
 
 class FitnessTrendTable {
 

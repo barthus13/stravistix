@@ -1,3 +1,6 @@
+import {app} from "../../App";
+import {IAvoidInputKeysService} from "../../services/AvoidInputKeysService";
+
 class XtdZone {
 
     static $inject: string[] = ['$scope', 'AvoidInputKeysService'];

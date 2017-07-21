@@ -4,6 +4,7 @@ import * as d3 from "d3";
 import moment = require("moment");
 import {Moment} from "moment";
 import {ChromeStorageService} from "../services/ChromeStorageService";
+import {app} from "../App";
 
 interface IYearProgress {
     year: number;

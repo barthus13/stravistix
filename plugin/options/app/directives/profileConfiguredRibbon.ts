@@ -2,6 +2,7 @@ import * as _ from "underscore";
 import {IScope, ILocationService, IWindowService} from "angular";
 import {ChromeStorageService} from "../services/ChromeStorageService";
 import {AthleteSettingsController} from "../controllers/AthleteSettingsController";
+import {app} from "../App";
 
 interface IProfileConfiguredRibbonScope extends IScope {
     checkLocalSyncedAthleteProfileEqualsRemote: () => void;

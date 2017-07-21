@@ -5,6 +5,7 @@ import * as angular from "angular";
 import {ILocationService, IScope, IWindowService} from "angular";
 import {IFitnessActivity} from "../../services/FitnessDataService";
 import {FitnessTrendController} from "../../controllers/FitnessTrendController";
+import {app, IColors} from "../../App";
 
 interface IFitnessTrendGraphScope extends IScope {
     nvd3api: any;

@@ -1,4 +1,6 @@
-interface IAvoidInputKeysService {
+import {app} from "../App";
+
+export interface IAvoidInputKeysService {
     apply: (keyboardEvent: KeyboardEvent) => void;
 }
 

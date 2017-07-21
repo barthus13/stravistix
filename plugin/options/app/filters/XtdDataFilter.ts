@@ -1,3 +1,6 @@
+import * as _ from "underscore";
+import {app} from "../App";
+
 /**
  * Return the right preview value when using custom xtd zones along units type
  */

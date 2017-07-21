@@ -1,6 +1,7 @@
 import {IScope} from "angular";
 import * as moment from "moment";
 import * as _ from "underscore";
+import {app} from "../App";
 
 export interface ISwimCalculationMethod {
     active: boolean;

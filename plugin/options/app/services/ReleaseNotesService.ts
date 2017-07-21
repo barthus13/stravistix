@@ -1,4 +1,6 @@
-interface ReleaseNotesService {
+import {app} from "../App";
+
+export interface ReleaseNotesService {
     data: Array<IReleaseNote>;
 }
 

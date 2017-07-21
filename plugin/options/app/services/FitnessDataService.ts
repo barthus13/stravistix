@@ -3,6 +3,7 @@ import * as moment from "moment";
 import {IPromise, IQService} from "angular";
 import {Moment} from "moment";
 import {ChromeStorageService} from "./ChromeStorageService";
+import {app} from "../App";
 
 export interface IActivitiesWithFitness {
     id: number;

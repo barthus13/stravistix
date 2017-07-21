@@ -1,9 +1,8 @@
 import * as _ from "underscore";
+import {IControllerConstructor, Injectable} from "angular";
 import {FitnessDataService, IFitnessActivity} from "../services/FitnessDataService";
 import {ChromeStorageService} from "../services/ChromeStorageService";
-
-import IControllerConstructor = angular.IControllerConstructor;
-import Injectable = angular.Injectable;
+import {app} from "../App";
 
 export class FitnessTrendController {
 

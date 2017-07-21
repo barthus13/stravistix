@@ -2,6 +2,7 @@ import * as _ from "underscore";
 import IQService = angular.IQService;
 import IDeferred = angular.IDeferred;
 import {IPromise} from "angular";
+import {app} from "../App";
 
 export class ChromeStorageService {
 
