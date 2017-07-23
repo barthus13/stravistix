@@ -2,6 +2,7 @@ import Axis = d3.svg.Axis;
 import {Helper} from "../Helper";
 import * as d3 from "d3";
 import * as _ from "underscore";
+import {StorageManager} from "../../modules/StorageManager";
 
 export class AthleteStatsModifier implements IModifier {
 

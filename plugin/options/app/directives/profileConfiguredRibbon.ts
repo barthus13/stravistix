@@ -5,6 +5,7 @@ import {AthleteSettingsController} from "../controllers/AthleteSettingsControlle
 import {app} from "../App";
 import {IAthleteProfile} from "../../../core/scripts/synchronizer/ActivitiesSynchronizer";
 import Tab = chrome.tabs.Tab;
+import {StorageManager} from "../../../core/modules/StorageManager";
 
 interface IProfileConfiguredRibbonScope extends IScope {
     checkLocalSyncedAthleteProfileEqualsRemote: () => void;

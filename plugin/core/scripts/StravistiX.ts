@@ -18,6 +18,7 @@ import {SegmentProcessor, ISegmentInfo} from "./processors/SegmentProcessor";
 import {BikeOdoProcessor} from "./processors/BikeOdoProcessor";
 import {VirtualPartnerModifier} from "./modifiers/VirtualPartnerModifier";
 import {NearbySegmentsModifier} from "./modifiers/NearbySegmentsModifier";
+import {StorageManager} from "../modules/StorageManager";
 
 export class StravistiX {
 

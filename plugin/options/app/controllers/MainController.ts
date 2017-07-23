@@ -6,6 +6,7 @@ import {IIntervalService, ILocationService, IWindowService} from "angular";
 import {app} from "../App";
 import {ReleaseNotesService} from "../services/ReleaseNotesService";
 import Tab = chrome.tabs.Tab;
+import {IStorageUsage} from "../../../core/modules/StorageManager";
 
 class MainController {
 

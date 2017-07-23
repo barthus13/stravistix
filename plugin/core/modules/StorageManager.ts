@@ -1,10 +1,10 @@
-interface IStorageUsage {
+export interface IStorageUsage {
     bytesInUse: number;
     quotaBytes: number;
     percentUsage: number;
 }
 
-class StorageManager {
+export class StorageManager {
 
     get storageType(): string {
         return this._storageType;

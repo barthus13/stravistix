@@ -59,6 +59,30 @@ class Content {
 
         // this.loadDependencies(() => {
 
+
+        // loader.injectJS("var chromeUuid = '" + chrome.extension.getURL("/") + "'");
+        chrome.storage.sync.get(this.userSettings, (chromeSettings: any) => {
+
+            // let node: HTMLElement = (document.head || document.documentElement);
+            //
+            // let injectedScript: HTMLScriptElement = document.createElement('script');
+            // injectedScript.src = chrome.extension.getURL('core/scripts/StravistiX.js');
+            // injectedScript.onload = () => {
+            //
+            //     injectedScript.remove();
+            //
+            //     let inner: HTMLScriptElement = document.createElement('script');
+
+            if (_.isEmpty(chromeSettings)) { // If settings from chrome sync storage are empty
+                chromeSettings = this.userSettings;
+            }
+
+            let defaultSettings = _.keys(userSettings)
+            let syncedSettings = _.keys(chromeSettings)
+            if (_.difference(defaultSettings, syncedSettings).length !== 0) { // If settings shape has changed
+                _.defaults(chromeSettings, userSettings)
+            }
+
             Content.loader.injectJS("var chromeUuidURL = '" + chrome.extension.getURL("/") + "/'");
 
             Content.loader.require(['node_modules/systemjs/dist/system.js', 'core/system.core.config.js', 'core/system.core.start.js'], () => {
@@ -67,40 +91,16 @@ class Content {
                  });*/
             });
 
-
-        // loader.injectJS("var chromeUuid = '" + chrome.extension.getURL("/") + "'");
-            chrome.storage.sync.get(this.userSettings, (chromeSettings: any) => {
-
-                // let node: HTMLElement = (document.head || document.documentElement);
-                //
-                // let injectedScript: HTMLScriptElement = document.createElement('script');
-                // injectedScript.src = chrome.extension.getURL('core/scripts/StravistiX.js');
-                // injectedScript.onload = () => {
-                //
-                //     injectedScript.remove();
-                //
-                //     let inner: HTMLScriptElement = document.createElement('script');
-
-                    if (_.isEmpty(chromeSettings)) { // If settings from chrome sync storage are empty
-                        chromeSettings = this.userSettings;
-                    }
-
-                    let defaultSettings = _.keys(userSettings)
-                    let syncedSettings = _.keys(chromeSettings)
-                    if(_.difference(defaultSettings, syncedSettings).length !== 0){ // If settings shape has changed
-                       _.defaults(chromeSettings, userSettings)
-                    }
-
-                //     inner.textContent = 'var $ = jQuery;';
-                //     inner.textContent += 'var stravistiX = new StravistiX(' + JSON.stringify(chromeSettings) + ', ' + JSON.stringify(this.appResources) + ');';
-                //     inner.onload = () => {
-                //         inner.remove();
-                //     };
-                //
-                //     node.appendChild(inner);
-                // };
-                // node.appendChild(injectedScript);
-            });
+            //     inner.textContent = 'var $ = jQuery;';
+            //     inner.textContent += 'var stravistiX = new StravistiX(' + JSON.stringify(chromeSettings) + ', ' + JSON.stringify(this.appResources) + ');';
+            //     inner.onload = () => {
+            //         inner.remove();
+            //     };
+            //
+            //     node.appendChild(inner);
+            // };
+            // node.appendChild(injectedScript);
+        });
 
         // });
 
@@ -167,7 +167,7 @@ let jsDependencies: Array<string> = [
     'core/config/env.js',
 
     // Modules
-	'node_modules/q/q.js',
+    'node_modules/q/q.js',
     'node_modules/chart.js/dist/Chart.bundle.js',
     'node_modules/fancybox/dist/js/jquery.fancybox.pack.js',
     'node_modules/qrcode-js-package/qrcode.min.js',
@@ -178,7 +178,7 @@ let jsDependencies: Array<string> = [
     'core/modules/jquery.appear.js',
 
     // Plugin stuff...
-	'core/scripts/synchronizer/ActivitiesSynchronizer.js',
+    'core/scripts/synchronizer/ActivitiesSynchronizer.js',
     'core/scripts/processors/VacuumProcessor.js',
     'core/scripts/processors/ActivityProcessor.js',
     'core/scripts/processors/ActivitiesProcessor.js',

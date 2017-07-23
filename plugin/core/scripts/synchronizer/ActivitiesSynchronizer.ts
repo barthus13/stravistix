@@ -2,6 +2,7 @@ import {Helper} from "../Helper";
 import * as Q from "q";
 import * as _ from "underscore";
 import {ActivitiesProcessor} from "../processors/ActivitiesProcessor";
+import {StorageManager} from "../../modules/StorageManager";
 
 export interface IAthleteProfile {
     userGender: string;

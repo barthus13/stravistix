@@ -4,6 +4,7 @@ import IDeferred = angular.IDeferred;
 import {IPromise} from "angular";
 import {app} from "../App";
 import {IAthleteProfile} from "../../../core/scripts/synchronizer/ActivitiesSynchronizer";
+import {IStorageUsage} from "../../../core/modules/StorageManager";
 
 export class ChromeStorageService {
 

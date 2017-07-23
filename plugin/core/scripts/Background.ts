@@ -1,6 +1,7 @@
 // Listening extenal message
 import Tab = chrome.tabs.Tab;
 import {Helper} from "./Helper";
+import {IStorageUsage, StorageManager} from "../modules/StorageManager";
 
 class Background {
 

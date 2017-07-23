@@ -5,6 +5,7 @@ import {HeartRateDataView} from "./views/HeartRateDataView";
 import {FeaturedDataView} from "./views/FeaturedDataView";
 import {Helper} from "../../Helper";
 import {ActivityProcessor} from "../../processors/ActivityProcessor";
+import {StorageManager} from "../../../modules/StorageManager";
 
 export abstract class AbstractExtendedDataModifier {
 

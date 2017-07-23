@@ -1,6 +1,7 @@
 import {ActivitiesSynchronizer, ISyncResult} from "../synchronizer/ActivitiesSynchronizer";
 import {Helper} from "../Helper";
 import * as _ from "underscore";
+import {IStorageUsage, StorageManager} from "../../modules/StorageManager";
 
 export class ActivitiesSyncModifier implements IModifier {
 

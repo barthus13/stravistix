@@ -1,4 +1,5 @@
 import * as Q from "q";
+import {IStorageUsage} from "../modules/StorageManager";
 
 export class Helper {
 

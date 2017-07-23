@@ -60,6 +60,7 @@ var CORE_JAVASCRIPT_SCRIPTS = [
     'plugin/node_modules/systemjs/dist/system.js',
     'plugin/core/system.core.config.js',
     'plugin/core/system.core.start.js',
+    'plugin/core/system.core.bg.start.js',
     'plugin/core/main.js',
 
     'plugin/node_modules/geodesy/dms.js',
