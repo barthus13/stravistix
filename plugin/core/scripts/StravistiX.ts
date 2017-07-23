@@ -26,6 +26,20 @@ import {RemoteLinksModifier} from "./modifiers/RemoteLinksModifier";
 import {ActivityQRCodeDisplayModifier} from "./modifiers/ActivityQRCodeDisplayModifier";
 import {IReleaseNote, releaseNotes} from "./ReleaseNotes";
 import {env} from "../config/env";
+import {ActivityScrollingModifier} from "./modifiers/ActivityScrollingModifier";
+import {DisplayFlyByFeedModifier} from "./modifiers/DisplayFlyByFeedModifier";
+import {ReliveCCModifier} from "./modifiers/ReliveCCModifier";
+import {DefaultLeaderBoardFilterModifier} from "./modifiers/DefaultLeaderBoardFilterModifier";
+import {SegmentRankPercentageModifier} from "./modifiers/SegmentRankPercentageModifier";
+import {
+    RunningCadenceModifier,
+    RunningGradeAdjustedPaceModifier, RunningHeartRateModifier,
+    RunningTemperatureModifier
+} from "./modifiers/RunningDataModifier";
+import {ActivityStravaMapTypeModifier} from "./modifiers/ActivityStravaMapTypeModifier";
+import {HidePremiumModifier} from "./modifiers/HidePremiumModifier";
+import {ActivityBikeOdoModifier} from "./modifiers/ActivityBikeOdoModifier";
+import {GoalsModifier} from "./modifiers/GoalsModifier";
 
 export class StravistiX {
 
@@ -46,8 +60,6 @@ export class StravistiX {
 
     constructor(userSettings: IUserSettings, appResources: IAppResources) {
 
-        console.log("StravistiX ctr");
-
         this._userSettings = userSettings;
         this.appResources = appResources;
         this.extensionId = this.appResources.extensionId;
@@ -60,8 +72,6 @@ export class StravistiX {
         this.isPro = this.vacuumProcessor.getProStatus();
         this.activityId = this.vacuumProcessor.getActivityId();
         this.activitiesSynchronizer = new ActivitiesSynchronizer(this.appResources, this._userSettings);
-
-        // this.init(); // Init from Main ts from now
 
         if (StravistiX.instance == null) {
             StravistiX.instance = this;
@@ -895,7 +905,11 @@ export class StravistiX {
 
         let activitySegmentTimeComparisonModifier: ActivitySegmentTimeComparisonModifier = new ActivitySegmentTimeComparisonModifier(this._userSettings, this.appResources, activityType, isMyOwn);
 
-        activitySegmentTimeComparisonModifier.modify();
+        SystemJS.import('jqueryAppear').then(() => {
+
+            activitySegmentTimeComparisonModifier.modify();
+
+        });
     }
 
     /**

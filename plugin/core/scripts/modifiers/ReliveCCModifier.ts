@@ -1,4 +1,4 @@
-class ReliveCCModifier implements IModifier {
+export class ReliveCCModifier implements IModifier {
 
     private activityId: number;
 

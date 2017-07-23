@@ -383,7 +383,7 @@ function BestSplitWorker() {
     };
 }
 
-class ActivityBestSplitsModifier implements IModifier {
+export class ActivityBestSplitsModifier implements IModifier {
 
     public static Units = {
 

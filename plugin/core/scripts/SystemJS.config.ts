@@ -7,7 +7,8 @@ SystemJS.config({
     // baseURL: 'chrome-extension://' + chrome.runtime.id + '/',
     baseURL: 'chrome-extension://cpopppnkcjpgdeogmpdjlihjpnbnjhic/',
     paths: {
-        'npm:': 'node_modules/'
+        'npm:': 'node_modules/',
+        'custom:': 'core/modules/'
     },
     packages: {
         'core': {
@@ -17,7 +18,8 @@ SystemJS.config({
     map: {
         'chart.js': 'npm:chart.js/dist/Chart.bundle.js',
         'd3': 'npm:d3/d3.js',
-        // 'jquery': 'npm:jquery/dist/jquery.js',
+        'jquery': 'npm:jquery/dist/jquery.js',
+        'jqueryAppear': 'custom:jquery.appear.js',
         'q': 'npm:q/q.js',
         'underscore': 'npm:underscore/underscore-min.js',
     }

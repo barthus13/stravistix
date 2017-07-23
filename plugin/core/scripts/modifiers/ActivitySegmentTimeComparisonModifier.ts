@@ -64,155 +64,157 @@ export class ActivitySegmentTimeComparisonModifier implements IModifier {
             return;
         }
 
-        // wait for Segments section load
-        let segments: JQuery = $("#segments");
-        if (segments.length === 0) {
-            setTimeout(() => {
-                this.modify();
-            }, 500);
-            return;
-        }
-
-        segments.find("#segment-filter").show();
-        segments.addClass("time-comparison-enabled");
-
-        // Find sex of current activity athlete
-        this.findOutGender();
-
-        // Asign new labels values
-        this.setNewLabelsValues();
-
-        // Used to update header with new columns names when first item has appear
-        this.firstAppearDone = false;
-
-        $("tr[data-segment-effort-id]").appear().on("appear", (event: Event, $items: any) => {
-
-            if (!this.firstAppearDone) {
-
-
-                let timeColumnHeader = segments.find("table.segments th.time-col");
-
-                if (timeColumnHeader.length == 0) {
-                    // activities other than cycling (like nordic ski) miss time-col class, search by text
-                    timeColumnHeader = segments.find("table.segments th:contains('Time')");
-                }
-
-                if (this.showDifferenceToPR && this.showDifferenceToCurrentYearPR) {
-                    timeColumnHeader.after("<th style='font-size:11px;' title='Column shows the difference between the activity segment time and your current year PR on that segment.'>" + this.deltaYearPRLabel + "</th>");
-                }
-
-                if (this.showDifferenceToPR) {
-                    timeColumnHeader.after("<th style='font-size:11px;' title='Column shows the difference between the activity segment time and your previous PR on that segment.'>" + this.deltaPRLabel + "</th>");
-                }
-
-                if (this.showDifferenceToKOM) {
-                    timeColumnHeader.after("<th style='font-size:11px;' title='Column shows the difference between the current " + this.crTitle() + " time and the activity segment time.'>" + this.deltaKomLabel + "</th>");
-                }
-
-                if (this.displaySegmentTimeComparisonPosition) {
-                    timeColumnHeader.after("<th title='Column shows your current position on that segment.'>Rank</th>");
-                }
-
-                this.firstAppearDone = true;
+        SystemJS.import('jqueryAppear').then(() => {
+            // wait for Segments section load
+            let segments: JQuery = $("#segments");
+            if (segments.length === 0) {
+                setTimeout(() => {
+                    this.modify();
+                }, 500);
+                return;
             }
 
-            $items.each(() => {
+            segments.find("#segment-filter").show();
+            segments.addClass("time-comparison-enabled");
 
-                let $row: JQuery = $(event.currentTarget),
-                    $timeCell: JQuery = $row.find("td.time-col"),
-                    segmentEffortId: number = $row.data("segment-effort-id"),
-                    segmentEffortInfoUrl: string = "/segment_efforts/" + segmentEffortId,
-                    positionCell: JQuery,
-                    deltaKomCell: JQuery,
-                    deltaPRCell: JQuery,
-                    deltaYearPRCell: JQuery;
+            // Find sex of current activity athlete
+            this.findOutGender();
 
-                if ($row.hasClass("selected") || $row.data("segment-time-comparison")) {
-                    return;
-                }
+            // Asign new labels values
+            this.setNewLabelsValues();
 
-                $row.data("segment-time-comparison", true);
+            // Used to update header with new columns names when first item has appear
+            this.firstAppearDone = false;
 
-                if (this.showDifferenceToPR && this.showDifferenceToCurrentYearPR) {
-                    deltaYearPRCell = $("<td><span class='ajax-loading-image'></span></td>");
-                    $timeCell.after(deltaYearPRCell);
-                }
+            $("tr[data-segment-effort-id]").appear().on("appear", (event: Event, $items: any) => {
 
-                if (this.showDifferenceToPR) {
-                    deltaPRCell = $("<td><span class='ajax-loading-image'></span></td>");
-                    $timeCell.after(deltaPRCell);
-                }
+                if (!this.firstAppearDone) {
 
-                if (this.showDifferenceToKOM) {
-                    deltaKomCell = $("<td><span class='ajax-loading-image'></span></td>");
-                    $timeCell.after(deltaKomCell);
-                }
 
-                if (this.displaySegmentTimeComparisonPosition) {
-                    positionCell = $("<td><span class='ajax-loading-image'></span></td>");
-                    $timeCell.after(positionCell);
-                }
+                    let timeColumnHeader = segments.find("table.segments th.time-col");
 
-                // Retreive segment effort infos
-                $.getJSON(segmentEffortInfoUrl, (segmentEffortInfo: EffortInfo) => {
-
-                    if (!segmentEffortInfo) {
-                        return;
+                    if (timeColumnHeader.length == 0) {
+                        // activities other than cycling (like nordic ski) miss time-col class, search by text
+                        timeColumnHeader = segments.find("table.segments th:contains('Time')");
                     }
 
-                    // If flagged segment then '-'
-                    if (segmentEffortInfo.hazard_segment) {
-                        positionCell.html("-");
-                        deltaKomCell.html("-");
-                        deltaPRCell.html("-");
-                        deltaYearPRCell.html("-");
-                        return;
+                    if (this.showDifferenceToPR && this.showDifferenceToCurrentYearPR) {
+                        timeColumnHeader.after("<th style='font-size:11px;' title='Column shows the difference between the activity segment time and your current year PR on that segment.'>" + this.deltaYearPRLabel + "</th>");
+                    }
+
+                    if (this.showDifferenceToPR) {
+                        timeColumnHeader.after("<th style='font-size:11px;' title='Column shows the difference between the activity segment time and your previous PR on that segment.'>" + this.deltaPRLabel + "</th>");
+                    }
+
+                    if (this.showDifferenceToKOM) {
+                        timeColumnHeader.after("<th style='font-size:11px;' title='Column shows the difference between the current " + this.crTitle() + " time and the activity segment time.'>" + this.deltaKomLabel + "</th>");
                     }
 
                     if (this.displaySegmentTimeComparisonPosition) {
-                        let percentRank: number = parseInt(segmentEffortInfo.overall_rank) / parseInt(segmentEffortInfo.overall_count);
-                        positionCell.html("<div title=\"Your position\" style=\"text-align: center; font-size:11px; padding: 1px 1px; background-color: #565656; color:" + this.getColorForPercentage(percentRank) + "\">" + segmentEffortInfo.overall_rank + "&nbsp;/&nbsp;" + segmentEffortInfo.overall_count + "<br/>" + (percentRank * 100).toFixed(1) + "%</div>");
+                        timeColumnHeader.after("<th title='Column shows your current position on that segment.'>Rank</th>");
                     }
 
-                    let komSeconds: string = Helper.HHMMSStoSeconds((this.isFemale ? segmentEffortInfo.qom_time : segmentEffortInfo.kom_time).replace(/[^0-9:]/gi, "")).toString(),
-                        elapsedTime = segmentEffortInfo.elapsed_time_raw,
-                        komDiffTime = (elapsedTime - parseInt(komSeconds));
+                    this.firstAppearDone = true;
+                }
 
-                    if (this.showDifferenceToKOM) {
-                        let sign: string = (Math.sign(komDiffTime) == 1) ? "+" : "-";
-                        deltaKomCell.html("<span title=\"Time difference with current "
-                            + this.crTitle()
-                            + " (" + Helper.secondsToHHMMSS(Math.abs(parseInt(komSeconds)), true)
-                            + ")\" style='font-size:11px; color:" + (komDiffTime > 0 ? "#FF5555" : "#2EB92E") + ";'>"
-                            + sign + Helper.secondsToHHMMSS(Math.abs(komDiffTime), true) + "</span>");
-                    }
+                $items.each(() => {
 
-                    if (!this.showDifferenceToPR && !this.showDifferenceToCurrentYearPR) {
+                    let $row: JQuery = $(event.currentTarget),
+                        $timeCell: JQuery = $row.find("td.time-col"),
+                        segmentEffortId: number = $row.data("segment-effort-id"),
+                        segmentEffortInfoUrl: string = "/segment_efforts/" + segmentEffortId,
+                        positionCell: JQuery,
+                        deltaKomCell: JQuery,
+                        deltaPRCell: JQuery,
+                        deltaYearPRCell: JQuery;
+
+                    if ($row.hasClass("selected") || $row.data("segment-time-comparison")) {
                         return;
                     }
 
-                    // Get leader board from segment id
-                    this.findCurrentSegmentEffortDate(segmentEffortInfo.segment_id, segmentEffortId).then((currentSegmentEffortDateTime: Date, leaderBoardData: EffortInfo[]) => {
-                        this.handleTimeDifferenceAlongUserLeaderBoard(leaderBoardData, currentSegmentEffortDateTime, elapsedTime, segmentEffortId, deltaPRCell, deltaYearPRCell);
-                    });
+                    $row.data("segment-time-comparison", true);
 
+                    if (this.showDifferenceToPR && this.showDifferenceToCurrentYearPR) {
+                        deltaYearPRCell = $("<td><span class='ajax-loading-image'></span></td>");
+                        $timeCell.after(deltaYearPRCell);
+                    }
+
+                    if (this.showDifferenceToPR) {
+                        deltaPRCell = $("<td><span class='ajax-loading-image'></span></td>");
+                        $timeCell.after(deltaPRCell);
+                    }
+
+                    if (this.showDifferenceToKOM) {
+                        deltaKomCell = $("<td><span class='ajax-loading-image'></span></td>");
+                        $timeCell.after(deltaKomCell);
+                    }
+
+                    if (this.displaySegmentTimeComparisonPosition) {
+                        positionCell = $("<td><span class='ajax-loading-image'></span></td>");
+                        $timeCell.after(positionCell);
+                    }
+
+                    // Retreive segment effort infos
+                    $.getJSON(segmentEffortInfoUrl, (segmentEffortInfo: EffortInfo) => {
+
+                        if (!segmentEffortInfo) {
+                            return;
+                        }
+
+                        // If flagged segment then '-'
+                        if (segmentEffortInfo.hazard_segment) {
+                            positionCell.html("-");
+                            deltaKomCell.html("-");
+                            deltaPRCell.html("-");
+                            deltaYearPRCell.html("-");
+                            return;
+                        }
+
+                        if (this.displaySegmentTimeComparisonPosition) {
+                            let percentRank: number = parseInt(segmentEffortInfo.overall_rank) / parseInt(segmentEffortInfo.overall_count);
+                            positionCell.html("<div title=\"Your position\" style=\"text-align: center; font-size:11px; padding: 1px 1px; background-color: #565656; color:" + this.getColorForPercentage(percentRank) + "\">" + segmentEffortInfo.overall_rank + "&nbsp;/&nbsp;" + segmentEffortInfo.overall_count + "<br/>" + (percentRank * 100).toFixed(1) + "%</div>");
+                        }
+
+                        let komSeconds: string = Helper.HHMMSStoSeconds((this.isFemale ? segmentEffortInfo.qom_time : segmentEffortInfo.kom_time).replace(/[^0-9:]/gi, "")).toString(),
+                            elapsedTime = segmentEffortInfo.elapsed_time_raw,
+                            komDiffTime = (elapsedTime - parseInt(komSeconds));
+
+                        if (this.showDifferenceToKOM) {
+                            let sign: string = (Math.sign(komDiffTime) == 1) ? "+" : "-";
+                            deltaKomCell.html("<span title=\"Time difference with current "
+                                + this.crTitle()
+                                + " (" + Helper.secondsToHHMMSS(Math.abs(parseInt(komSeconds)), true)
+                                + ")\" style='font-size:11px; color:" + (komDiffTime > 0 ? "#FF5555" : "#2EB92E") + ";'>"
+                                + sign + Helper.secondsToHHMMSS(Math.abs(komDiffTime), true) + "</span>");
+                        }
+
+                        if (!this.showDifferenceToPR && !this.showDifferenceToCurrentYearPR) {
+                            return;
+                        }
+
+                        // Get leader board from segment id
+                        this.findCurrentSegmentEffortDate(segmentEffortInfo.segment_id, segmentEffortId).then((currentSegmentEffortDateTime: Date, leaderBoardData: EffortInfo[]) => {
+                            this.handleTimeDifferenceAlongUserLeaderBoard(leaderBoardData, currentSegmentEffortDateTime, elapsedTime, segmentEffortId, deltaPRCell, deltaYearPRCell);
+                        });
+
+                    });
                 });
             });
+
+            $.force_appear();
+
+            // when a user clicks 'Analysis' #segments element is removed so we have to wait for it and re-run modifier function
+            let waitForSegmentsSectionRemoved = () => {
+                if ($("#segments.time-comparison-enabled").length !== 0) {
+                    setTimeout(() => {
+                        waitForSegmentsSectionRemoved();
+                    }, 1000);
+                    return;
+                }
+                this.modify();
+            };
+            waitForSegmentsSectionRemoved();
         });
-
-        $.force_appear();
-
-        // when a user clicks 'Analysis' #segments element is removed so we have to wait for it and re-run modifier function
-        let waitForSegmentsSectionRemoved = () => {
-            if ($("#segments.time-comparison-enabled").length !== 0) {
-                setTimeout(() => {
-                    waitForSegmentsSectionRemoved();
-                }, 1000);
-                return;
-            }
-            this.modify();
-        };
-        waitForSegmentsSectionRemoved();
     }
 
     protected findOutGender(): void {
