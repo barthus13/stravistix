@@ -8,8 +8,8 @@
   "background": {
     "scripts": [
       "node_modules/systemjs/dist/system.js",
-      "core/system.core.config.js",
-      "core/system.core.bg.start.js"
+      "core/scripts/SystemJS.config.js",
+      "core/scripts/SystemJS.background.start.js"
     ]
   },
   "content_scripts": [

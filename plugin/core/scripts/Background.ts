@@ -155,3 +155,5 @@ class Background {
 
 let background = new Background();
 background.init();
+
+console.warn("delete line " + Helper.versionCompare("1.0.0", "5.0.0"));

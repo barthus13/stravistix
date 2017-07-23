@@ -1,5 +1,5 @@
-import {Helper} from "./scripts/Helper";
-import {VacuumProcessor} from "./scripts/processors/VacuumProcessor";
+import {Helper} from "./Helper";
+import {VacuumProcessor} from "./processors/VacuumProcessor";
 
 console.log("Main execute");
 let r = Helper.secondsToHHMMSS(60);
