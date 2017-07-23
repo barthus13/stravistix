@@ -14,7 +14,8 @@ SystemJS.config({
         }
     },
     map: {
-        'q': 'npm:q/q.js'
+        'q': 'npm:q/q.js',
+        'underscore': 'npm:underscore/underscore-min.js',
     }
 
     // transpiler: 'typescript',
