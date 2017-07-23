@@ -1,11 +1,14 @@
+
 console.log("Imported core *global* system config !");
 
 // var baseURL = "chrome-extension://" + chrome.runtime.id + "/";
 // console.log("Config with baseURL: " + chromeUuidURL);
 
 SystemJS.config({
+    // // baseURL: 'chrome-extension://' + chrome.runtime.id + '/',
+    // baseURL: 'chrome-extension://' + Constants.EXTENSION_ID + '/', // TODO Create Constants.EXTENSION_BASE_URL
     // baseURL: 'chrome-extension://' + chrome.runtime.id + '/',
-    baseURL: 'chrome-extension://cpopppnkcjpgdeogmpdjlihjpnbnjhic/',
+    baseURL: 'chrome-extension://cpopppnkcjpgdeogmpdjlihjpnbnjhic/', // GET Dyn !!
     paths: {
         'npm:': 'node_modules/',
         'custom:': 'core/modules/'
@@ -13,16 +16,31 @@ SystemJS.config({
     packages: {
         'core': {
             format: 'cjs'
+        },
+        'npm:geodesy': {
+            format: 'cjs'
         }
     },
     map: {
+        // Npm
         'chart.js': 'npm:chart.js/dist/Chart.bundle.js',
         'd3': 'npm:d3/d3.js',
-        'jquery': 'npm:jquery/dist/jquery.js',
-        'jqueryAppear': 'custom:jquery.appear.js',
         'q': 'npm:q/q.js',
+        'jquery': 'npm:jquery/dist/jquery.js',
+        'dms': 'npm:geodesy/dms.js',
+        'sphericalLatLon': 'npm:geodesy/latlon-spherical.js',
         'underscore': 'npm:underscore/underscore-min.js',
-    }
+
+        // Customs
+        'jqueryAppear': 'custom:jquery.appear.js',
+    },
+    // bundles: {
+    //     stxBundle: ['jqueryAppear', 'geodesy']
+    // },
+    // depCache: {
+    //     // bundleA: ['jqueryAppear', 'geodesy'],
+    //     geodesy: ['node_modules/geodesy/dms.js', 'node_modules/geodesy/latlon-spherical.js']
+    // },
 
     // transpiler: 'typescript',
     // defaultJSExtensions: true,

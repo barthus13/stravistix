@@ -8,7 +8,7 @@
   "background": {
     "scripts": [
       "node_modules/systemjs/dist/system.js",
-      "core/scripts/SystemJS.config.js",
+      "core/scripts/SystemJS.background.config.js",
       "core/scripts/SystemJS.background.start.js"
     ]
   },
@@ -16,7 +16,7 @@
     {
       "js": [
         "node_modules/systemjs/dist/system.js",
-        "core/scripts/SystemJS.config.js",
+        "core/scripts/SystemJS.content.config.js",
         "core/scripts/SystemJS.content.start.js"
       ],
       "run_at": "document_end",

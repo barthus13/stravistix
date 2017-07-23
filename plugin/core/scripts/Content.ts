@@ -81,8 +81,8 @@ class Content {
 
             // Assign these constant value at "content script" runtime // TODO Refactor => method
             Constants.VERSION = chrome.runtime.getManifest().version;
-            Constants.OPTIONS_URL = chrome.runtime.id;
-            Constants.EXTENSION_ID = 'chrome-extension://' + chrome.runtime.id + '/options/app/index.html';
+            Constants.EXTENSION_ID = chrome.runtime.id;
+            Constants.OPTIONS_URL = 'chrome-extension://' + chrome.runtime.id + '/options/app/index.html';
 
             // Inject constant
             Content.loader.injectJS('var Constants = ' + JSON.stringify(Constants) + ';');

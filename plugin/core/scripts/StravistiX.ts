@@ -904,12 +904,8 @@ export class StravistiX {
         if (env.debugMode) console.log("Execute handleActivitySegmentTimeComparison()");
 
         let activitySegmentTimeComparisonModifier: ActivitySegmentTimeComparisonModifier = new ActivitySegmentTimeComparisonModifier(this._userSettings, this.appResources, activityType, isMyOwn);
+        activitySegmentTimeComparisonModifier.modify();
 
-        SystemJS.import('jqueryAppear').then(() => {
-
-            activitySegmentTimeComparisonModifier.modify();
-
-        });
     }
 
     /**
@@ -919,40 +915,40 @@ export class StravistiX {
 
         console.error("REACTIVE handleActivityBestSplits !!!");
 
-       /* if (!this._userSettings.displayActivityBestSplits) {
-            return;
-        }
+        /* if (!this._userSettings.displayActivityBestSplits) {
+             return;
+         }
 
-        // Test where are on an activity...
-        if (!window.location.pathname.match(/^\/activities/)) {
-            return;
-        }
+         // Test where are on an activity...
+         if (!window.location.pathname.match(/^\/activities/)) {
+             return;
+         }
 
-        if (_.isUndefined(window.pageView)) {
-            return;
-        }
+         if (_.isUndefined(window.pageView)) {
+             return;
+         }
 
-        // Only cycling is supported
-        if (window.pageView.activity().attributes.type != "Ride") {
-            return;
-        }
+         // Only cycling is supported
+         if (window.pageView.activity().attributes.type != "Ride") {
+             return;
+         }
 
-        if (env.debugMode) console.log("Execute handleActivityBestSplits()");
+         if (env.debugMode) console.log("Execute handleActivityBestSplits()");
 
-        // TODO Implement cache here: get stream from cache if exist
-        this.vacuumProcessor.getActivityStream((activityCommonStats: any, jsonResponse: any, athleteWeight: number, hasPowerMeter: boolean) => {
+         // TODO Implement cache here: get stream from cache if exist
+         this.vacuumProcessor.getActivityStream((activityCommonStats: any, jsonResponse: any, athleteWeight: number, hasPowerMeter: boolean) => {
 
-            Helper.getFromStorage(this.extensionId, StorageManager.storageSyncType, 'bestSplitsConfiguration', (response: any) => {
+             Helper.getFromStorage(this.extensionId, StorageManager.storageSyncType, 'bestSplitsConfiguration', (response: any) => {
 
-                let activityBestSplitsModifier: ActivityBestSplitsModifier = new ActivityBestSplitsModifier(this.activityId, this._userSettings, jsonResponse, hasPowerMeter, response.data, (splitsConfiguration: any) => {
-                    Helper.setToStorage(this.extensionId, StorageManager.storageSyncType, 'bestSplitsConfiguration', splitsConfiguration);
-                });
+                 let activityBestSplitsModifier: ActivityBestSplitsModifier = new ActivityBestSplitsModifier(this.activityId, this._userSettings, jsonResponse, hasPowerMeter, response.data, (splitsConfiguration: any) => {
+                     Helper.setToStorage(this.extensionId, StorageManager.storageSyncType, 'bestSplitsConfiguration', splitsConfiguration);
+                 });
 
-                activityBestSplitsModifier.modify();
+                 activityBestSplitsModifier.modify();
 
-            });
+             });
 
-        });*/
+         });*/
     }
 
     /**

@@ -9,6 +9,7 @@ import {StorageManager} from "../modules/StorageManager";
 import * as _ from "underscore";
 import {IUserSettings, userSettings} from "./UserSettings";
 import {Constants} from "./Constants";
+import * as Q from "q";
 // import {Constants} from "./Constants";
 
 // import {VacuumProcessor} from "./processors/VacuumProcessor";
@@ -70,7 +71,18 @@ console.log(chromeSettings);
 console.log(appResources);
 console.log(Constants);
 
-let stravistiX: StravistiX = new StravistiX(chromeSettings, appResources);
-stravistiX.init();
+Q.all([
+    SystemJS.import('sphericalLatLon'),
+    SystemJS.import('dms'),
+    SystemJS.import('jqueryAppear')
+// ]).then((modules) => {
+]).then(() => {
+    // var jquery = modules[0];
+    // var underscore = modules[1];
+    let stravistiX: StravistiX = new StravistiX(chromeSettings, appResources);
+    stravistiX.init();
+});
+
+
 
 // });
