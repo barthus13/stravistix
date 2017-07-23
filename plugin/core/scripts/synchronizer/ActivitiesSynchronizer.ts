@@ -4,7 +4,7 @@ import * as _ from "underscore";
 import {ActivitiesProcessor} from "../processors/ActivitiesProcessor";
 import {StorageManager} from "../../modules/StorageManager";
 import {IUserSettings} from "../UserSettings";
-import {IAppResources} from "../AppResources";
+import {IAppResources} from "../interfaces/AppResources";
 
 export interface IAthleteProfile {
     userGender: string;

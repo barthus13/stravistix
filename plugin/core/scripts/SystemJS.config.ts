@@ -1,10 +1,11 @@
-console.log("Imported core system config !");
+console.log("Imported core *global* system config !");
 
 // var baseURL = "chrome-extension://" + chrome.runtime.id + "/";
 // console.log("Config with baseURL: " + chromeUuidURL);
 
 SystemJS.config({
-    baseURL: 'chrome-extension://' + chrome.runtime.id + '/',
+    // baseURL: 'chrome-extension://' + chrome.runtime.id + '/',
+    baseURL: 'chrome-extension://cpopppnkcjpgdeogmpdjlihjpnbnjhic/',
     paths: {
         'npm:': 'node_modules/'
     },

@@ -16,7 +16,8 @@
     {
       "js": [
         "node_modules/systemjs/dist/system.js",
-        "core/scripts/Content.js"
+        "core/scripts/SystemJS.config.js",
+        "core/scripts/SystemJS.content.start.js"
       ],
       "run_at": "document_end",
       "matches": [
@@ -41,11 +42,9 @@
   "web_accessible_resources": [
     "node_modules/*",
     "core/modules/*",
-
     "core/system.core.config.js",
     "core/system.core.start.js",
     "core/main.js",
-
     "core/config/*",
     "core/scripts/processors/*",
     "core/scripts/modifiers/*",

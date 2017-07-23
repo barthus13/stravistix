@@ -1,6 +1,6 @@
 import {ISegmentInfo} from "../processors/SegmentProcessor";
 import * as _ from "underscore";
-import {IAppResources} from "../AppResources";
+import {IAppResources} from "../interfaces/AppResources";
 
 export class NearbySegmentsModifier implements IModifier {
 

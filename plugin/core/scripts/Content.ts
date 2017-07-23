@@ -1,18 +1,22 @@
-// import {userSettings, IUserSettings} from "./UserSettings";
+import * as _ from "underscore";
+import {IUserSettings, userSettings} from "./UserSettings";
+import {Loader} from "../modules/Loader";
+import {Constants} from "./Constants";
+import {IAppResources} from "./interfaces/AppResources";
 
 class Content {
 
-    // public static loader: Loader = new Loader();
+    public static loader: Loader = new Loader();
 
     // protected appResources: IAppResources;
-    // protected userSettings: IUserSettings;
+    protected userSettings: IUserSettings;
     protected cssDependencies: string[];
     protected jsDependencies: string[];
 
-    constructor(jsDependencies: Array<string>, cssDependencies: Array<string>/*, userSettings: IUserSettings, appResources: IAppResources*/) {
+    constructor(jsDependencies: Array<string>, cssDependencies: Array<string>, userSettings: IUserSettings/*, appResources: IAppResources*/) {
         this.jsDependencies = jsDependencies;
         this.cssDependencies = cssDependencies;
-        // this.userSettings = userSettings;
+        this.userSettings = userSettings;
         // this.appResources = appResources;
     }
 
@@ -63,22 +67,8 @@ class Content {
 
 
         // loader.injectJS("var chromeUuid = '" + chrome.extension.getURL("/") + "'");
-        // chrome.storage.sync.get(this.userSettings, (chromeSettings: any) => {
+        chrome.storage.sync.get(this.userSettings, (chromeSettings: IUserSettings) => {
 
-            // let node: HTMLElement = (document.head || document.documentElement);
-            //
-            // let injectedScript: HTMLScriptElement = document.createElement('script');
-            // injectedScript.src = chrome.extension.getURL('core/scripts/StravistiX.js');
-            // injectedScript.onload = () => {
-            //
-            //     injectedScript.remove();
-            //
-            //     let inner: HTMLScriptElement = document.createElement('script');
-
-
-
-
-/*
             if (_.isEmpty(chromeSettings)) { // If settings from chrome sync storage are empty
                 chromeSettings = this.userSettings;
             }
@@ -87,49 +77,77 @@ class Content {
             if (_.difference(defaultSettings, syncedSettings).length !== 0) { // If settings shape has changed
                 _.defaults(chromeSettings, userSettings)
             }
-*/
 
 
+            // Assign these constant value at "content script" runtime // TODO Refactor => method
+            Constants.VERSION = chrome.runtime.getManifest().version;
+            Constants.OPTIONS_URL = chrome.runtime.id;
+            Constants.EXTENSION_ID = 'chrome-extension://' + chrome.runtime.id + '/options/app/index.html';
 
-            SystemJS.config({
-                baseURL: chrome.extension.getURL("/")
-                // transpiler: 'typescript',
-                // packages: {
-                //     src: {
-                //         // defaultExtension: 'js'
-                //     }
-                // }
+            // Inject constant
+            Content.loader.injectJS('var Constants = ' + JSON.stringify(Constants) + ';');
+
+            // TODO Pass data from Content.ts => Main.ts via "bridge_variable"
+            Content.loader.injectJS('var chromeSettings = ' + JSON.stringify(chromeSettings) + ';');
+            Content.loader.injectJS('var appResources = ' + JSON.stringify(appResources) + ';');
+
+            // Other
+            Content.loader.injectJS('var $ = jQuery;');
+
+            // Inject systemjs module loader and start core app inner strava.com
+            Content.loader.require(['node_modules/systemjs/dist/system.js', 'core/scripts/SystemJS.config.js', 'core/scripts/SystemJS.start.js'], () => {
+                console.log("--- SystemJS Loaded ---");
             });
 
-            SystemJS.import('core/scripts/SystemJS.config.js').then(() => {
-                SystemJS.import('core/scripts/SystemJS.start.js');
+        // let node: HTMLElement = (document.head || document.documentElement);
+        //
+        // let injectedScript: HTMLScriptElement = document.createElement('script');
+        // injectedScript.src = chrome.extension.getURL('core/scripts/StravistiX.js');
+        // injectedScript.onload = () => {
+        //
+        //     injectedScript.remove();
+        //
+        //     let inner: HTMLScriptElement = document.createElement('script');
 
-            }, console.error.bind(console));
 
-            // Content.loader.injectJS("var chromeUuidURL = '" + chrome.extension.getURL("/") + "/'");
-            //
-            // Content.loader.require(['node_modules/systemjs/dist/system.js', 'core/scripts/SystemJS.config.js', 'core/scripts/SystemJS.start.js'], () => {
-            //     /* loader.require(['core/main.js'], () => {
-            //          console.log("Done!");
-            //      });*/
-            // });
 
-            //     inner.textContent = 'var $ = jQuery;';
-            //     inner.textContent += 'var stravistiX = new StravistiX(' + JSON.stringify(chromeSettings) + ', ' + JSON.stringify(this.appResources) + ');';
-            //     inner.onload = () => {
-            //         inner.remove();
-            //     };
-            //
-            //     node.appendChild(inner);
-            // };
-            // node.appendChild(injectedScript);
+
+        /* SystemJS.config({
+             baseURL: chrome.extension.getURL("/")
+             // transpiler: 'typescript',
+             // packages: {
+             //     src: {
+             //         // defaultExtension: 'js'
+             //     }
+             // }
+         });
+
+         SystemJS.import('core/scripts/SystemJS.config.js').then(() => {
+             SystemJS.import('core/scripts/SystemJS.start.js');
+
+         }, console.error.bind(console));
+         */
+
+
+
+
+        //     inner.textContent = 'var $ = jQuery;';
+        //     inner.textContent += 'var stravistiX = new StravistiX(' + JSON.stringify(chromeSettings) + ', ' + JSON.stringify(this.appResources) + ');';
+        //     inner.onload = () => {
+        //         inner.remove();
+        //     };
+        //
+        //     node.appendChild(inner);
+        // };
+        // node.appendChild(injectedScript);
         // });
 
-        // });
+        });
 
     }
 }
-/*
+
+
 let appResources: IAppResources = {
     settingsLink: chrome.extension.getURL('/options/app/index.html'),
     logoStravistix: chrome.extension.getURL('/core/icons/logo_stravistix_no_circle.svg'),
@@ -183,7 +201,7 @@ let appResources: IAppResources = {
     extVersionName: chrome.runtime.getManifest().version_name,
     extensionId: chrome.runtime.id,
 };
-*/
+
 let jsDependencies: Array<string> = [
 
     // Config
@@ -272,7 +290,7 @@ let cssDependencies: Array<string> = [
     'core/css/core.css'
 ];
 
-let content: Content = new Content(jsDependencies, cssDependencies,/* userSettings, appResources*/);
+let content: Content = new Content(jsDependencies, cssDependencies,  userSettings/*, appResources*/);
 content.start();
 
 // Inject constants

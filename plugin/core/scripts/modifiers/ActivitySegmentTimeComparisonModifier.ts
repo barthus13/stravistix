@@ -1,7 +1,7 @@
 import {Helper} from "../Helper";
 import * as _ from "underscore";
 import {IUserSettings} from "../UserSettings";
-import {IAppResources} from "../AppResources";
+import {IAppResources} from "../interfaces/AppResources";
 
 export interface EffortInfo {
     // values obtained from the HTTP request

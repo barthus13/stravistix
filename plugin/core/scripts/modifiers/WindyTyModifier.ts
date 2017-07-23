@@ -1,6 +1,6 @@
 import {IUserSettings} from "../UserSettings";
 import * as _ from "underscore";
-import {IAppResources} from "../AppResources";
+import {IAppResources} from "../interfaces/AppResources";
 
 export class WindyTyModifier implements IModifier {
 

@@ -1,7 +1,7 @@
 /**
  * Handles main burger menu
  */
-import {IAppResources} from "../AppResources";
+import {IAppResources} from "../interfaces/AppResources";
 
 
 export class MenuModifier implements IModifier {

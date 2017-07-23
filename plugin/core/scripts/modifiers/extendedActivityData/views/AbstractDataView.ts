@@ -2,7 +2,7 @@ import * as _ from "underscore";
 import {LinearTickOptions} from "chart.js";
 import * as Chart from "chart.js";
 import {Helper} from "../../../Helper";
-import {IAppResources} from "../../../AppResources";
+import {IAppResources} from "../../../interfaces/AppResources";
 
 export abstract class AbstractDataView {
 

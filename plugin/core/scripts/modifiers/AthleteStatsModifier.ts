@@ -3,7 +3,7 @@ import {Helper} from "../Helper";
 import * as d3 from "d3";
 import * as _ from "underscore";
 import {StorageManager} from "../../modules/StorageManager";
-import {IAppResources} from "../AppResources";
+import {IAppResources} from "../interfaces/AppResources";
 
 export class AthleteStatsModifier implements IModifier {
 

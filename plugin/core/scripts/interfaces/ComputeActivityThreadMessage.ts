@@ -1,5 +1,5 @@
 import {IUserSettings} from "../UserSettings";
-import {IAppResources} from "../AppResources";
+import {IAppResources} from "./AppResources";
 
 export interface IComputeActivityThreadMessage {
     activityType: string;

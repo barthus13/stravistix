@@ -20,7 +20,7 @@ import {IUserSettings} from "./UserSettings";
 import {HideFeedModifier} from "./modifiers/HideFeedModifier";
 import {GoogleMapsModifier} from "./modifiers/GoogleMapsModifier";
 import {WindyTyModifier} from "./modifiers/WindyTyModifier";
-import {IAppResources} from "./AppResources";
+import {IAppResources} from "./interfaces/AppResources";
 import {MenuModifier} from "./modifiers/MenuModifier";
 import {RemoteLinksModifier} from "./modifiers/RemoteLinksModifier";
 import {ActivityQRCodeDisplayModifier} from "./modifiers/ActivityQRCodeDisplayModifier";

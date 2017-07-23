@@ -47,8 +47,3 @@ interface Env {
     endPoint: string; // Stravistix endPoint for new features
 }
 
-interface Constants {
-    VERSION: string;
-    EXTENSION_ID: string;
-    OPTIONS_URL: string;
-}

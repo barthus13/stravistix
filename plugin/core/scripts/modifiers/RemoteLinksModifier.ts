@@ -1,7 +1,7 @@
 /**
  *   RemoteLinksModifier is responsible of ...
  */
-import {IAppResources} from "../AppResources";
+import {IAppResources} from "../interfaces/AppResources";
 import * as _ from "underscore";
 
 export class RemoteLinksModifier implements IModifier {

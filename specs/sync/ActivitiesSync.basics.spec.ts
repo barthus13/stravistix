@@ -4,7 +4,7 @@ import {ActivitiesSynchronizer, IHistoryChanges} from "../../plugin/core/scripts
 import * as _ from "underscore";
 import {IUserSettings} from "../../plugin/core/scripts/UserSettings";
 import * as Q from "q";
-import {IAppResources} from "../../plugin/core/scripts/AppResources";
+import {IAppResources} from "../../plugin/core/scripts/interfaces/AppResources";
 
 describe('ActivitiesSynchronizer', () => {
 

@@ -1,4 +1,4 @@
-import {IAppResources} from "../AppResources";
+import {IAppResources} from "../interfaces/AppResources";
 
 export class ActivityQRCodeDisplayModifier implements IModifier {
 

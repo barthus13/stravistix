@@ -7,7 +7,7 @@ import {ElevationDataView} from "./views/ElevationDataView";
 import {Helper} from "../../Helper";
 import {ActivityProcessor} from "../../processors/ActivityProcessor";
 import {IUserSettings} from "../../UserSettings";
-import {IAppResources} from "../../AppResources";
+import {IAppResources} from "../../interfaces/AppResources";
 
 export class RunningExtendedDataModifier extends AbstractExtendedDataModifier {
 

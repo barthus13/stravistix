@@ -7,7 +7,7 @@ import {Helper} from "../../Helper";
 import {ActivityProcessor} from "../../processors/ActivityProcessor";
 import {StorageManager} from "../../../modules/StorageManager";
 import {IUserSettings} from "../../UserSettings";
-import {IAppResources} from "../../AppResources";
+import {IAppResources} from "../../interfaces/AppResources";
 
 export abstract class AbstractExtendedDataModifier {
 
