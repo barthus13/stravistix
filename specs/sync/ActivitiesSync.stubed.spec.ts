@@ -7,6 +7,8 @@ import {
 import * as _ from "underscore"
 import * as Q from "q";
 import {ActivitiesProcessor} from "../../plugin/core/scripts/processors/ActivitiesProcessor";
+import {IUserSettings} from "../../plugin/core/scripts/UserSettings";
+import {IAppResources} from "../../plugin/core/scripts/AppResources";
 
 describe('ActivitiesSynchronizer syncing with stubs', () => {
 

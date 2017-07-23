@@ -2,6 +2,7 @@
 import Tab = chrome.tabs.Tab;
 import {Helper} from "./Helper";
 import {IStorageUsage, StorageManager} from "../modules/StorageManager";
+import {userSettings} from "./UserSettings";
 
 class Background {
 
@@ -155,5 +156,3 @@ class Background {
 
 let background = new Background();
 background.init();
-
-console.warn("delete line " + Helper.versionCompare("1.0.0", "5.0.0"));

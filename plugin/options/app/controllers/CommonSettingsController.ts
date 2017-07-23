@@ -4,6 +4,7 @@ import {ILocationService, ISCEService} from "angular";
 import {ChromeStorageService} from "../services/ChromeStorageService";
 import {app} from "../App";
 import {ICommonSettingsService, ISection, ISectionContent} from "../services/CommonSettingsService";
+import {IUserSettings} from "../../../core/scripts/UserSettings";
 
 class CommonSettingsController {
 

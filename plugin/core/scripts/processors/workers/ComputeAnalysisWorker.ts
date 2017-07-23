@@ -1,5 +1,6 @@
 // Worker function executed by the main UI Thread
 import {ActivityComputer} from "../ActivityComputer";
+import {IComputeActivityThreadMessage} from "../../interfaces/ComputeActivityThreadMessage";
 
 export function ComputeAnalysisWorker() {
 

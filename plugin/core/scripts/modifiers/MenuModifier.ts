@@ -1,9 +1,10 @@
 /**
  * Handles main burger menu
  */
+import {IAppResources} from "../AppResources";
 
 
-class MenuModifier implements IModifier {
+export class MenuModifier implements IModifier {
 
     private athleteId: number;
     private appResources: IAppResources;

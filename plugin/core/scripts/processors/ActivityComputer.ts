@@ -1,5 +1,6 @@
 import {Helper} from "../Helper";
 import * as _ from "underscore";
+import {IUserSettings} from "../UserSettings";
 
 export class ActivityComputer {
 

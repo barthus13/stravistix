@@ -1,6 +1,7 @@
 import {Helper} from "../Helper";
 import * as d3 from "d3";
 import * as _ from "underscore";
+import {IUserSettings} from "../UserSettings";
 
 declare let L: any;
 

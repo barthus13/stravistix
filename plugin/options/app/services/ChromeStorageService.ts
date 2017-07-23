@@ -5,6 +5,7 @@ import {IPromise} from "angular";
 import {app} from "../App";
 import {IAthleteProfile} from "../../../core/scripts/synchronizer/ActivitiesSynchronizer";
 import {IStorageUsage} from "../../../core/modules/StorageManager";
+import {IUserSettings, userSettings} from "../../../core/scripts/UserSettings";
 
 export class ChromeStorageService {
 

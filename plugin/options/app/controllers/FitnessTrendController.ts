@@ -3,6 +3,7 @@ import {IControllerConstructor, Injectable} from "angular";
 import {FitnessDataService, IFitnessActivity} from "../services/FitnessDataService";
 import {ChromeStorageService} from "../services/ChromeStorageService";
 import {app} from "../App";
+import {IUserSettings} from "../../../core/scripts/UserSettings";
 
 export class FitnessTrendController {
 

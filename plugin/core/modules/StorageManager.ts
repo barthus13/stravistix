@@ -1,3 +1,5 @@
+import {userSettings} from "../scripts/UserSettings";
+
 export interface IStorageUsage {
     bytesInUse: number;
     quotaBytes: number;

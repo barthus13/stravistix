@@ -6,6 +6,8 @@ import {RunningGradeDataView} from "./views/RunningGradeDataView";
 import {ElevationDataView} from "./views/ElevationDataView";
 import {Helper} from "../../Helper";
 import {ActivityProcessor} from "../../processors/ActivityProcessor";
+import {IUserSettings} from "../../UserSettings";
+import {IAppResources} from "../../AppResources";
 
 export class RunningExtendedDataModifier extends AbstractExtendedDataModifier {
 

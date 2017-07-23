@@ -1,4 +1,5 @@
 import {ActivityComputer} from "../../plugin/core/scripts/processors/ActivityComputer";
+import {IUserSettings} from "../../plugin/core/scripts/UserSettings";
 
 describe('ActivityComputer', () => {
 

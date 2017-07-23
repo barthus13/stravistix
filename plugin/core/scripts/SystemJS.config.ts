@@ -4,7 +4,7 @@ console.log("Imported core system config !");
 // console.log("Config with baseURL: " + chromeUuidURL);
 
 SystemJS.config({
-    baseURL: 'chrome-extension://cpopppnkcjpgdeogmpdjlihjpnbnjhic/',
+    baseURL: 'chrome-extension://cpopppnkcjpgdeogmpdjlihjpnbnjhic/', // TODO Make dyn !
     paths: {
         'npm:': 'node_modules/'
     },

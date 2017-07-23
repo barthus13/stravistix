@@ -1,4 +1,4 @@
-interface IUserSettings {
+export interface IUserSettings {
     autoSyncMinutes: number;
     localStorageMustBeCleared: boolean;
     userGender: string;
@@ -63,7 +63,7 @@ interface IUserSettings {
     displayReliveCCLink: boolean;
 }
 
-let userSettings: IUserSettings = {
+export let userSettings: IUserSettings = {
     autoSyncMinutes: 60,
     localStorageMustBeCleared: false,
     userGender: 'men',

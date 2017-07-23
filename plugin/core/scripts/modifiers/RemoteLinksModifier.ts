@@ -1,7 +1,10 @@
 /**
  *   RemoteLinksModifier is responsible of ...
  */
-class RemoteLinksModifier implements IModifier {
+import {IAppResources} from "../AppResources";
+import * as _ from "underscore";
+
+export class RemoteLinksModifier implements IModifier {
 
     protected appResources: IAppResources;
     protected authorOfActivity: boolean;

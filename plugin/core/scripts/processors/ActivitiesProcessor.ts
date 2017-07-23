@@ -1,6 +1,9 @@
 import {ComputeAnalysisWorker} from "./workers/ComputeAnalysisWorker";
 import * as Q from "q";
 import * as _ from "underscore";
+import {IUserSettings} from "../UserSettings";
+import {IComputeActivityThreadMessage} from "../interfaces/ComputeActivityThreadMessage";
+import {IAppResources} from "../AppResources";
 
 export class ActivitiesProcessor {
 

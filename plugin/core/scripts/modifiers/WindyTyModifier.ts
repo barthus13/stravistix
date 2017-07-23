@@ -1,4 +1,8 @@
-class WindyTyModifier implements IModifier {
+import {IUserSettings} from "../UserSettings";
+import * as _ from "underscore";
+import {IAppResources} from "../AppResources";
+
+export class WindyTyModifier implements IModifier {
 
     protected activityId: number;
     protected appResources: IAppResources;

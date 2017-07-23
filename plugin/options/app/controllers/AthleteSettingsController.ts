@@ -4,6 +4,7 @@ import {ChromeStorageService} from "../services/ChromeStorageService";
 import {ISwimCalculationMethod, SwimFTPCalculator} from "../directives/swimFTPCalculator";
 import {app} from "../App";
 import {IAvoidInputKeysService} from "../services/AvoidInputKeysService";
+import {IUserSettings} from "../../../core/scripts/UserSettings";
 
 interface IGenderList {
     type: string;

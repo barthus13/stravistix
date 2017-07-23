@@ -1,17 +1,19 @@
+// import {userSettings, IUserSettings} from "./UserSettings";
+
 class Content {
 
-    public static loader: Loader = new Loader();
+    // public static loader: Loader = new Loader();
 
-    protected appResources: IAppResources;
-    protected userSettings: IUserSettings;
+    // protected appResources: IAppResources;
+    // protected userSettings: IUserSettings;
     protected cssDependencies: string[];
     protected jsDependencies: string[];
 
-    constructor(jsDependencies: Array<string>, cssDependencies: Array<string>, userSettings: IUserSettings, appResources: IAppResources) {
+    constructor(jsDependencies: Array<string>, cssDependencies: Array<string>/*, userSettings: IUserSettings, appResources: IAppResources*/) {
         this.jsDependencies = jsDependencies;
         this.cssDependencies = cssDependencies;
-        this.userSettings = userSettings;
-        this.appResources = appResources;
+        // this.userSettings = userSettings;
+        // this.appResources = appResources;
     }
 
     /*
@@ -61,7 +63,7 @@ class Content {
 
 
         // loader.injectJS("var chromeUuid = '" + chrome.extension.getURL("/") + "'");
-        chrome.storage.sync.get(this.userSettings, (chromeSettings: any) => {
+        // chrome.storage.sync.get(this.userSettings, (chromeSettings: any) => {
 
             // let node: HTMLElement = (document.head || document.documentElement);
             //
@@ -73,23 +75,44 @@ class Content {
             //
             //     let inner: HTMLScriptElement = document.createElement('script');
 
+
+
+
+/*
             if (_.isEmpty(chromeSettings)) { // If settings from chrome sync storage are empty
                 chromeSettings = this.userSettings;
             }
-
             let defaultSettings = _.keys(userSettings)
             let syncedSettings = _.keys(chromeSettings)
             if (_.difference(defaultSettings, syncedSettings).length !== 0) { // If settings shape has changed
                 _.defaults(chromeSettings, userSettings)
             }
+*/
 
-            Content.loader.injectJS("var chromeUuidURL = '" + chrome.extension.getURL("/") + "/'");
 
-            Content.loader.require(['node_modules/systemjs/dist/system.js', 'core/scripts/SystemJS.config.js', 'core/scripts/SystemJS.start.js'], () => {
-                /* loader.require(['core/main.js'], () => {
-                     console.log("Done!");
-                 });*/
+
+            SystemJS.config({
+                baseURL: chrome.extension.getURL("/")
+                // transpiler: 'typescript',
+                // packages: {
+                //     src: {
+                //         // defaultExtension: 'js'
+                //     }
+                // }
             });
+
+            SystemJS.import('core/scripts/SystemJS.config.js').then(() => {
+                SystemJS.import('core/scripts/SystemJS.start.js');
+
+            }, console.error.bind(console));
+
+            // Content.loader.injectJS("var chromeUuidURL = '" + chrome.extension.getURL("/") + "/'");
+            //
+            // Content.loader.require(['node_modules/systemjs/dist/system.js', 'core/scripts/SystemJS.config.js', 'core/scripts/SystemJS.start.js'], () => {
+            //     /* loader.require(['core/main.js'], () => {
+            //          console.log("Done!");
+            //      });*/
+            // });
 
             //     inner.textContent = 'var $ = jQuery;';
             //     inner.textContent += 'var stravistiX = new StravistiX(' + JSON.stringify(chromeSettings) + ', ' + JSON.stringify(this.appResources) + ');';
@@ -100,13 +123,13 @@ class Content {
             //     node.appendChild(inner);
             // };
             // node.appendChild(injectedScript);
-        });
+        // });
 
         // });
 
     }
 }
-
+/*
 let appResources: IAppResources = {
     settingsLink: chrome.extension.getURL('/options/app/index.html'),
     logoStravistix: chrome.extension.getURL('/core/icons/logo_stravistix_no_circle.svg'),
@@ -160,7 +183,7 @@ let appResources: IAppResources = {
     extVersionName: chrome.runtime.getManifest().version_name,
     extensionId: chrome.runtime.id,
 };
-
+*/
 let jsDependencies: Array<string> = [
 
     // Config
@@ -249,9 +272,9 @@ let cssDependencies: Array<string> = [
     'core/css/core.css'
 ];
 
-let content: Content = new Content(jsDependencies, cssDependencies, userSettings, appResources);
+let content: Content = new Content(jsDependencies, cssDependencies,/* userSettings, appResources*/);
 content.start();
 
 // Inject constants
-let constantsStr: string = 'var Constants = ' + JSON.stringify(Constants) + ';';
-Content.loader.injectJS(constantsStr);
+let constantsStr: string = 'var Constants = ' + JSON.stringify(Constants) + ';'; // TODO constantsStr
+// Content.loader.injectJS(constantsStr);

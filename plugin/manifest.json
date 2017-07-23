@@ -15,10 +15,8 @@
   "content_scripts": [
     {
       "js": [
-        "node_modules/underscore/underscore-min.js",
-        "core/modules/Loader.js",
+        "node_modules/systemjs/dist/system.js",
         "core/scripts/Constants.js",
-        "core/scripts/UserSettings.js",
         "core/scripts/Content.js"
       ],
       "run_at": "document_end",

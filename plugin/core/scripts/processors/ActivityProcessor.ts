@@ -1,6 +1,9 @@
 import {VacuumProcessor} from "./VacuumProcessor";
 import * as _ from "underscore";
 import {ComputeAnalysisWorker} from "./workers/ComputeAnalysisWorker";
+import {IUserSettings} from "../UserSettings";
+import {IComputeActivityThreadMessage} from "../interfaces/ComputeActivityThreadMessage";
+import {IAppResources} from "../AppResources";
 
 export class ActivityProcessor {
 

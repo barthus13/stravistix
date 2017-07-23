@@ -19,6 +19,14 @@ import {BikeOdoProcessor} from "./processors/BikeOdoProcessor";
 import {VirtualPartnerModifier} from "./modifiers/VirtualPartnerModifier";
 import {NearbySegmentsModifier} from "./modifiers/NearbySegmentsModifier";
 import {StorageManager} from "../modules/StorageManager";
+import {IUserSettings} from "./UserSettings";
+import {HideFeedModifier} from "./modifiers/HideFeedModifier";
+import {GoogleMapsModifier} from "./modifiers/GoogleMapsModifier";
+import {WindyTyModifier} from "./modifiers/WindyTyModifier";
+import {IAppResources} from "./AppResources";
+import {MenuModifier} from "./modifiers/MenuModifier";
+import {RemoteLinksModifier} from "./modifiers/RemoteLinksModifier";
+import {ActivityQRCodeDisplayModifier} from "./modifiers/ActivityQRCodeDisplayModifier";
 
 export class StravistiX {
 

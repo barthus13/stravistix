@@ -1,4 +1,6 @@
-class ActivityQRCodeDisplayModifier implements IModifier {
+import {IAppResources} from "../AppResources";
+
+export class ActivityQRCodeDisplayModifier implements IModifier {
 
     protected appResources: IAppResources;
     protected activityId: number;

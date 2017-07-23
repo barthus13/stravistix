@@ -7,6 +7,8 @@ import {AscentSpeedDataView} from "./views/AscentSpeedDataView";
 import {ElevationDataView} from "./views/ElevationDataView";
 import {Helper} from "../../Helper";
 import {ActivityProcessor} from "../../processors/ActivityProcessor";
+import {IUserSettings} from "../../UserSettings";
+import {IAppResources} from "../../AppResources";
 
 export class CyclingExtendedDataModifier extends AbstractExtendedDataModifier {
 

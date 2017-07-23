@@ -1,6 +1,7 @@
 import * as _ from "underscore";
 import {AbstractDataView} from "./AbstractDataView";
 import {Helper} from "../../../Helper";
+import {IUserSettings} from "../../../UserSettings";
 
 export class FeaturedDataView extends AbstractDataView {
 
