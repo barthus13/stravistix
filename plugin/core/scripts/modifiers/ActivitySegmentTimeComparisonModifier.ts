@@ -1,4 +1,7 @@
-interface EffortInfo {
+import {Helper} from "../Helper";
+import * as _ from "underscore";
+
+export interface EffortInfo {
     // values obtained from the HTTP request
     id: number; // segment effort id
     activity_id: number;
@@ -22,11 +25,11 @@ interface EffortInfo {
     __dateTime: Date; // field added by us: start_date_local_raw converted into machine readable format (how is this different from start_date_local?)
 }
 
-interface LeaderBoardData {
+export interface LeaderBoardData {
     top_results: EffortInfo[];
 }
 
-class ActivitySegmentTimeComparisonModifier implements IModifier {
+export class ActivitySegmentTimeComparisonModifier implements IModifier {
 
     protected showDifferenceToKOM: boolean;
     protected showDifferenceToPR: boolean;

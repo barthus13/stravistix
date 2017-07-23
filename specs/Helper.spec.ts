@@ -1,5 +1,7 @@
 /// <reference path="./typings/specs.d.ts" />
 
+import {Helper} from "../plugin/core/scripts/Helper";
+
 describe('Helper', () => {
     it('should give seconds from HH:MM:SS pattern', () => {
         expect(Helper.HHMMSStoSeconds('00:05:00')).toEqual(300);

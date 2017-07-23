@@ -1,6 +1,7 @@
 import * as _ from "underscore";
 import {LinearTickOptions} from "chart.js";
 import * as Chart from "chart.js";
+import {Helper} from "../../../Helper";
 
 export abstract class AbstractDataView {
 

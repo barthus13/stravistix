@@ -1,4 +1,7 @@
-class ActivityComputer {
+import {Helper} from "../Helper";
+import * as _ from "underscore";
+
+export class ActivityComputer {
 
     public static MOVING_THRESHOLD_KPH: number = 0.1; // Kph
     public static CADENCE_THRESHOLD_RPM: number = 35; // RPMs

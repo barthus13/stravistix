@@ -3,6 +3,8 @@ import {IScope, ILocationService, IWindowService} from "angular";
 import {ChromeStorageService} from "../services/ChromeStorageService";
 import {AthleteSettingsController} from "../controllers/AthleteSettingsController";
 import {app} from "../App";
+import {IAthleteProfile} from "../../../core/scripts/synchronizer/ActivitiesSynchronizer";
+import Tab = chrome.tabs.Tab;
 
 interface IProfileConfiguredRibbonScope extends IScope {
     checkLocalSyncedAthleteProfileEqualsRemote: () => void;

@@ -1,4 +1,9 @@
-interface IAthleteProfile {
+import {Helper} from "../Helper";
+import * as Q from "q";
+import * as _ from "underscore";
+import {ActivitiesProcessor} from "../processors/ActivitiesProcessor";
+
+export interface IAthleteProfile {
     userGender: string;
     userMaxHr: number;
     userRestHr: number;
@@ -12,20 +17,20 @@ interface IAthleteProfile {
     userWeight: number;
 }
 
-interface IHistoryChanges {
+export interface IHistoryChanges {
     added: Array<number>,
     deleted: Array<number>,
     edited: Array<{id: number, name: string, type: string, display_type: string}>
 }
 
-interface ISyncResult {
+export interface ISyncResult {
     globalHistoryChanges: IHistoryChanges,
     computedActivities: Array<ISyncActivityComputed>,
     lastSyncDateTime: number,
     syncWithAthleteProfile: IAthleteProfile
 }
 
-class ActivitiesSynchronizer {
+export class ActivitiesSynchronizer {
 
     public static lastSyncDateTime: string = 'lastSyncDateTime';
     public static computedActivities: string = 'computedActivities';

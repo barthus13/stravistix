@@ -1,5 +1,9 @@
 // This code is from Google, so let's not modify it too much, just add gaNewElem and gaElems:
-declare let follow: any; // variable for GA
+import {ISyncResult} from "./synchronizer/ActivitiesSynchronizer";
+import * as _ from "underscore"
+import * as Q from "q";
+
+export declare let follow: any; // variable for GA
 
 var currentDate: any = new Date();
 (function (i: any, s: any, o: any, g: any, r: any, a?: any, m?: any) {
@@ -17,7 +21,7 @@ var currentDate: any = new Date();
 follow('create', env.analyticsTrackingID, 'auto');
 follow('send', 'pageview');
 
-interface IAthleteUpdate { // TODO Refactor outside + rerun specs
+export interface IAthleteUpdate { // TODO Refactor outside + rerun specs
     stravaId: number,
     version: string,
     name: string,
@@ -29,7 +33,7 @@ interface IAthleteUpdate { // TODO Refactor outside + rerun specs
     __v?: number // Mongoose version doc
 }
 
-class AthleteUpdate { // TODO Refactor outside + rerun specs
+export class AthleteUpdate { // TODO Refactor outside + rerun specs
 
     /**
      * Provide IAthleteUpdate object

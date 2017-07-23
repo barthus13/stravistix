@@ -1,7 +1,10 @@
 /**
  *   Contructor
  */
-class VacuumProcessor {
+import {Helper} from "../Helper";
+import * as _ from "underscore";
+
+export class VacuumProcessor {
 
     public static cachePrefix: string = 'stravistix_activityStream_';
 

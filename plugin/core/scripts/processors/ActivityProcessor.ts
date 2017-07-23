@@ -1,4 +1,8 @@
-class ActivityProcessor {
+import {VacuumProcessor} from "./VacuumProcessor";
+import * as _ from "underscore";
+import {ComputeAnalysisWorker} from "./workers/ComputeAnalysisWorker";
+
+export class ActivityProcessor {
 
     public static cachePrefix: string = 'stravistix_activity_';
     protected appResources: IAppResources;

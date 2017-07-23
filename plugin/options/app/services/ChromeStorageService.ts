@@ -3,6 +3,7 @@ import IQService = angular.IQService;
 import IDeferred = angular.IDeferred;
 import {IPromise} from "angular";
 import {app} from "../App";
+import {IAthleteProfile} from "../../../core/scripts/synchronizer/ActivitiesSynchronizer";
 
 export class ChromeStorageService {
 

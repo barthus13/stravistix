@@ -3,6 +3,8 @@ import {AbstractDataView} from "./views/AbstractDataView";
 import {HeaderView} from "./views/HeaderView";
 import {HeartRateDataView} from "./views/HeartRateDataView";
 import {FeaturedDataView} from "./views/FeaturedDataView";
+import {Helper} from "../../Helper";
+import {ActivityProcessor} from "../../processors/ActivityProcessor";
 
 export abstract class AbstractExtendedDataModifier {
 

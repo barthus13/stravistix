@@ -1,4 +1,8 @@
-class SegmentRecentEffortsHRATimeModifier implements IModifier {
+import {EffortInfo, LeaderBoardData} from "./ActivitySegmentTimeComparisonModifier";
+import {Helper} from "../Helper";
+import * as _ from "underscore";
+
+export class SegmentRecentEffortsHRATimeModifier implements IModifier {
 
     protected userSettings: IUserSettings;
     protected athleteId: number;

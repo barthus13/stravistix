@@ -5,6 +5,19 @@ import * as _ from "underscore";
 import {AbstractExtendedDataModifier} from "./modifiers/extendedActivityData/AbstractExtendedDataModifier";
 import {CyclingExtendedDataModifier} from "./modifiers/extendedActivityData/CyclingExtendedDataModifier";
 import {RunningExtendedDataModifier} from "./modifiers/extendedActivityData/RunningExtendedDataModifier";
+import {ActivitiesSynchronizer, ISyncResult} from "./synchronizer/ActivitiesSynchronizer";
+import {Helper} from "./Helper";
+import {AthleteUpdate, follow, IAthleteUpdate} from "./Follow";
+import {ActivitySegmentTimeComparisonModifier} from "./modifiers/ActivitySegmentTimeComparisonModifier";
+import {ActivitiesSyncModifier} from "./modifiers/ActivitiesSyncModifier";
+import {AthleteStatsModifier} from "./modifiers/AthleteStatsModifier";
+import {SegmentRecentEffortsHRATimeModifier} from "./modifiers/SegmentRecentEffortsHRATimeModifier";
+import {ActivityProcessor} from "./processors/ActivityProcessor";
+import {VacuumProcessor} from "./processors/VacuumProcessor";
+import {SegmentProcessor, ISegmentInfo} from "./processors/SegmentProcessor";
+import {BikeOdoProcessor} from "./processors/BikeOdoProcessor";
+import {VirtualPartnerModifier} from "./modifiers/VirtualPartnerModifier";
+import {NearbySegmentsModifier} from "./modifiers/NearbySegmentsModifier";
 
 export class StravistiX {
 
@@ -24,6 +37,8 @@ export class StravistiX {
     protected activitiesSynchronizer: ActivitiesSynchronizer;
 
     constructor(userSettings: IUserSettings, appResources: IAppResources) {
+
+        console.log("StravistiX ctr");
 
         this._userSettings = userSettings;
         this.appResources = appResources;

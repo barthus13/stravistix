@@ -1,4 +1,5 @@
 import {AbstractDataView} from "./AbstractDataView";
+import {Helper} from "../../../Helper";
 
 export class SpeedDataView extends AbstractDataView {
 

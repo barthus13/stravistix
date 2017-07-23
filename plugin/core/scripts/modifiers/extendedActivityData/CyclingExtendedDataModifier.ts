@@ -5,6 +5,8 @@ import {CyclingCadenceDataView} from "./views/CyclingCadenceDataView";
 import {CyclingGradeDataView} from "./views/CyclingGradeDataView";
 import {AscentSpeedDataView} from "./views/AscentSpeedDataView";
 import {ElevationDataView} from "./views/ElevationDataView";
+import {Helper} from "../../Helper";
+import {ActivityProcessor} from "../../processors/ActivityProcessor";
 
 export class CyclingExtendedDataModifier extends AbstractExtendedDataModifier {
 

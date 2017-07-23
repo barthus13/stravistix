@@ -1,5 +1,13 @@
 /// <reference path="../typings/specs.d.ts" />
 
+import {
+    ActivitiesSynchronizer, IAthleteProfile,
+    ISyncResult
+} from "../../plugin/core/scripts/synchronizer/ActivitiesSynchronizer";
+import * as _ from "underscore"
+import * as Q from "q";
+import {ActivitiesProcessor} from "../../plugin/core/scripts/processors/ActivitiesProcessor";
+
 describe('ActivitiesSynchronizer syncing with stubs', () => {
 
     let userSettingsMock: IUserSettings;

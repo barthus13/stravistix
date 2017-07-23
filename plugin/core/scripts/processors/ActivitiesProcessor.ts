@@ -1,4 +1,8 @@
-class ActivitiesProcessor {
+import {ComputeAnalysisWorker} from "./workers/ComputeAnalysisWorker";
+import * as Q from "q";
+import * as _ from "underscore";
+
+export class ActivitiesProcessor {
 
     protected appResources: IAppResources;
     protected userSettings: IUserSettings;

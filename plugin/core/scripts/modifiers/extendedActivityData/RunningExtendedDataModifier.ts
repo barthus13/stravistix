@@ -4,6 +4,8 @@ import {RunningPowerDataView} from "./views/RunningPowerDataView";
 import {RunningCadenceDataView} from "./views/RunningCadenceDataView";
 import {RunningGradeDataView} from "./views/RunningGradeDataView";
 import {ElevationDataView} from "./views/ElevationDataView";
+import {Helper} from "../../Helper";
+import {ActivityProcessor} from "../../processors/ActivityProcessor";
 
 export class RunningExtendedDataModifier extends AbstractExtendedDataModifier {
 

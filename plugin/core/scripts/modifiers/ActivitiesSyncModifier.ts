@@ -1,4 +1,8 @@
-class ActivitiesSyncModifier implements IModifier {
+import {ActivitiesSynchronizer, ISyncResult} from "../synchronizer/ActivitiesSynchronizer";
+import {Helper} from "../Helper";
+import * as _ from "underscore";
+
+export class ActivitiesSyncModifier implements IModifier {
 
     protected activitiesSynchronizer: ActivitiesSynchronizer;
     protected extensionId: string;

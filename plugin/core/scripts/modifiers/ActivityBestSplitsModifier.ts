@@ -1,3 +1,7 @@
+import {Helper} from "../Helper";
+import * as d3 from "d3";
+import * as _ from "underscore";
+
 declare let L: any;
 
 function BestSplitWorker() {
@@ -357,7 +361,6 @@ function BestSplitWorker() {
             return values;
         };
     }
-
 
     this.onmessage = (message: MessageEvent) => {
 

@@ -1,8 +1,9 @@
 import Axis = d3.svg.Axis;
-import Linear = d3.scale.Linear;
-import Scale = d3.time.Scale;
+import {Helper} from "../Helper";
+import * as d3 from "d3";
+import * as _ from "underscore";
 
-class AthleteStatsModifier implements IModifier {
+export class AthleteStatsModifier implements IModifier {
 
     protected appResources: IAppResources;
     protected cacheKey_: string;

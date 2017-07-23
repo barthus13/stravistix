@@ -1,5 +1,7 @@
 // Worker function executed by the main UI Thread
-function ComputeAnalysisWorker() {
+import {ActivityComputer} from "../ActivityComputer";
+
+export function ComputeAnalysisWorker() {
 
     // required dependencies for worker job
     this.required = [

@@ -1,6 +1,8 @@
 // TODO types rem?
 /// <reference path="../typings/plugin.d.ts" />
 
+import {AthleteUpdate, IAthleteUpdate} from "../plugin/core/scripts/Follow";
+
 describe('Generate Athlete Update', () => {
 
     it('should return compliant AthleteUpdate (free)', () => {

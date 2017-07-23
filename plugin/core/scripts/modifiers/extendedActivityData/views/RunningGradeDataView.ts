@@ -1,4 +1,5 @@
 import {AbstractGradeDataView} from "./AbstractGradeDataView";
+import {Helper} from "../../../Helper";
 
 export class RunningGradeDataView extends AbstractGradeDataView {
 

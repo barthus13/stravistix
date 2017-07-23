@@ -1,3 +1,5 @@
+import * as Q from "q";
+
 export class Helper {
 
     public static KPH_TO_MPH_RATIO: number = 0.621371;

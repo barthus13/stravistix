@@ -1,5 +1,9 @@
 /// <reference path="../typings/specs.d.ts" />
 
+import {ActivitiesSynchronizer, IHistoryChanges} from "../../plugin/core/scripts/synchronizer/ActivitiesSynchronizer";
+import * as _ from "underscore";
+import * as Q from "q";
+
 describe('ActivitiesSynchronizer', () => {
 
     it('should test my promise ', (done: Function) => {
