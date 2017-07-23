@@ -1,4 +1,4 @@
-class Helper {
+export class Helper {
 
     public static KPH_TO_MPH_RATIO: number = 0.621371;
     public static getFromStorageMethod: string = 'getFromStorage';
