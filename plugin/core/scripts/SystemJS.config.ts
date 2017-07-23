@@ -4,7 +4,7 @@ console.log("Imported core system config !");
 // console.log("Config with baseURL: " + chromeUuidURL);
 
 SystemJS.config({
-    baseURL: 'chrome-extension://cpopppnkcjpgdeogmpdjlihjpnbnjhic/', // TODO Make dyn !
+    baseURL: 'chrome-extension://' + chrome.runtime.id + '/',
     paths: {
         'npm:': 'node_modules/'
     },
@@ -14,6 +14,9 @@ SystemJS.config({
         }
     },
     map: {
+        'chart.js': 'npm:chart.js/dist/Chart.bundle.js',
+        'd3': 'npm:d3/d3.js',
+        // 'jquery': 'npm:jquery/dist/jquery.js',
         'q': 'npm:q/q.js',
         'underscore': 'npm:underscore/underscore-min.js',
     }

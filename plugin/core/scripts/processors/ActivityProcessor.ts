@@ -4,6 +4,7 @@ import {ComputeAnalysisWorker} from "./workers/ComputeAnalysisWorker";
 import {IUserSettings} from "../UserSettings";
 import {IComputeActivityThreadMessage} from "../interfaces/ComputeActivityThreadMessage";
 import {IAppResources} from "../AppResources";
+import {env} from "../../config/env";
 
 export class ActivityProcessor {
 

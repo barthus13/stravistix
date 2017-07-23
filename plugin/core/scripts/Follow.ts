@@ -2,8 +2,7 @@
 import {ISyncResult} from "./synchronizer/ActivitiesSynchronizer";
 import * as _ from "underscore"
 import * as Q from "q";
-
-export declare let follow: any; // variable for GA
+import {env} from "../config/env";
 
 var currentDate: any = new Date();
 (function (i: any, s: any, o: any, g: any, r: any, a?: any, m?: any) {

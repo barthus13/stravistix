@@ -21,6 +21,14 @@ import {Constants} from "./Constants";
 // Helper.getFromStorage(chrome.runtime.id, StorageManager.storageLocalType, 'userMaxHr', (response: any) => {
 //     console.log("versionInstalled: " + response);
 // });
+
+
+import * as $ from "jquery";
+//
+// declare module "jquery" {
+//     export = $;
+// }
+
 class Main {
 
     // TODO ..
@@ -43,6 +51,9 @@ chrome.storage.sync.get(userSettings, (chromeSettings: any) => {
     console.log(chromeSettings);
     console.log(appResources);
     console.log(Constants);
+
+    // jQuery('body').before("Hey ho");
+    // $('body').before("Hey");
 
 
     let stravistiX: StravistiX = new StravistiX(chromeSettings, appResources);

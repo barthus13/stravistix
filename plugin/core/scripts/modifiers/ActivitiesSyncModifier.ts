@@ -4,6 +4,7 @@ import * as _ from "underscore";
 import {IStorageUsage, StorageManager} from "../../modules/StorageManager";
 import {IUserSettings} from "../UserSettings";
 import {IAppResources} from "../AppResources";
+import {env} from "../../config/env";
 
 export class ActivitiesSyncModifier implements IModifier {
 

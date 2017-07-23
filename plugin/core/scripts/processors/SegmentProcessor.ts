@@ -1,5 +1,6 @@
-import {VacuumProcessor} from "./VacuumProcessor";
 import * as _ from "underscore";
+import {VacuumProcessor} from "./VacuumProcessor";
+import {env} from "../../config/env";
 
 export interface ISegmentInfo {
     id: number;

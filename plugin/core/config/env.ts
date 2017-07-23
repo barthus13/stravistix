@@ -1,4 +1,4 @@
-let env: Env = {
+export let env: Env = {
     preview: false, // Must be false in release
     analyticsTrackingID: 'UA-51167057-4', // prod:'UA-51167057-4', test:'UA-51167057-5'
     simulateUpdate: false, // Must be false in release

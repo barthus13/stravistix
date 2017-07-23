@@ -1,8 +1,6 @@
-/**
- *   Contructor
- */
-import {Helper} from "../Helper";
 import * as _ from "underscore";
+import {Helper} from "../Helper";
+import {env} from "../../config/env";
 
 export class VacuumProcessor {
 

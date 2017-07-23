@@ -1,13 +1,10 @@
-// TODO TYPE remove below?
-/// <reference path="../../../typings/plugin.d.ts" />
-
 import * as _ from "underscore";
 import {AbstractExtendedDataModifier} from "./modifiers/extendedActivityData/AbstractExtendedDataModifier";
 import {CyclingExtendedDataModifier} from "./modifiers/extendedActivityData/CyclingExtendedDataModifier";
 import {RunningExtendedDataModifier} from "./modifiers/extendedActivityData/RunningExtendedDataModifier";
 import {ActivitiesSynchronizer, ISyncResult} from "./synchronizer/ActivitiesSynchronizer";
 import {Helper} from "./Helper";
-import {AthleteUpdate, follow, IAthleteUpdate} from "./Follow";
+import {AthleteUpdate, IAthleteUpdate} from "./Follow";
 import {ActivitySegmentTimeComparisonModifier} from "./modifiers/ActivitySegmentTimeComparisonModifier";
 import {ActivitiesSyncModifier} from "./modifiers/ActivitiesSyncModifier";
 import {AthleteStatsModifier} from "./modifiers/AthleteStatsModifier";
@@ -28,6 +25,7 @@ import {MenuModifier} from "./modifiers/MenuModifier";
 import {RemoteLinksModifier} from "./modifiers/RemoteLinksModifier";
 import {ActivityQRCodeDisplayModifier} from "./modifiers/ActivityQRCodeDisplayModifier";
 import {IReleaseNote, releaseNotes} from "./ReleaseNotes";
+import {env} from "../config/env";
 
 export class StravistiX {
 
