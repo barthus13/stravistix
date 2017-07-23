@@ -56,6 +56,12 @@ var CORE_JAVASCRIPT_SCRIPTS = [
     'plugin/core/config/env.js',
     'plugin/core/modules/*.js',
     'plugin/core/scripts/**/*.js', // This shouldn't copy js files to destination because of TypeScript (No JS files written anymore). Keep it in case of JavaScript files used by the way.
+
+    'plugin/node_modules/systemjs/dist/system.js',
+    'plugin/core/system.core.config.js',
+    'plugin/core/system.core.start.js',
+    'plugin/core/main.js',
+
     'plugin/node_modules/geodesy/dms.js',
     'plugin/node_modules/geodesy/latlon-spherical.js',
     'plugin/node_modules/chart.js/dist/Chart.bundle.js',

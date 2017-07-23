@@ -14,6 +14,7 @@ class Content {
         this.appResources = appResources;
     }
 
+    /*
     loadDependencies(finishLoading: Function): void {
 
         let dependencies: Array<string> = _.union(this.jsDependencies, this.cssDependencies);
@@ -21,7 +22,7 @@ class Content {
             finishLoading();
         });
     }
-
+*/
     isExtensionRunnableInThisContext(): boolean {
 
         let isRunnable: boolean = true;
@@ -56,19 +57,29 @@ class Content {
             return;
         }
 
-        this.loadDependencies(() => {
+        // this.loadDependencies(() => {
 
+            Content.loader.injectJS("var chromeUuidURL = '" + chrome.extension.getURL("/") + "'");
+
+            Content.loader.require(['node_modules/systemjs/dist/system.js', 'core/system.core.config.js', 'core/system.core.start.js'], () => {
+                /* loader.require(['core/main.js'], () => {
+                     console.log("Done!");
+                 });*/
+            });
+
+
+        // loader.injectJS("var chromeUuid = '" + chrome.extension.getURL("/") + "'");
             chrome.storage.sync.get(this.userSettings, (chromeSettings: any) => {
 
-                let node: HTMLElement = (document.head || document.documentElement);
-
-                let injectedScript: HTMLScriptElement = document.createElement('script');
-                injectedScript.src = chrome.extension.getURL('core/scripts/StravistiX.js');
-                injectedScript.onload = () => {
-
-                    injectedScript.remove();
-
-                    let inner: HTMLScriptElement = document.createElement('script');
+                // let node: HTMLElement = (document.head || document.documentElement);
+                //
+                // let injectedScript: HTMLScriptElement = document.createElement('script');
+                // injectedScript.src = chrome.extension.getURL('core/scripts/StravistiX.js');
+                // injectedScript.onload = () => {
+                //
+                //     injectedScript.remove();
+                //
+                //     let inner: HTMLScriptElement = document.createElement('script');
 
                     if (_.isEmpty(chromeSettings)) { // If settings from chrome sync storage are empty
                         chromeSettings = this.userSettings;
@@ -80,18 +91,19 @@ class Content {
                        _.defaults(chromeSettings, userSettings)
                     }
 
-                    inner.textContent = 'var $ = jQuery;';
-                    inner.textContent += 'var stravistiX = new StravistiX(' + JSON.stringify(chromeSettings) + ', ' + JSON.stringify(this.appResources) + ');';
-                    inner.onload = () => {
-                        inner.remove();
-                    };
-
-                    node.appendChild(inner);
-                };
-                node.appendChild(injectedScript);
+                //     inner.textContent = 'var $ = jQuery;';
+                //     inner.textContent += 'var stravistiX = new StravistiX(' + JSON.stringify(chromeSettings) + ', ' + JSON.stringify(this.appResources) + ');';
+                //     inner.onload = () => {
+                //         inner.remove();
+                //     };
+                //
+                //     node.appendChild(inner);
+                // };
+                // node.appendChild(injectedScript);
             });
 
-        });
+        // });
+
     }
 }
 

@@ -5,7 +5,7 @@
   "include": [
     // Core
     "plugin/core/**/*.ts",
-    // Old angularjs webapp
+    // Angularjs webapp
     "plugin/options/**/*.ts",
     // specs
     "specs/**/*.ts"
