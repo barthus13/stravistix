@@ -16,7 +16,6 @@
     {
       "js": [
         "node_modules/systemjs/dist/system.js",
-        "core/scripts/Constants.js",
         "core/scripts/Content.js"
       ],
       "run_at": "document_end",

@@ -27,6 +27,7 @@ import {IAppResources} from "./AppResources";
 import {MenuModifier} from "./modifiers/MenuModifier";
 import {RemoteLinksModifier} from "./modifiers/RemoteLinksModifier";
 import {ActivityQRCodeDisplayModifier} from "./modifiers/ActivityQRCodeDisplayModifier";
+import {IReleaseNote, releaseNotes} from "./ReleaseNotes";
 
 export class StravistiX {
 
@@ -62,7 +63,7 @@ export class StravistiX {
         this.activityId = this.vacuumProcessor.getActivityId();
         this.activitiesSynchronizer = new ActivitiesSynchronizer(this.appResources, this._userSettings);
 
-        this.init();
+        // this.init(); // Init from Main ts from now
 
         if (StravistiX.instance == null) {
             StravistiX.instance = this;
@@ -72,7 +73,7 @@ export class StravistiX {
     /**
      * Make the work...
      */
-    protected init(): void {
+    public init(): void {
 
         // Redirect app.strava.com/* to www.strava.com/*
         if (this.handleForwardToWWW()) {

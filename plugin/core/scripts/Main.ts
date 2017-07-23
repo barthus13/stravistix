@@ -4,6 +4,7 @@ import {StorageManager} from "../modules/StorageManager";
 import * as _ from "underscore";
 import {userSettings} from "./UserSettings";
 import {appResources} from "./AppResources";
+import {Constants} from "./Constants";
 
 // import {VacuumProcessor} from "./processors/VacuumProcessor";
 // import {StravistiX} from "./StravistiX";
@@ -41,9 +42,10 @@ chrome.storage.sync.get(userSettings, (chromeSettings: any) => {
 
     console.log(chromeSettings);
     console.log(appResources);
+    console.log(Constants);
 
-    // TODO Constants
 
-    // let stravistiX = new StravistiX(chromeSettings, null);
+    let stravistiX: StravistiX = new StravistiX(chromeSettings, appResources);
+    stravistiX.init();
 
 });

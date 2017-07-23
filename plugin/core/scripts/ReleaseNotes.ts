@@ -1,4 +1,6 @@
-interface IReleaseNote {
+import {Constants} from "./Constants";
+
+export interface IReleaseNote {
     version: string; // 'x.x.x'
     message?: string;
     hotFixes?: Array<string>;
@@ -16,7 +18,7 @@ interface IReleaseNote {
     silent?: boolean;
 }
 
-let releaseNotes: Array<IReleaseNote> = [
+export let releaseNotes: Array<IReleaseNote> = [
     {
         version: '5.9.0',
         message: 'NEW: Export segments efforts to your GPS device and challenge yourself outside against a virtual friend, a pro or your ghost!',

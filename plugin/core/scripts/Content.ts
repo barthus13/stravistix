@@ -276,5 +276,5 @@ let content: Content = new Content(jsDependencies, cssDependencies,/* userSettin
 content.start();
 
 // Inject constants
-let constantsStr: string = 'var Constants = ' + JSON.stringify(Constants) + ';'; // TODO constantsStr
+// let constantsStr: string = 'var Constants = ' + JSON.stringify(Constants) + ';'; // TODO constantsStr
 // Content.loader.injectJS(constantsStr);

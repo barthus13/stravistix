@@ -1,4 +1,5 @@
 import {app} from "../App";
+import {IReleaseNote, releaseNotes} from "../../../core/scripts/ReleaseNotes";
 
 export interface ReleaseNotesService {
     data: Array<IReleaseNote>;
