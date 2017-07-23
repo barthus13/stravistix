@@ -895,7 +895,9 @@ export class StravistiX {
      */
     protected handleActivityBestSplits(): void {
 
-        if (!this._userSettings.displayActivityBestSplits) {
+        console.error("REACTIVE handleActivityBestSplits !!!");
+
+       /* if (!this._userSettings.displayActivityBestSplits) {
             return;
         }
 
@@ -928,7 +930,7 @@ export class StravistiX {
 
             });
 
-        });
+        });*/
     }
 
     /**

@@ -1,23 +1,26 @@
 console.log("Imported core system config !");
 
 // var baseURL = "chrome-extension://" + chrome.runtime.id + "/";
-
-console.log("Config with baseURL: " + chromeUuidURL);
+// console.log("Config with baseURL: " + chromeUuidURL);
 
 SystemJS.config({
-    baseURL: chromeUuidURL,
-    // transpiler: 'typescript',
-    // defaultJSExtensions: true,
-    // defaultExtension: 'js',
+    baseURL: 'chrome-extension://cpopppnkcjpgdeogmpdjlihjpnbnjhic/',
+    paths: {
+        'npm:': 'node_modules/'
+    },
     packages: {
-        // format: 'cjs',
-        // src: {
-        //     defaultExtension: 'js'
-        // }
         'core': {
             format: 'cjs'
         }
     },
+    map: {
+        'q': 'npm:q/q.js'
+    }
+
+    // transpiler: 'typescript',
+    // defaultJSExtensions: true,
+    // defaultExtension: 'js',
+
     // format: 'cjs',
     // meta: {
     //     'core/*': { format: 'cjs' }

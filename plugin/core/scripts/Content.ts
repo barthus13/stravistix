@@ -59,7 +59,7 @@ class Content {
 
         // this.loadDependencies(() => {
 
-            Content.loader.injectJS("var chromeUuidURL = '" + chrome.extension.getURL("/") + "'");
+            Content.loader.injectJS("var chromeUuidURL = '" + chrome.extension.getURL("/") + "/'");
 
             Content.loader.require(['node_modules/systemjs/dist/system.js', 'core/system.core.config.js', 'core/system.core.start.js'], () => {
                 /* loader.require(['core/main.js'], () => {
