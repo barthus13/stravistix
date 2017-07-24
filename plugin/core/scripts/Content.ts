@@ -95,7 +95,7 @@ class Content {
             Content.loader.injectJS('var $ = jQuery;');
 
             // Inject systemjs module loader and start core app inner strava.com
-            Content.loader.require(['node_modules/systemjs/dist/system.js', 'core/scripts/SystemJS.config.js', 'core/scripts/SystemJS.start.js'], () => {
+            Content.loader.require(['node_modules/systemjs/dist/system.js', 'core/scripts/SystemJS.config.js', 'core/scripts/SystemJS.start.js'/*, 'node_modules/geodesy/latlon-spherical.js'*/], () => {
                 console.log("--- SystemJS Loaded ---");
             });
 

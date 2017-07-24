@@ -64,24 +64,43 @@ console.log(chromeSettings);*/
 // jQuery('body').before("Hey ho");
 // $('body').before("Hey");
 
-declare let chromeSettings: IUserSettings; // Coming from content.ts
-declare let appResources: IAppResources; // Coming from content.ts
+declare let chromeSettings: IUserSettings; // Coming from content.ts (injected in window)
+declare let appResources: IAppResources; // Coming from content.ts (injected in window)
 
 console.log(chromeSettings);
 console.log(appResources);
 console.log(Constants);
 
 Q.all([
-    SystemJS.import('sphericalLatLon'),
-    SystemJS.import('dms'),
-    SystemJS.import('jqueryAppear')
+    SystemJS.import('jqueryAppear'),
+    SystemJS.import('sphericalLatLon') // SystemJS.import('dms'),
 // ]).then((modules) => {
-]).then(() => {
-    // var jquery = modules[0];
-    // var underscore = modules[1];
+]).then((modules) => {
+    console.warn(modules);
     let stravistiX: StravistiX = new StravistiX(chromeSettings, appResources);
     stravistiX.init();
 });
+
+
+// let qq = SystemJS.get('q');
+// console.log(qq);
+/*
+SystemJS.import('sphericalLatLon').then((module) => {
+
+    console.log(module);
+
+    // let modu = SystemJS.get('q');
+    // console.log(modu.defer());
+
+    let pos = new LatLon(0, 0);
+    console.log(pos);
+});
+SystemJS.import('underscore').then((module) => {
+    console.log(module);
+});
+*/
+
+
 
 
 

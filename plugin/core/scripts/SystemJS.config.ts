@@ -1,4 +1,3 @@
-
 console.log("Imported core *global* system config !");
 
 // var baseURL = "chrome-extension://" + chrome.runtime.id + "/";
@@ -34,6 +33,17 @@ SystemJS.config({
         // Customs
         'jqueryAppear': 'custom:jquery.appear.js',
     },
+    meta: {
+        // 'jqueryAppear': {
+        //     // exports: '$.appear',
+        //     format: 'global'
+        // },
+        'sphericalLatLon': {
+            exports: 'LatLon',
+            format: 'global'
+        }
+    }
+
     // bundles: {
     //     stxBundle: ['jqueryAppear', 'geodesy']
     // },
