@@ -107,14 +107,9 @@ class Content {
 
                 // SystemJS.import('core/scripts/SystemJS.start.js').then((m) => {
                 Content.loader.require(['core/scripts/SystemJS.start.js'], () => {
-
-                    // console.warn(m);
-                    // .
-                    // module.Main.receiveData(data);
-
-                    let evt = new CustomEvent("CustomEvent");
-                    evt.initCustomEvent("StartCorePlugin", true, true, data);
-                    window.dispatchEvent(evt);
+                    let event = new CustomEvent("Event");
+                    event.initCustomEvent("StartCorePlugin", true, true, data);
+                    dispatchEvent(event);
 
                 });
 

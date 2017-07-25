@@ -5,9 +5,7 @@ console.log("Imported core *strava.com* system start !");
 
 
 //Listen for the event
-window.addEventListener("StartCorePlugin", function(evt: any) {
-
-
+addEventListener("StartCorePlugin", function(evt: any) {
 
    /* SystemJS.import('core/scripts/Main.js').then((module) => {
 
@@ -19,6 +17,7 @@ window.addEventListener("StartCorePlugin", function(evt: any) {
 
     Promise.all([
         SystemJS.import('jqueryAppear'),
+        SystemJS.import('fancybox'),
         SystemJS.import('sphericalLatLon') // SystemJS.import('dms'),
 
     ]).then((modules) => {

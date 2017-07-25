@@ -32,6 +32,7 @@ SystemJS.config({
         'dms': 'npm:geodesy/dms.js',
         'sphericalLatLon': 'npm:geodesy/latlon-spherical.js',
         'underscore': 'npm:underscore/underscore-min.js',
+        'fancybox': 'npm:fancybox/dist/js/jquery.fancybox.pack.js',
 
         // Customs
         'jqueryAppear': 'custom:jquery.appear.js',
