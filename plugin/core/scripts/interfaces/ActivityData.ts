@@ -21,7 +21,7 @@ interface IActivityStream {
     altitude_smooth?: Array<number>;
 }
 
-interface IAnalysisData {
+export interface IAnalysisData {
     moveRatio: number;
     toughnessScore: number;
     speedData: ISpeedData;

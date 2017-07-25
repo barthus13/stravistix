@@ -5,6 +5,7 @@ import {IUserSettings} from "../UserSettings";
 import {IComputeActivityThreadMessage} from "../interfaces/ComputeActivityThreadMessage";
 import {IAppResources} from "../interfaces/AppResources";
 import {env} from "../../config/env";
+import {WorkerStart} from "./workers/WorkerStart";
 
 export class ActivityProcessor {
 
@@ -91,71 +92,49 @@ export class ActivityProcessor {
     protected computeAnalysisThroughDedicatedThread(hasPowerMeter: boolean, athleteWeight: number, activityStatsMap: IActivityStatsMap, activityStream: IActivityStream, bounds: Array<number>, callback: (analysisData: IAnalysisData) => void): void {
 
         // Create worker blob URL if not exist
-       /* if (!this.computeAnalysisWorkerBlobURL) {
+        if (!this.computeAnalysisWorkerBlobURL) {
             // Create a blob from 'ComputeAnalysisWorker' function variable as a string
             // let blob: Blob = new Blob(['(', ComputeAnalysisWorker.toString(), ')()'], {type: 'application/javascript'});
 
-            // Keep track of blob URL to reuse it
-            this.computeAnalysisWorkerBlobURL = 'chrome-extension://' + this.appResources.extensionId + '/core/scripts/processors/workers/WorkerStart.js';
-            // this.computeAnalysisWorkerBlobURL = URL.createObjectURL(blob);
-        }*/
+            /*let systemsJsImports: string = "importScripts('chrome-extension://" + this.appResources.extensionId + "/node_modules/systemjs/dist/system.js');\n";
+            systemsJsImports += "importScripts('chrome-extension://" + this.appResources.extensionId + "/core/scripts/SystemJS.config.js');\n";
+            systemsJsImports += "onmessage = (mainThreadEvent) => { console.log(mainThreadEvent.data); };\n";
+            systemsJsImports += "SystemJS.import('chrome-extension://" + this.appResources.extensionId + "/core/scripts/processors/workers/ComputeAnalysisWorker.js').then(null, console.error.bind(console));";
 
-        let readFileAsync = (sUrl: string, callback: Function) => {
-            let xhr = new XMLHttpRequest();
-            xhr.ontimeout = function () {
-                console.error("The request for " + sUrl + " timed out.");
-            };
-            xhr.onload = function () {
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-                        console.log(xhr);
-                        callback(xhr.response);
-                    } else {
-                        console.error(xhr.statusText);
-                    }
-                }
-            };
-            xhr.open("GET", sUrl, true);
-            xhr.send(null);
+            console.log(systemsJsImports);*/
+
+            let blob: Blob = new Blob(['(', WorkerStart.toString(), ')()'], {type: 'application/javascript'});
+
+            // Keep track of blob URL to reuse it
+            this.computeAnalysisWorkerBlobURL = URL.createObjectURL(blob);
+        }
+
+        // Lets create that worker/thread!
+        this.computeAnalysisThread = new Worker(this.computeAnalysisWorkerBlobURL);
+
+        // Send user and activity data to the thread
+        // He will compute them in the background
+        let threadMessage: IComputeActivityThreadMessage = {
+            activityType: this.activityType,
+            isTrainer: this.isTrainer,
+            appResources: this.appResources,
+            userSettings: this.userSettings,
+            athleteWeight: athleteWeight,
+            hasPowerMeter: hasPowerMeter,
+            activityStatsMap: activityStatsMap,
+            activityStream: activityStream,
+            bounds: bounds,
+            returnZones: true
         };
 
-        readFileAsync('chrome-extension://' + this.appResources.extensionId + '/core/scripts/processors/workers/WorkerStart.js', (WorkerStartScript: string) => {
+        this.computeAnalysisThread.postMessage(threadMessage);
 
-
-            console.log(WorkerStartScript);
-
-            let blob: Blob = new Blob(['(', WorkerStartScript, ')()'], {type: 'application/javascript'});
-
-            this.computeAnalysisWorkerBlobURL = URL.createObjectURL(blob);
-
-            // Lets create that worker/thread!
-            this.computeAnalysisThread = new Worker(this.computeAnalysisWorkerBlobURL);
-
-            // Send user and activity data to the thread
-            // He will compute them in the background
-            let threadMessage: IComputeActivityThreadMessage = {
-                activityType: this.activityType,
-                isTrainer: this.isTrainer,
-                appResources: this.appResources,
-                userSettings: this.userSettings,
-                athleteWeight: athleteWeight,
-                hasPowerMeter: hasPowerMeter,
-                activityStatsMap: activityStatsMap,
-                activityStream: activityStream,
-                bounds: bounds,
-                returnZones: true
-            };
-
-            this.computeAnalysisThread.postMessage(threadMessage);
-
-            // Listen messages from thread. Thread will send to us the result of computation
-            this.computeAnalysisThread.onmessage = (messageFromThread: MessageEvent) => {
-                callback(messageFromThread.data);
-                // Finish and kill thread
-                this.computeAnalysisThread.terminate();
-            };
-
-        });
+        // Listen messages from thread. Thread will send to us the result of computation
+        this.computeAnalysisThread.onmessage = (messageFromThread: MessageEvent) => {
+            callback(messageFromThread.data);
+            // Finish and kill thread
+            this.computeAnalysisThread.terminate();
+        };
     }
 }
 
