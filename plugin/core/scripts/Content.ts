@@ -107,7 +107,7 @@ class Content {
             // Inject systemjs module loader and start core app inner strava.com
             Content.loader.require([
                 'node_modules/systemjs/dist/system.js',
-                'core/scripts/SystemJS.config.js'
+                // 'core/scripts/SystemJS.config.js'
             ], () => {
 
                 console.log("--- SystemJS config Loaded ---");

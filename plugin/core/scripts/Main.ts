@@ -1,6 +1,11 @@
 import {IAppResources} from "./interfaces/AppResources";
 
-console.log("--- Main ---");
+
+
+// TODO Can be delete
+
+
+// console.log("--- Main ---");
 
 import {Helper} from "./Helper";
 import {VacuumProcessor} from "./processors/VacuumProcessor";

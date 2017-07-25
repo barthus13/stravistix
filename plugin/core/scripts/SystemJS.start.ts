@@ -3,11 +3,107 @@
 
 console.log("Imported core *strava.com* system start !");
 
+let setupSystemJsConfig = function (baseUrl: string) {
+
+    SystemJS.config({
+        // baseURL: null, // Dynamically set by 'core/scripts/SystemJS.start.js'
+        // baseURL: 'chrome-extension://' + Constants.EXTENSION_ID + '/', // TODO Create Constants.EXTENSION_BASE_URL
+        baseURL: baseUrl,
+        // baseURL: 'chrome-extension://' + chrome.runtime.id + '/',
+        // baseURL: 'chrome-extension://ahmigdcbdgfchdodomjnbnofbefldajo/', // GET Dyn !!
+        // baseURL: 'chrome-extension://cpopppnkcjpgdeogmpdjlihjpnbnjhic/', // GET Dyn !!
+
+
+        paths: {
+            'npm:': 'node_modules/',
+            'custom:': 'core/modules/'
+        },
+        packages: {
+            'core': {
+                format: 'cjs'
+            },
+            'npm:geodesy': {
+                format: 'cjs'
+            }
+        },
+        map: {
+            // Npm
+            'chart.js': 'npm:chart.js/dist/Chart.bundle.js',
+            'd3': 'npm:d3/d3.js',
+            'q': 'npm:q/q.js',
+            'jquery': 'npm:jquery/dist/jquery.js',
+            'dms': 'npm:geodesy/dms.js',
+            'sphericalLatLon': 'npm:geodesy/latlon-spherical.js',
+            'underscore': 'npm:underscore/underscore-min.js',
+            'fancybox': 'npm:fancybox/dist/js/jquery.fancybox.pack.js',
+
+            // Customs
+            'jqueryAppear': 'custom:jquery.appear.js',
+        },
+        meta: {
+            // 'jqueryAppear': {
+            //     // exports: '$.appear',
+            //     format: 'global'
+            // },
+            'sphericalLatLon': {
+                exports: 'LatLon',
+                format: 'global'
+            }
+        }
+
+        // bundles: {
+        //     stxBundle: ['jqueryAppear', 'geodesy']
+        // },
+        // depCache: {
+        //     // bundleA: ['jqueryAppear', 'geodesy'],
+        //     geodesy: ['node_modules/geodesy/dms.js', 'node_modules/geodesy/latlon-spherical.js']
+        // },
+
+        // transpiler: 'typescript',
+        // defaultJSExtensions: true,
+        // defaultExtension: 'js',
+
+        // format: 'cjs',
+        // meta: {
+        //     'core/*': { format: 'cjs' }
+        // }
+        // map: {
+        //     // 'core': 'core/*.js's
+        // },
+        // packages: {
+        // // meaning [baseURL]/local/package when no other rules are present
+        // // path is normalized using map and paths configuration
+        // 'core': {
+        // //   main: 'index.js',
+        //   format: 'cjs',
+        //   defaultExtension: 'js',
+        //   map: {
+        //     // use local jquery for all jquery requires in this package
+        //     'jquery': './vendor/local-jquery.js',
+
+        //     // import '/local/package/custom-import' should route to '/local/package/local/import/file.js'
+        //     './custom-import': './local/import/file.js'
+        //   },
+        //   meta: {
+        //     // sets meta for modules within the package
+        //     '*': {
+        //       'format': 'cjs'
+        //     }
+        //   }
+        // }
+        //   }
+    });
+};
+
 
 //Listen for the event
 addEventListener("StartCorePlugin", function (evt: any) {
 
     let data = evt.detail;
+
+    setupSystemJsConfig('chrome-extension://' + data.Constants.EXTENSION_ID + '/');
+
+
     /* SystemJS.import('core/scripts/Main.js').then((module) => {
 
      console.log(module.Main.instance());
