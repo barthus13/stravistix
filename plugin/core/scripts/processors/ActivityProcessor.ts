@@ -124,7 +124,8 @@ export class ActivityProcessor {
             activityStatsMap: activityStatsMap,
             activityStream: activityStream,
             bounds: bounds,
-            returnZones: true
+            returnZones: true,
+            systemJsConfig: SystemJS.getConfig() // TODO fix crappy config...
         };
 
         this.computeAnalysisThread.postMessage(threadMessage);

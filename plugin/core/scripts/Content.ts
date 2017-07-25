@@ -21,14 +21,14 @@ class Content {
     }
 
     /*
-    loadDependencies(finishLoading: Function): void {
+     loadDependencies(finishLoading: Function): void {
 
-        let dependencies: Array<string> = _.union(this.jsDependencies, this.cssDependencies);
-        Content.loader.require(dependencies, () => {
-            finishLoading();
-        });
-    }
-*/
+     let dependencies: Array<string> = _.union(this.jsDependencies, this.cssDependencies);
+     Content.loader.require(dependencies, () => {
+     finishLoading();
+     });
+     }
+     */
     isExtensionRunnableInThisContext(): boolean {
 
         let isRunnable: boolean = true;
@@ -72,47 +72,74 @@ class Content {
             if (_.isEmpty(chromeSettings)) { // If settings from chrome sync storage are empty
                 chromeSettings = this.userSettings;
             }
-            let defaultSettings = _.keys(userSettings)
-            let syncedSettings = _.keys(chromeSettings)
+            let defaultSettings = _.keys(userSettings);
+            let syncedSettings = _.keys(chromeSettings);
             if (_.difference(defaultSettings, syncedSettings).length !== 0) { // If settings shape has changed
                 _.defaults(chromeSettings, userSettings)
             }
 
 
-            // Assign these constant value at "content script" runtime // TODO Refactor => method
+            // TODO Refactor => method
+            // Assign these constant value at "content script" runtime
             Constants.VERSION = chrome.runtime.getManifest().version;
             Constants.EXTENSION_ID = chrome.runtime.id;
             Constants.OPTIONS_URL = 'chrome-extension://' + chrome.runtime.id + '/options/app/index.html';
 
-            // Inject constant
+
+
+           /* // Inject constant
             Content.loader.injectJS('var Constants = ' + JSON.stringify(Constants) + ';');
 
-            // TODO Pass data from Content.ts => Main.ts via "bridge_variable"
             Content.loader.injectJS('var chromeSettings = ' + JSON.stringify(chromeSettings) + ';');
             Content.loader.injectJS('var appResources = ' + JSON.stringify(appResources) + ';');
+*/
+
+
+            let data = { // TODO Interface ?!
+                chromeSettings: chromeSettings,
+                Constants: Constants,
+                appResources: appResources
+            };
 
             // Other
-            Content.loader.injectJS('var $ = jQuery;');
+            Content.loader.injectJS('var $ = jQuery;'); // TODO make better ...
 
             // Inject systemjs module loader and start core app inner strava.com
-            Content.loader.require(['node_modules/systemjs/dist/system.js', 'core/scripts/SystemJS.config.js', 'core/scripts/SystemJS.start.js'/*, 'node_modules/geodesy/latlon-spherical.js'*/], () => {
-                console.log("--- SystemJS Loaded ---");
+            Content.loader.require([
+                'node_modules/systemjs/dist/system.js',
+                // 'core/scripts/SystemJS.config.js'
+            ], () => {
+
+                console.log("--- SystemJS config Loaded ---");
+
+                Content.loader.require(['core/scripts/SystemJS.start.js'], () => {
+
+                    console.log("--- SystemJS start Loaded ---");
+
+                    let startCorePluginEvent: CustomEvent = new CustomEvent("Event");
+                    startCorePluginEvent.initCustomEvent("StartCorePlugin", true, true, data);
+                    dispatchEvent(startCorePluginEvent);
+
+                    console.log("--- Start the core plugin ---");
+                });
+
+//Dispatch an event
+
+
             });
 
-        // let node: HTMLElement = (document.head || document.documentElement);
-        //
-        // let injectedScript: HTMLScriptElement = document.createElement('script');
-        // injectedScript.src = chrome.extension.getURL('core/scripts/StravistiX.js');
-        // injectedScript.onload = () => {
-        //
-        //     injectedScript.remove();
-        //
-        //     let inner: HTMLScriptElement = document.createElement('script');
+            // let node: HTMLElement = (document.head || document.documentElement);
+            //
+            // let injectedScript: HTMLScriptElement = document.createElement('script');
+            // injectedScript.src = chrome.extension.getURL('core/scripts/StravistiX.js');
+            // injectedScript.onload = () => {
+            //
+            //     injectedScript.remove();
+            //
+            //     let inner: HTMLScriptElement = document.createElement('script');
 
 
-
-
-        /* SystemJS.config({
+            /* SystemJS.config({
              baseURL: chrome.extension.getURL("/")
              // transpiler: 'typescript',
              // packages: {
@@ -120,27 +147,25 @@ class Content {
              //         // defaultExtension: 'js'
              //     }
              // }
-         });
+             });
 
-         SystemJS.import('core/scripts/SystemJS.config.js').then(() => {
+             SystemJS.import('core/scripts/SystemJS.config.js').then(() => {
              SystemJS.import('core/scripts/SystemJS.start.js');
 
-         }, console.error.bind(console));
-         */
+             }, console.error.bind(console));
+             */
 
 
-
-
-        //     inner.textContent = 'var $ = jQuery;';
-        //     inner.textContent += 'var stravistiX = new StravistiX(' + JSON.stringify(chromeSettings) + ', ' + JSON.stringify(this.appResources) + ');';
-        //     inner.onload = () => {
-        //         inner.remove();
-        //     };
-        //
-        //     node.appendChild(inner);
-        // };
-        // node.appendChild(injectedScript);
-        // });
+            //     inner.textContent = 'var $ = jQuery;';
+            //     inner.textContent += 'var stravistiX = new StravistiX(' + JSON.stringify(chromeSettings) + ', ' + JSON.stringify(this.appResources) + ');';
+            //     inner.onload = () => {
+            //         inner.remove();
+            //     };
+            //
+            //     node.appendChild(inner);
+            // };
+            // node.appendChild(injectedScript);
+            // });
 
         });
 
@@ -290,7 +315,7 @@ let cssDependencies: Array<string> = [
     'core/css/core.css'
 ];
 
-let content: Content = new Content(jsDependencies, cssDependencies,  userSettings/*, appResources*/);
+let content: Content = new Content(jsDependencies, cssDependencies, userSettings/*, appResources*/);
 content.start();
 
 // Inject constants
