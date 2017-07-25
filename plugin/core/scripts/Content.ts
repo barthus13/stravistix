@@ -79,38 +79,48 @@ class Content {
             }
 
 
-            // Assign these constant value at "content script" runtime // TODO Refactor => method
+            // TODO Refactor => method
+            // Assign these constant value at "content script" runtime
             Constants.VERSION = chrome.runtime.getManifest().version;
             Constants.EXTENSION_ID = chrome.runtime.id;
             Constants.OPTIONS_URL = 'chrome-extension://' + chrome.runtime.id + '/options/app/index.html';
 
+
+
            /* // Inject constant
             Content.loader.injectJS('var Constants = ' + JSON.stringify(Constants) + ';');
 
-            // TODO Pass data from Content.ts => Main.ts via "bridge_variable"
             Content.loader.injectJS('var chromeSettings = ' + JSON.stringify(chromeSettings) + ';');
             Content.loader.injectJS('var appResources = ' + JSON.stringify(appResources) + ';');
 */
-            let data = {
+
+
+            let data = { // TODO Interface ?!
                 chromeSettings: chromeSettings,
                 Constants: Constants,
                 appResources: appResources
             };
 
             // Other
-            Content.loader.injectJS('var $ = jQuery;');
+            Content.loader.injectJS('var $ = jQuery;'); // TODO make better ...
 
             // Inject systemjs module loader and start core app inner strava.com
-            Content.loader.require(['node_modules/systemjs/dist/system.js', 'core/scripts/SystemJS.config.js', /*, 'node_modules/geodesy/latlon-spherical.js'*/], () => {
+            Content.loader.require([
+                'node_modules/systemjs/dist/system.js',
+                'core/scripts/SystemJS.config.js'
+            ], () => {
 
-                console.log("--- SystemJS Loaded ---");
+                console.log("--- SystemJS config Loaded ---");
 
-                // SystemJS.import('core/scripts/SystemJS.start.js').then((m) => {
                 Content.loader.require(['core/scripts/SystemJS.start.js'], () => {
-                    let event = new CustomEvent("Event");
-                    event.initCustomEvent("StartCorePlugin", true, true, data);
-                    dispatchEvent(event);
 
+                    console.log("--- SystemJS start Loaded ---");
+
+                    let startCorePluginEvent: CustomEvent = new CustomEvent("Event");
+                    startCorePluginEvent.initCustomEvent("StartCorePlugin", true, true, data);
+                    dispatchEvent(startCorePluginEvent);
+
+                    console.log("--- Start the core plugin ---");
                 });
 
 //Dispatch an event
