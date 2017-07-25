@@ -91,40 +91,71 @@ export class ActivityProcessor {
     protected computeAnalysisThroughDedicatedThread(hasPowerMeter: boolean, athleteWeight: number, activityStatsMap: IActivityStatsMap, activityStream: IActivityStream, bounds: Array<number>, callback: (analysisData: IAnalysisData) => void): void {
 
         // Create worker blob URL if not exist
-        if (!this.computeAnalysisWorkerBlobURL) {
+       /* if (!this.computeAnalysisWorkerBlobURL) {
             // Create a blob from 'ComputeAnalysisWorker' function variable as a string
-            let blob: Blob = new Blob(['(', ComputeAnalysisWorker.toString(), ')()'], {type: 'application/javascript'});
+            // let blob: Blob = new Blob(['(', ComputeAnalysisWorker.toString(), ')()'], {type: 'application/javascript'});
 
             // Keep track of blob URL to reuse it
+            this.computeAnalysisWorkerBlobURL = 'chrome-extension://' + this.appResources.extensionId + '/core/scripts/processors/workers/WorkerStart.js';
+            // this.computeAnalysisWorkerBlobURL = URL.createObjectURL(blob);
+        }*/
+
+        let readFileAsync = (sUrl: string, callback: Function) => {
+            let xhr = new XMLHttpRequest();
+            xhr.ontimeout = function () {
+                console.error("The request for " + sUrl + " timed out.");
+            };
+            xhr.onload = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        console.log(xhr);
+                        callback(xhr.response);
+                    } else {
+                        console.error(xhr.statusText);
+                    }
+                }
+            };
+            xhr.open("GET", sUrl, true);
+            xhr.send(null);
+        };
+
+        readFileAsync('chrome-extension://' + this.appResources.extensionId + '/core/scripts/processors/workers/WorkerStart.js', (WorkerStartScript: string) => {
+
+
+            console.log(WorkerStartScript);
+
+            let blob: Blob = new Blob(['(', WorkerStartScript, ')()'], {type: 'application/javascript'});
+
             this.computeAnalysisWorkerBlobURL = URL.createObjectURL(blob);
-        }
 
-        // Lets create that worker/thread!
-        this.computeAnalysisThread = new Worker(this.computeAnalysisWorkerBlobURL);
+            // Lets create that worker/thread!
+            this.computeAnalysisThread = new Worker(this.computeAnalysisWorkerBlobURL);
 
-        // Send user and activity data to the thread
-        // He will compute them in the background
-        let threadMessage: IComputeActivityThreadMessage = {
-            activityType: this.activityType,
-            isTrainer: this.isTrainer,
-            appResources: this.appResources,
-            userSettings: this.userSettings,
-            athleteWeight: athleteWeight,
-            hasPowerMeter: hasPowerMeter,
-            activityStatsMap: activityStatsMap,
-            activityStream: activityStream,
-            bounds: bounds,
-            returnZones: true
-        };
+            // Send user and activity data to the thread
+            // He will compute them in the background
+            let threadMessage: IComputeActivityThreadMessage = {
+                activityType: this.activityType,
+                isTrainer: this.isTrainer,
+                appResources: this.appResources,
+                userSettings: this.userSettings,
+                athleteWeight: athleteWeight,
+                hasPowerMeter: hasPowerMeter,
+                activityStatsMap: activityStatsMap,
+                activityStream: activityStream,
+                bounds: bounds,
+                returnZones: true
+            };
 
-        this.computeAnalysisThread.postMessage(threadMessage);
+            this.computeAnalysisThread.postMessage(threadMessage);
 
-        // Listen messages from thread. Thread will send to us the result of computation
-        this.computeAnalysisThread.onmessage = (messageFromThread: MessageEvent) => {
-            callback(messageFromThread.data);
-            // Finish and kill thread
-            this.computeAnalysisThread.terminate();
-        };
+            // Listen messages from thread. Thread will send to us the result of computation
+            this.computeAnalysisThread.onmessage = (messageFromThread: MessageEvent) => {
+                callback(messageFromThread.data);
+                // Finish and kill thread
+                this.computeAnalysisThread.terminate();
+            };
+
+        });
     }
 }
 
