@@ -3,11 +3,14 @@ console.log("Imported core *global* system config !");
 // var baseURL = "chrome-extension://" + chrome.runtime.id + "/";
 // console.log("Config with baseURL: " + chromeUuidURL);
 
+
+
 SystemJS.config({
     // // baseURL: 'chrome-extension://' + chrome.runtime.id + '/',
     // baseURL: 'chrome-extension://' + Constants.EXTENSION_ID + '/', // TODO Create Constants.EXTENSION_BASE_URL
     // baseURL: 'chrome-extension://' + chrome.runtime.id + '/',
-    baseURL: 'chrome-extension://cpopppnkcjpgdeogmpdjlihjpnbnjhic/', // GET Dyn !!
+    baseURL: 'chrome-extension://ahmigdcbdgfchdodomjnbnofbefldajo/', // GET Dyn !!
+    // baseURL: 'chrome-extension://cpopppnkcjpgdeogmpdjlihjpnbnjhic/', // GET Dyn !!
     paths: {
         'npm:': 'node_modules/',
         'custom:': 'core/modules/'
