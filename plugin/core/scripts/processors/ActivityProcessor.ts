@@ -90,64 +90,14 @@ export class ActivityProcessor {
 
     protected computeAnalysisThroughDedicatedThread(hasPowerMeter: boolean, athleteWeight: number, activityStatsMap: IActivityStatsMap, activityStream: IActivityStream, bounds: Array<number>, callback: (analysisData: IAnalysisData) => void): void {
 
-        /* let readTextFile = function (file: string, callback: Function) {
-         let rawFile = new XMLHttpRequest();
-         rawFile.open("GET", file, false);
-         rawFile.onreadystatechange = function () {
-         if (rawFile.readyState === 4) {
-         if (rawFile.status === 200 || rawFile.status == 0) {
-         let allText = rawFile.responseText;
-         // alert(allText);
-         callback(rawFile.responseText);
-         }
-         }
-         }
-         rawFile.send(null);
-         };*/
+        // Create worker blob URL if not exist
+        if (!this.computeAnalysisWorkerBlobURL) {
+            // Create a blob from 'ComputeAnalysisWorker' function variable as a string
+            let blob: Blob = new Blob(['(', ComputeAnalysisWorker.toString(), ')()'], {type: 'application/javascript'});
 
-        let readFileAsync = (sUrl: string, timeout: number, callback: Function) => {
-            let xhr = new XMLHttpRequest();
-            xhr.ontimeout = function () {
-                console.error("The request for " + sUrl + " timed out.");
-            };
-            xhr.onload = function () {
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-                        console.log(xhr);
-                        callback(xhr.responseText);
-                    } else {
-                        console.error(xhr.statusText);
-                    }
-                }
-            };
-            xhr.open("GET", sUrl, true);
-            xhr.send(null);
-        };
-        /*
-         // Create worker blob URL if not exist
-         if (!this.computeAnalysisWorkerBlobURL) {
-
-         // Create a blob from 'ComputeAnalysisWorker' function variable as a string
-         let blob: Blob = new Blob(['(', ComputeAnalysisWorker.toString(), ')()'], {type: 'application/javascript'});
-
-         // Keep track of blob URL to reuse it
-         this.computeAnalysisWorkerBlobURL = URL.createObjectURL(blob);
-         // this.computeAnalysisWorkerBlobURL = 'chrome-extension://' + this.appResources.extensionId + '/core/scripts/processors/workers/ComputeAnalysisWorker.js';
-         }
-         */
-
-        // readFileAsync('chrome-extension://' + this.appResources.extensionId + '/core/scripts/processors/workers/ComputeAnalysisWorker.js', 10, (script: string) => {
-
-        let systemsJsImports: string = "importScripts('chrome-extension://" + this.appResources.extensionId + "/node_modules/systemjs/dist/system.js');\n";
-        systemsJsImports += "importScripts('chrome-extension://" + this.appResources.extensionId + "/core/scripts/SystemJS.config.js');\n";
-        systemsJsImports += "onmessage = (mainThreadEvent) => { console.log(mainThreadEvent.data); };\n";
-        systemsJsImports += "SystemJS.import('chrome-extension://" + this.appResources.extensionId + "/core/scripts/processors/workers/ComputeAnalysisWorker.js').then(null, console.error.bind(console));";
-
-        console.log(systemsJsImports);
-
-        let blob: Blob = new Blob([systemsJsImports], {type: 'application/javascript'});
-        this.computeAnalysisWorkerBlobURL = URL.createObjectURL(blob);
-
+            // Keep track of blob URL to reuse it
+            this.computeAnalysisWorkerBlobURL = URL.createObjectURL(blob);
+        }
 
         // Lets create that worker/thread!
         this.computeAnalysisThread = new Worker(this.computeAnalysisWorkerBlobURL);
@@ -175,7 +125,6 @@ export class ActivityProcessor {
             // Finish and kill thread
             this.computeAnalysisThread.terminate();
         };
-        // });
     }
 }
 
