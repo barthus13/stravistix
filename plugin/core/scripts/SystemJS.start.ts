@@ -13,7 +13,6 @@ let setupSystemJsConfig = function (baseUrl: string) {
         // baseURL: 'chrome-extension://ahmigdcbdgfchdodomjnbnofbefldajo/', // GET Dyn !!
         // baseURL: 'chrome-extension://cpopppnkcjpgdeogmpdjlihjpnbnjhic/', // GET Dyn !!
 
-
         paths: {
             'npm:': 'node_modules/',
             'custom:': 'core/modules/'
@@ -28,6 +27,7 @@ let setupSystemJsConfig = function (baseUrl: string) {
         },
         map: {
             // Npm
+            'css': 'npm:systemjs-plugin-css/css.js',
             'chart.js': 'npm:chart.js/dist/Chart.bundle.js',
             'd3': 'npm:d3/d3.js',
             'q': 'npm:q/q.js',
@@ -37,14 +37,25 @@ let setupSystemJsConfig = function (baseUrl: string) {
             'underscore': 'npm:underscore/underscore-min.js',
             'fancybox': 'npm:fancybox/dist/js/jquery.fancybox.pack.js',
 
-            // Customs
+            // Custom modules
             'jqueryAppear': 'custom:jquery.appear.js',
+
+            // Css
+            'fancybox.css': 'npm:fancybox/dist/css/jquery.fancybox.css',
+            'core.css': 'core/css/core.css',
         },
         meta: {
             // 'jqueryAppear': {
             //     // exports: '$.appear',
             //     format: 'global'
             // },
+
+            'fancybox.css': {
+                loader: 'css'
+            },
+            'core.css': {
+                loader: 'css'
+            },
             'sphericalLatLon': {
                 exports: 'LatLon',
                 format: 'global'
@@ -120,9 +131,15 @@ addEventListener("StartCorePlugin", function (evt: any) {
 
     // Load required non ES modules into the core
     Promise.all([
+
+        // Non "ES modules" import
         SystemJS.import('jqueryAppear'),
         SystemJS.import('fancybox'),
-        SystemJS.import('sphericalLatLon') // SystemJS.import('dms'),
+        SystemJS.import('sphericalLatLon'), // SystemJS.import('dms'),
+
+        // Css
+        SystemJS.import('fancybox.css'),
+        SystemJS.import('core.css'),
 
     ]).then(() => {
 
