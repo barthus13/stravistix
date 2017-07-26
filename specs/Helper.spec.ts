@@ -1,5 +1,3 @@
-/// <reference path="./typings/specs.d.ts" />
-
 import {Helper} from "../plugin/core/scripts/Helper";
 
 describe('Helper', () => {
