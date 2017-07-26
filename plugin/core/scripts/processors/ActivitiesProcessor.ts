@@ -1,4 +1,3 @@
-import {ComputeAnalysisWorker} from "./workers/ComputeAnalysisWorker";
 import * as Q from "q";
 import * as _ from "underscore";
 import {IUserSettings} from "../UserSettings";
@@ -6,6 +5,7 @@ import {IComputeActivityThreadMessage} from "../interfaces/ComputeActivityThread
 import {IAppResources} from "../interfaces/AppResources";
 import {ISyncActivityComputed, ISyncActivityWithStream, ISyncNotify} from "../interfaces/Sync";
 import {IActivityStatsMap, IAnalysisData} from "../interfaces/ActivityData";
+import {WorkerStart} from "./workers/WorkerStart";
 
 export class ActivitiesProcessor {
 
@@ -121,7 +121,7 @@ export class ActivitiesProcessor {
         let deferred = Q.defer<IAnalysisData>();
 
         // Lets create that worker/thread!
-        let computeAnalysisThread: Worker = new Worker(URL.createObjectURL(new Blob(['(', ComputeAnalysisWorker.toString(), ')()'], {
+        let computeAnalysisThread: Worker = new Worker(URL.createObjectURL(new Blob(['(', WorkerStart.toString(), ')()'], {
             type: 'application/javascript'
         })));
 
