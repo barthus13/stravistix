@@ -193,7 +193,7 @@ gulp.task('buildSpecs', ['build'], function () {
 
     return gulp.src([SPECS_FOLDER + '/**/*.ts'], {
         base: './'
-    }). pipe(tsProject()).pipe(gulp.dest('./')); /*pipe(typeScript(tsProject)).pipe(gulp.dest('./'));*/
+    }). pipe(typeScript.createProject("tsconfig.json")()).pipe(gulp.dest('./'));
 
 });
 
