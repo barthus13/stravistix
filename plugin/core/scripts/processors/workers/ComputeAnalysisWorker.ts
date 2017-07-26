@@ -2,6 +2,7 @@
 // import {ActivityComputer} from "../ActivityComputer";
 import {IComputeActivityThreadMessage} from "../../interfaces/ComputeActivityThreadMessage";
 import {ActivityComputer} from "../ActivityComputer";
+import {IAnalysisData} from "../../interfaces/ActivityData";
 
 export function ComputeAnalysisWorker() {
 

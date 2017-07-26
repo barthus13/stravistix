@@ -1,6 +1,7 @@
 import * as _ from "underscore";
 import {AbstractDataView} from "./AbstractDataView";
 import {Helper} from "../../../Helper";
+import {IActivityBasicInfo} from "../../../interfaces/ActivityData";
 
 export class HeaderView extends AbstractDataView {
 

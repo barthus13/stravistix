@@ -6,6 +6,7 @@ import {app} from "../App";
 import {IAthleteProfile} from "../../../core/scripts/synchronizer/ActivitiesSynchronizer";
 import {IStorageUsage} from "../../../core/modules/StorageManager";
 import {IUserSettings, userSettings} from "../../../core/scripts/UserSettings";
+import {ISyncActivityComputed} from "../../../core/scripts/interfaces/Sync";
 
 export class ChromeStorageService {
 

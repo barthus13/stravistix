@@ -3,6 +3,7 @@ import {IScope} from "angular";
 import {ChromeStorageService} from "../services/ChromeStorageService";
 import {app} from "../App";
 import {IUserSettings} from "../../../core/scripts/UserSettings";
+import {IZone} from "../../../core/scripts/interfaces/ActivityData";
 
 interface IXtdData {
     name: string;

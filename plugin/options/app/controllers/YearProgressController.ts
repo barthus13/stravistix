@@ -5,6 +5,7 @@ import moment = require("moment");
 import {Moment} from "moment";
 import {ChromeStorageService} from "../services/ChromeStorageService";
 import {app} from "../App";
+import {ISyncActivityComputed} from "../../../core/scripts/interfaces/Sync";
 
 interface IYearProgress {
     year: number;

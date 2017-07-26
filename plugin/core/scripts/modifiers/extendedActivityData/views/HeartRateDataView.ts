@@ -3,6 +3,7 @@ import {AbstractDataView} from "./AbstractDataView";
 import {StravistiX} from "../../../StravistiX";
 import {Helper} from "../../../Helper";
 import {IUserSettings} from "../../../UserSettings";
+import {IHeartRateData} from "../../../interfaces/ActivityData";
 
 export class HeartRateDataView extends AbstractDataView {
 

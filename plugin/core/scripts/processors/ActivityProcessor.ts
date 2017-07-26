@@ -6,6 +6,7 @@ import {IComputeActivityThreadMessage} from "../interfaces/ComputeActivityThread
 import {IAppResources} from "../interfaces/AppResources";
 import {env} from "../../config/env";
 import {WorkerStart} from "./workers/WorkerStart";
+import {IActivityStatsMap, IActivityStream, IAnalysisData} from "../interfaces/ActivityData";
 
 export class ActivityProcessor {
 

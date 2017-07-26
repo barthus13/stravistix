@@ -1,5 +1,6 @@
 import {IUserSettings} from "../UserSettings";
 import {IAppResources} from "./AppResources";
+import {IActivityStatsMap, IActivityStream} from "./ActivityData";
 
 export interface IComputeActivityThreadMessage {
     activityType: string;
@@ -12,4 +13,6 @@ export interface IComputeActivityThreadMessage {
     activityStream: IActivityStream;
     bounds: Array<number>;
     returnZones: boolean;
+    systemJsConfig: SystemJSLoader.Config;
+
 }

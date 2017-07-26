@@ -1,5 +1,6 @@
 import * as _ from "underscore";
 import {AbstractDataView} from "./AbstractDataView";
+import {IPowerData} from "../../../interfaces/ActivityData";
 
 export class CyclingPowerDataView extends AbstractDataView {
 

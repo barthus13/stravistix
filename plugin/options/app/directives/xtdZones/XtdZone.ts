@@ -1,5 +1,6 @@
 import {app} from "../../App";
 import {IAvoidInputKeysService} from "../../services/AvoidInputKeysService";
+import {IZone} from "../../../../core/scripts/interfaces/ActivityData";
 
 class XtdZone {
 

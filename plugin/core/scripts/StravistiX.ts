@@ -40,6 +40,8 @@ import {ActivityStravaMapTypeModifier} from "./modifiers/ActivityStravaMapTypeMo
 import {HidePremiumModifier} from "./modifiers/HidePremiumModifier";
 import {ActivityBikeOdoModifier} from "./modifiers/ActivityBikeOdoModifier";
 import {GoalsModifier} from "./modifiers/GoalsModifier";
+import {IActivityBasicInfo} from "./interfaces/ActivityData";
+import {ISyncNotify} from "./interfaces/Sync";
 
 export class StravistiX {
 

@@ -4,6 +4,7 @@ import {ChromeStorageService} from "../../services/ChromeStorageService";
 import {IAnchorScrollService, ILocationService} from "angular";
 import {app} from "../../App";
 import {IUserSettings, userSettings} from "../../../../core/scripts/UserSettings";
+import {IZone} from "../../../../core/scripts/interfaces/ActivityData";
 
 class XtdZones {
 

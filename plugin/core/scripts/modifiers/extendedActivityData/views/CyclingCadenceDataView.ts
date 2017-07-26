@@ -1,5 +1,6 @@
 import {AbstractCadenceDataView} from "./AbstractCadenceDataView";
 import {Helper} from "../../../Helper";
+import {ICadenceData} from "../../../interfaces/ActivityData";
 
 export class CyclingCadenceDataView extends AbstractCadenceDataView {
 

@@ -1,6 +1,7 @@
 import * as _ from "underscore";
 import {Helper} from "../Helper";
 import {env} from "../../config/env";
+import {IActivityStatsMap, IActivityStream} from "../interfaces/ActivityData";
 
 export class VacuumProcessor {
 

@@ -8,6 +8,7 @@ import {ActivityProcessor} from "../../processors/ActivityProcessor";
 import {StorageManager} from "../../../modules/StorageManager";
 import {IUserSettings} from "../../UserSettings";
 import {IAppResources} from "../../interfaces/AppResources";
+import {IActivityBasicInfo, IAnalysisData, ISpeedUnitData} from "../../interfaces/ActivityData";
 
 export abstract class AbstractExtendedDataModifier {
 

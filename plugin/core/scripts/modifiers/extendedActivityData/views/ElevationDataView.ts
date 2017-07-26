@@ -1,4 +1,5 @@
 import {AbstractDataView} from "./AbstractDataView";
+import {IElevationData} from "../../../interfaces/ActivityData";
 export class ElevationDataView extends AbstractDataView {
     protected elevationData: IElevationData;
 

@@ -5,6 +5,7 @@ import * as _ from "underscore";
 import {IUserSettings} from "../../plugin/core/scripts/UserSettings";
 import * as Q from "q";
 import {IAppResources} from "../../plugin/core/scripts/interfaces/AppResources";
+import {ISyncActivityComputed, ISyncRawStravaActivity} from "../../plugin/core/scripts/interfaces/Sync";
 
 describe('ActivitiesSynchronizer', () => {
 

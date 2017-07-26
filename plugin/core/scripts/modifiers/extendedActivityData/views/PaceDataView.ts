@@ -1,6 +1,7 @@
 import * as _ from "underscore";
 import {AbstractDataView} from "./AbstractDataView";
 import {Helper} from "../../../Helper";
+import {IPaceData, IZone} from "../../../interfaces/ActivityData";
 
 export class PaceDataView extends AbstractDataView {
 

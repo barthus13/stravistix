@@ -1,5 +1,6 @@
 import * as Q from "q";
 import {IStorageUsage} from "../modules/StorageManager";
+import {ISpeedUnitData} from "./interfaces/ActivityData";
 
 export class Helper {
 

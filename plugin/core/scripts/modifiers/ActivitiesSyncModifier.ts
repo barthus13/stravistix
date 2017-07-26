@@ -5,6 +5,7 @@ import {IStorageUsage, StorageManager} from "../../modules/StorageManager";
 import {IUserSettings} from "../UserSettings";
 import {IAppResources} from "../interfaces/AppResources";
 import {env} from "../../config/env";
+import {ISyncNotify} from "../interfaces/Sync";
 
 export class ActivitiesSyncModifier implements IModifier {
 

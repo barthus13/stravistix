@@ -1,5 +1,6 @@
 import {AbstractDataView} from "./AbstractDataView";
 import {Helper} from "../../../Helper";
+import {ISpeedData} from "../../../interfaces/ActivityData";
 
 export class SpeedDataView extends AbstractDataView {
 

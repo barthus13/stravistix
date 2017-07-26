@@ -4,6 +4,7 @@ import {IPromise, IQService} from "angular";
 import {Moment} from "moment";
 import {ChromeStorageService} from "./ChromeStorageService";
 import {app} from "../App";
+import {ISyncActivityComputed} from "../../../core/scripts/interfaces/Sync";
 
 export interface IActivitiesWithFitness {
     id: number;

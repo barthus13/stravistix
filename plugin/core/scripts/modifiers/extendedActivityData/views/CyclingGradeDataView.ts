@@ -1,5 +1,6 @@
 import * as _ from "underscore";
 import {AbstractGradeDataView} from "./AbstractGradeDataView";
+import {IGradeData} from "../../../interfaces/ActivityData";
 
 export class CyclingGradeDataView extends AbstractGradeDataView {
 

@@ -1,4 +1,5 @@
 import {AbstractDataView} from "./AbstractDataView";
+import {IPowerData} from "../../../interfaces/ActivityData";
 export class RunningPowerDataView extends AbstractDataView {
 
     protected powerData: IPowerData;

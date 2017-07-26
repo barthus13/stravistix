@@ -1,6 +1,13 @@
 import {Helper} from "../Helper";
 import * as _ from "underscore";
 import {IUserSettings} from "../UserSettings";
+import {
+    IActivityStatsMap, IActivityStream, IAnalysisData, IAscentSpeedData, ICadenceData, IElevationData, IGradeData,
+    IHeartRateData,
+    IHrrZone,
+    IMoveData, IPaceData,
+    IPowerData, ISpeedData, IZone
+} from "../interfaces/ActivityData";
 
 export class ActivityComputer {
 

@@ -5,6 +5,7 @@ import {ActivitiesProcessor} from "../processors/ActivitiesProcessor";
 import {StorageManager} from "../../modules/StorageManager";
 import {IUserSettings} from "../UserSettings";
 import {IAppResources} from "../interfaces/AppResources";
+import {ISyncActivityComputed, ISyncActivityWithStream, ISyncNotify, ISyncRawStravaActivity} from "../interfaces/Sync";
 
 export interface IAthleteProfile {
     userGender: string;

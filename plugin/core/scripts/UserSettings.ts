@@ -1,3 +1,5 @@
+import {IHrrZone, IZone} from "./interfaces/ActivityData";
+
 export interface IUserSettings {
     autoSyncMinutes: number;
     localStorageMustBeCleared: boolean;

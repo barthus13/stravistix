@@ -4,6 +4,8 @@ import * as _ from "underscore";
 import {IUserSettings} from "../UserSettings";
 import {IComputeActivityThreadMessage} from "../interfaces/ComputeActivityThreadMessage";
 import {IAppResources} from "../interfaces/AppResources";
+import {ISyncActivityComputed, ISyncActivityWithStream, ISyncNotify} from "../interfaces/Sync";
+import {IActivityStatsMap, IAnalysisData} from "../interfaces/ActivityData";
 
 export class ActivitiesProcessor {
 
@@ -136,7 +138,8 @@ export class ActivitiesProcessor {
             activityStatsMap: activityStatsMap,
             activityStream: activityWithStream.stream,
             bounds: null,
-            returnZones: false
+            returnZones: false,
+            systemJsConfig: SystemJS.getConfig() // TODO fix crappy config...
         };
 
         computeAnalysisThread.postMessage(threadMessage);

@@ -1,4 +1,6 @@
-interface ISyncRawStravaActivity {
+import {IAnalysisData} from "./ActivityData";
+
+export interface ISyncRawStravaActivity {
 
     id: number;
     name: string;
@@ -40,12 +42,12 @@ interface ISyncRawStravaActivity {
     hide_heartrate: boolean;
 }
 
-interface ISyncActivityWithStream extends ISyncRawStravaActivity {
+export interface ISyncActivityWithStream extends ISyncRawStravaActivity {
     stream: any;
     hasPowerMeter: boolean;
 }
 
-interface ISyncActivityComputed {
+export interface ISyncActivityComputed {
     id: number;
     name: string;
     type: string;
@@ -65,7 +67,7 @@ interface ISyncActivityComputed {
     extendedStats: IAnalysisData;
 }
 
-interface ISyncNotify {
+export interface ISyncNotify {
     step?: string;
     progress?: number;
     index?: number;

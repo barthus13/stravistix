@@ -1,5 +1,6 @@
 import {VacuumProcessor} from "../processors/VacuumProcessor";
 import * as _ from "underscore";
+import {IActivityStatsMap, IActivityStream} from "../interfaces/ActivityData";
 
 export class VirtualPartnerModifier implements IModifier {
 

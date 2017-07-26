@@ -1,4 +1,4 @@
-interface IActivityStatsMap {
+export interface IActivityStatsMap {
     // maxHeartRate: number;
     // averageHeartRate: number;
     distance: number;
@@ -7,7 +7,7 @@ interface IActivityStatsMap {
     elevation: number;
 }
 
-interface IActivityStream {
+export interface IActivityStream {
     time: Array<number>;
     latlng: Array<Array<number>>;
     heartrate: Array<number>;
@@ -33,14 +33,14 @@ export interface IAnalysisData {
     elevationData: IElevationData;
 }
 
-interface IMoveData {
+export interface IMoveData {
     movingTime: number;
     elapsedTime: number;
     speed: ISpeedData;
     pace: IPaceData;
 }
 
-interface ISpeedData {
+export interface ISpeedData {
     genuineAvgSpeed: number;
     totalAvgSpeed: number;
     avgPace: number;
@@ -52,7 +52,7 @@ interface ISpeedData {
     speedZones: Array<IZone>;
 }
 
-interface IPaceData {
+export interface IPaceData {
     avgPace: number;
     lowerQuartilePace: number;
     medianPace: number;
@@ -62,7 +62,7 @@ interface IPaceData {
 
 }
 
-interface IPowerData {
+export interface IPowerData {
     hasPowerMeter: boolean;
     avgWatts: number;
     avgWattsPerKg: number;
@@ -78,7 +78,7 @@ interface IPowerData {
     powerZones: Array<IZone>;
 }
 
-interface IHeartRateData {
+export interface IHeartRateData {
     TRIMP: number;
     TRIMPPerHour: number;
     lowerQuartileHeartRate: number;
@@ -90,7 +90,7 @@ interface IHeartRateData {
     activityHeartRateReserveMax: number;
     hrrZones: Array<IHrrZone>;
 }
-interface ICadenceData {
+export interface ICadenceData {
     cadencePercentageMoving: number;
     cadenceTimeMoving: number;
     averageCadenceMoving: number;
@@ -101,7 +101,7 @@ interface ICadenceData {
     upperQuartileCadence: number;
     cadenceZones: Array<IZone>;
 }
-interface IGradeData {
+export interface IGradeData {
     avgGrade: number;
     lowerQuartileGrade: number;
     medianGrade: number;
@@ -126,7 +126,7 @@ interface IGradeData {
     gradeZones: Array<IZone>;
 }
 
-interface IElevationData {
+export interface IElevationData {
     avgElevation: number;
     accumulatedElevationAscent: number;
     accumulatedElevationDescent: number;
@@ -137,21 +137,21 @@ interface IElevationData {
     ascentSpeedZones: Array<IZone>;
     ascentSpeed: IAscentSpeedData;
 }
-interface IAscentSpeedData {
+export interface IAscentSpeedData {
     avg: number;
     lowerQuartile: number;
     median: number;
     upperQuartile: number;
 }
 
-interface IZone {
+export interface IZone {
     from: number;
     to: number;
     s?: number;
     percentDistrib?: number;
 }
 
-interface IHrrZone {
+export interface IHrrZone {
     fromHrr: number;
     toHrr: number;
     percentDistrib?: number;
@@ -160,13 +160,13 @@ interface IHrrZone {
     fromHr?: number;
 }
 
-interface ISpeedUnitData {
+export interface ISpeedUnitData {
     units: string;
     speedUnitPerHour: string;
     speedUnitFactor: number;
 }
 
-interface IActivityBasicInfo {
+export interface IActivityBasicInfo {
     activityName: string;
     activityTime: string;
     segmentEffort?: {

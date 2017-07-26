@@ -1,5 +1,6 @@
 import {AbstractCadenceDataView} from "./AbstractCadenceDataView";
 import {IUserSettings} from "../../../UserSettings";
+import {ICadenceData} from "../../../interfaces/ActivityData";
 export class RunningCadenceDataView extends AbstractCadenceDataView {
 
     protected userSettings: IUserSettings;
