@@ -14,70 +14,71 @@ module.exports = function (config) {
 
             // promise-polyfill:
             // files: ['./node_modules/promise-polyfill/promise.js']
-            // 'dist/core/config/env.js',
-            // 'dist/core/modules/**/*.js',
-            // 'dist/node_modules/underscore/underscore-min.js',
-            // 'dist/node_modules/q/q.js',
-            // 'dist/node_modules/jquery/dist/jquery.js',
-            // 'dist/core/scripts/modifiers/extendedActivityData/views/AbstractDataView.js',
-            // 'dist/core/scripts/**/*.js',
+            // 'plugin/core/config/env.js',
+            // 'plugin/core/modules/**/*.js',
+            // 'plugin/node_modules/underscore/underscore-min.js',
+            // 'plugin/node_modules/q/q.js',
+            // 'plugin/node_modules/jquery/dist/jquery.js',
+            // 'plugin/core/scripts/modifiers/extendedActivityData/views/AbstractDataView.js',
+            // 'plugin/core/scripts/**/*.js',
             // 'specs/**/*.js',
             // 'specs/fixtures/**/*.json'
 
-            // 'dist/core/**/*.js',
+            // 'plugin/core/**/*.js',
             // 'specs/**/*.js',
 
             ////////// My test://////////
             // Libs
 
-            'dist/node_modules/q/q.js',
-            // 'dist/node_modules/jquery/dist/jquery.js',
-            'dist/node_modules/underscore/underscore-min.js',
-            'dist/node_modules/chart.js/dist/Chart.bundle.js',
-            'dist/node_modules/d3/d3.js',
-            // 'dist/node_modules/chart.js/dist/Chart.bundle.js',
-            // 'dist/node_modules/fancybox/dist/js/jquery.fancybox.pack.js',
-            // 'dist/node_modules/qrcode-js-package/qrcode.min.js',
+            'plugin/node_modules/q/q.js',
+            // 'plugin/node_modules/jquery/dist/jquery.js',
+            'plugin/node_modules/underscore/underscore-min.js',
+            'plugin/node_modules/chart.js/dist/Chart.bundle.js',
+            'plugin/node_modules/d3/d3.js',
+            // 'plugin/node_modules/chart.js/dist/Chart.bundle.js',
+            // 'plugin/node_modules/fancybox/dist/js/jquery.fancybox.pack.js',
+            // 'plugin/node_modules/qrcode-js-package/qrcode.min.js',
 
-            // 'dist/node_modules/geodesy/dms.js',
-            // 'dist/node_modules/geodesy/latlon-spherical.js',
-            // 'dist/node_modules/file-saver/FileSaver.min.js',
-            // 'dist/core/modules/**/*.js',
+            // 'plugin/node_modules/geodesy/dms.js',
+            // 'plugin/node_modules/geodesy/latlon-spherical.js',
+            // 'plugin/node_modules/file-saver/FileSaver.min.js',
+            // 'plugin/core/modules/**/*.js',
 
             //....
-            // 'dist/core/scripts/UserSettings.js',
-            // 'dist/core/scripts/Helper.js',
+            // 'plugin/core/scripts/UserSettings.js',
+            // 'plugin/core/scripts/Helper.js',
 
+            // TODO To continue... Move specs/ inside plugin/ ... good luck !
 
             // 'core/modules/StorageManager.js',
             // 'core/modules/jquery.appear.js',
 
-            // 'dist/core/modules/**/*.js',
-            'dist/core/**/*.js',
+            // 'plugin/core/modules/**/*.js',
+            'plugin/core/**/*.js',
             'specs/fixtures/**/*.json',
             // 'specs/**/*.js'
             'specs/Follow.*.js'
 
         ],
         exclude: [
-            'dist/core/scripts/Main.js', // TODO Be deleted?
+            'plugin/core/scripts/Main.js', // TODO Be deleted?
 
-            'dist/core/scripts/SystemJS.*.js',
+            'plugin/core/scripts/SystemJS.*.js',
 
-            'dist/core/modules/jquery.appear.js',
+            'plugin/core/modules/jquery.appear.js',
 
-            'dist/core/scripts/interfaces/*.js',
-            // 'dist/core/modules/StorageManager.js',
-            // 'dist/core/scripts/Constants.js',
-            'dist/core/scripts/Background.js',
-            'dist/core/scripts/Content.js',
-            // 'dist/core/scripts/Follow.js',
-            // 'dist/core/scripts/ReleaseNotes.js'
+            'plugin/core/scripts/interfaces/*.js',
+            // 'plugin/core/modules/StorageManager.js',
+            // 'plugin/core/scripts/Constants.js',
+            'plugin/core/scripts/Background.js',
+            'plugin/core/scripts/Content.js',
+            // 'plugin/core/scripts/Follow.js',
+            // 'plugin/core/scripts/ReleaseNotes.js'
         ],
         systemjs: {
             // Path to your SystemJS configuration file
             // configFile: './specs/system.conf.js', // TODO
-            baseURL: '.',
+            // baseURL: '../base',
             // defaultJSExtensions: true,
             // defaultExtension: 'js',
             // Patterns for files that you want Karma to make available, but not loaded until a module requests them. eg. Third-party libraries.
@@ -90,12 +91,16 @@ module.exports = function (config) {
             // Good for adding test libraries and mock modules
             config: {
                 packages: {
-                    'dist/': {
+                    'plugin/core/': {
                         format: 'cjs'
                     }
                 },
                 paths: {
                     // 'npm:': './node_modules/',
+
+                    // '/': '/base/',
+
+                    // '/': '/base/'
 
                     'traceur': './node_modules/traceur/dist/commonjs/traceur.js',
                     'systemjs': './node_modules/systemjs/dist/system.js',
@@ -127,11 +132,11 @@ module.exports = function (config) {
                     'phantomjs-polyfill': './node_modules/phantomjs-polyfill/bind-polyfill.js',
 
                     // Npm
-                    'q': './base/dist/node_modules/q/q.js',
-                    'jquery': './base/dist/node_modules/jquery/dist/jquery.js',
-                    'underscore': './base/dist/node_modules/underscore/underscore-min.js',
-                    'chart.js': './base/dist/node_modules/chart.js/dist/Chart.bundle.js',
-                    'd3': './base/dist/node_modules/d3/d3.js',
+                    'q': './base/plugin/node_modules/q/q.js',
+                    // 'jquery': './base/plugin/node_modules/jquery/dist/jquery.js',
+                    'underscore': './base/plugin/node_modules/underscore/underscore-min.js',
+                    'chart.js': './base/plugin/node_modules/chart.js/dist/Chart.bundle.js',
+                    'd3': './base/plugin/node_modules/d3/d3.js',
                 }
 
             }
