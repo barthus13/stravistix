@@ -36,14 +36,11 @@ module.exports = function (config) {
                     }
                 },
                 paths: {
-                    'npm@plugin:': './base/plugin/node_modules/'
+                    'traceur': './node_modules/traceur/dist/commonjs/traceur.js', // karma-systemjs required
+                    'systemjs': './node_modules/systemjs/dist/system.js', // karma-systemjs required
+                    'npm@plugin:': './base/plugin/node_modules/',
                 },
                 map: {
-                    // Karma-systemjs required libs
-                    'traceur': './node_modules/traceur/dist/commonjs/traceur.js',
-                    'systemjs': './node_modules/systemjs/dist/system.js',
-
-                    // Core app required libs
                     'q': 'npm@plugin:q/q.js',
                     'jquery': 'npm@plugin:jquery/dist/jquery.js',
                     'underscore': 'npm@plugin:underscore/underscore-min.js',
