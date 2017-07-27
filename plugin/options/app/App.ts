@@ -1,7 +1,16 @@
-import {IModule} from "angular";
 import * as angular from "angular";
+import 'ngRoute';
+import 'ngAria';
+import 'ngMaterial';
+import 'ngSanitize';
+import 'ngAnimate';
+import 'nvd3';
+import 'md.data.table';
+import 'angularMoment';
 
-export let app: IModule = angular.module("App", ['ngRoute', 'ngMaterial', 'ngSanitize', 'ngAnimate', 'nvd3', 'md.data.table', 'angularMoment']);
+import {IModule} from "angular";
+
+export let app: IModule = angular.module('App', ['ngRoute', 'ngAria', 'ngMaterial', 'ngSanitize', 'ngAnimate', 'nvd3', 'md.data.table', 'angularMoment']);
 
 export interface IColors {
     strava: string;
