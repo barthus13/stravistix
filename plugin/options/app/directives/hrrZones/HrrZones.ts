@@ -2,11 +2,11 @@ import * as _ from "underscore";
 import * as angular from "angular";
 import {ChromeStorageService} from "../../services/ChromeStorageService";
 import {IAnchorScrollService, ILocationService} from "angular";
-import {app} from "../../App";
+
 import {userSettings} from "../../../../core/scripts/UserSettings";
 import {IHrrZone} from "../../../../core/scripts/interfaces/ActivityData";
 
-class HrrZones {
+export class HrrZones {
 
     public static maxHrZonesCount: number = 50;
     public static minHrZonesCount: number = 3;
@@ -355,7 +355,7 @@ class HrrZones {
     }
 }
 
-app.directive('hrrZones', [() => {
+export let hrrZones = [() => {
 
     return <any> {
         templateUrl: 'directives/hrrZones/templates/hrrZones.html',
@@ -367,4 +367,4 @@ app.directive('hrrZones', [() => {
         controller: HrrZones
     };
 
-}]);
+}];

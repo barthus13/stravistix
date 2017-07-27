@@ -1,11 +1,8 @@
 import * as _ from "underscore";
-import {app} from "../App";
+
 import {Helper} from "../../../core/scripts/Helper";
 
-/**
- * Return the right preview value when using custom xtd zones along units type
- */
-app.filter('xtdDataFilter', () => {
+export let xtdDataFilter = () => {
 
     let formatTime: Function = (seconds: number) => {
         return Helper.secondsToHHMMSS(seconds, true);
@@ -24,4 +21,8 @@ app.filter('xtdDataFilter', () => {
         }
         return result;
     };
-});
+};
+/**
+ * Return the right preview value when using custom xtd zones along units type
+ */
+

@@ -1,14 +1,20 @@
 SystemJS.config({
     baseURL: 'chrome-extension://' + chrome.runtime.id + '/',
+    packages: {
+        '.': {
+            format: 'cjs'
+        },
+        '../../core/': {
+            format: 'cjs'
+        }
+    },
     paths: {
         'npm:': '../../node_modules/',
     },
     // defaultExtension : true,
     map: {
-
         'angular': 'npm:angular/angular.js',
         'ngRoute': 'npm:angular-route/angular-route.js',
-
         'ngSanitize': 'npm:angular-sanitize/angular-sanitize.js',
         'ngAnimate': 'npm:angular-animate/angular-animate.js',
         'ngAria': 'npm:angular-aria/angular-aria.js',
@@ -41,16 +47,16 @@ SystemJS.config({
         // 'fancybox.css': 'npm:fancybox/dist/css/jquery.fancybox.css',
         // 'core.css': 'core/css/core.css',
     },
-    packages: {
-        // 'core': {
-        //     format: 'cjs'
-        // },
-        // 'npm:geodesy': {
-        //     format: 'cjs'
-        // }
-        // "ngRoute": {main: "index.js", defaultExtension: "js"},
+    // packages: {
+    // 'core': {
+    //     format: 'cjs'
+    // },
+    // 'npm:geodesy': {
+    //     format: 'cjs'
+    // }
+    // "ngRoute": {main: "index.js", defaultExtension: "js"},
 
-    },
+    // },
     // depCache: {
     //     'angular-route': ['angular'], // moduleA depends on moduleB
     //     // moduleB: ['moduleC'] // moduleB depends on moduleC
@@ -112,6 +118,9 @@ SystemJS.config({
     //   }
 });
 
-SystemJS.import('./App.js').catch((err) => {
-    console.error(err);
+SystemJS.import('./App.js')
+    .catch(function (err) {
+        console.error(err);
+    }).then(null, function (err) {
+    console.error("Oh no, error!", err);
 });

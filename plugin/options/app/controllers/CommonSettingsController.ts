@@ -2,11 +2,11 @@ import * as _ from "underscore";
 import * as angular from "angular";;
 import {ILocationService, ISCEService} from "angular";
 import {ChromeStorageService} from "../services/ChromeStorageService";
-import {app} from "../App";
+
 import {ICommonSettingsService, ISection, ISectionContent} from "../services/CommonSettingsService";
 import {IUserSettings} from "../../../core/scripts/UserSettings";
 
-class CommonSettingsController {
+export class CommonSettingsController {
 
     static $inject = ['$scope', 'CommonSettingsService', 'ChromeStorageService', '$location', '$mdDialog', '$sce'];
 
@@ -150,5 +150,3 @@ class CommonSettingsController {
 
     }
 }
-
-app.controller('CommonSettingsController', CommonSettingsController);

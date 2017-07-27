@@ -3,7 +3,7 @@ import * as moment from "moment";
 import {IPromise, IQService} from "angular";
 import {Moment} from "moment";
 import {ChromeStorageService} from "./ChromeStorageService";
-import {app} from "../App";
+
 import {ISyncActivityComputed} from "../../../core/scripts/interfaces/Sync";
 
 export interface IActivitiesWithFitness {
@@ -388,9 +388,10 @@ export class FitnessDataService {
     }
 }
 
-app.factory('FitnessDataService', ['$q', 'ChromeStorageService', ($q: IQService, chromeStorageService: ChromeStorageService) => {
+export let fitnessDataService = ['$q', 'ChromeStorageService', ($q: IQService, chromeStorageService: ChromeStorageService) => {
     return new FitnessDataService($q, chromeStorageService);
-}]);
+}];
+
 
 /**
  * @return

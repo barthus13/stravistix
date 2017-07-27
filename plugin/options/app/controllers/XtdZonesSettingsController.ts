@@ -1,11 +1,11 @@
 import * as _ from "underscore";
 import {IScope} from "angular";
 import {ChromeStorageService} from "../services/ChromeStorageService";
-import {app} from "../App";
+
 import {IUserSettings} from "../../../core/scripts/UserSettings";
 import {IZone} from "../../../core/scripts/interfaces/ActivityData";
 
-interface IXtdData {
+export interface IXtdData {
     name: string;
     value: string;
     units: string;
@@ -15,7 +15,7 @@ interface IXtdData {
     hasConvertion?: boolean;
 }
 
-interface IXtdZonesSettingsScope extends IScope {
+export interface IXtdZonesSettingsScope extends IScope {
     zones: {speed: Array<IZone>, pace: Array<IZone>, power: Array<IZone>, cyclingCadence: Array<IZone>, runningCadence: Array<IZone>, grade: Array<IZone>, elevation: Array<IZone>, ascent: Array<IZone>};
     xtdZones: Array<IZone>;
     xtdData: IXtdData;
@@ -23,7 +23,7 @@ interface IXtdZonesSettingsScope extends IScope {
     xtdListOptions: Array<IXtdData>;
 }
 
-class XtdZonesSettingsController {
+export class XtdZonesSettingsController {
 
     static $inject = ['$scope', '$location', '$routeParams', 'ChromeStorageService'];
 
@@ -121,5 +121,3 @@ class XtdZonesSettingsController {
 
     }
 }
-
-app.controller("XtdZonesSettingsController", XtdZonesSettingsController);

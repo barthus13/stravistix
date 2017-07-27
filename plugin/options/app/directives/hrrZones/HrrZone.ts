@@ -1,8 +1,8 @@
-import {app} from "../../App";
+
 import {IAvoidInputKeysService} from "../../services/AvoidInputKeysService";
 import {IZone} from "../../../../core/scripts/interfaces/ActivityData";
 
-class HrrZone {
+export class HrrZone {
 
     static $inject: string[] = ['$scope', 'AvoidInputKeysService'];
 
@@ -23,7 +23,7 @@ class HrrZone {
     }
 }
 
-app.directive('hrrZone', [() => {
+export let hrrZone = [() => {
 
     return <any> {
 
@@ -42,4 +42,4 @@ app.directive('hrrZone', [() => {
         templateUrl: 'directives/hrrZones/templates/hrrZone.html'
     };
 
-}]);
+}];

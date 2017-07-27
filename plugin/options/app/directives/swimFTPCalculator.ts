@@ -1,7 +1,7 @@
 import {IScope} from "angular";
 import * as moment from "moment";
 import * as _ from "underscore";
-import {app} from "../App";
+
 
 export interface ISwimCalculationMethod {
     active: boolean;
@@ -84,7 +84,7 @@ export class SwimFTPCalculator {
     }
 }
 
-app.directive('swimFtpCalculator', [() => {
+export let swimFtpCalculator =  [() => {
 
     return <any>{
         controller: SwimFTPCalculator,
@@ -94,4 +94,4 @@ app.directive('swimFtpCalculator', [() => {
         },
         templateUrl: 'directives/templates/swimFTPCalculator.html'
     };
-}]);
+}];

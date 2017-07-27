@@ -4,14 +4,14 @@ import * as d3 from "d3";
 import moment = require("moment");
 import {Moment} from "moment";
 import {ChromeStorageService} from "../services/ChromeStorageService";
-import {app} from "../App";
+
 import {ISyncActivityComputed} from "../../../core/scripts/interfaces/Sync";
 
-interface IYearProgress {
+export interface IYearProgress {
     year: number;
     progressions: Array<IProgression>;
 }
-interface IProgression {
+export interface IProgression {
     onTimestamp: number;
     onYear: number;
     onDayOfYear: number;
@@ -21,12 +21,12 @@ interface IProgression {
     count: number;
 }
 
-interface YearProgressActivity extends ISyncActivityComputed {
+export interface YearProgressActivity extends ISyncActivityComputed {
     year: number;
     dayOfYear: number;
 }
 
-class YearProgressComputer {
+export class YearProgressComputer {
 
     public compute(yearProgressActivities: Array<YearProgressActivity>, types: Array<string>): Array<IYearProgress> {
 
@@ -136,7 +136,7 @@ enum DataType {
 // TODO Targets?
 // TODO Remove old feature?
 
-class YearProgressController {
+export class YearProgressController {
 
     public static $inject = ['$scope', 'ChromeStorageService', '$mdDialog'];
 
@@ -369,4 +369,4 @@ class YearProgressController {
     }
 }
 
-app.controller("YearProgressController", YearProgressController);
+

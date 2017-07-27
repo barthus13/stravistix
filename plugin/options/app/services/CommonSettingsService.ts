@@ -1,4 +1,4 @@
-import {app} from "../App";
+
 
 export interface ICommonSettingsService {
     provideSections: () => Array<ISection>;
@@ -40,12 +40,12 @@ export interface ISectionContent {
      */
     disableTooltip?: boolean;
 }
-interface IListItem {
+export interface IListItem {
     key: string;
     name: string;
 }
 
-app.factory('CommonSettingsService', () => {
+export let CommonSettingsService = () => {
 
     let commonSettingsService: ICommonSettingsService = {
         provideSections: null
@@ -417,4 +417,5 @@ app.factory('CommonSettingsService', () => {
         return sections;
     };
     return commonSettingsService;
-});
+};
+

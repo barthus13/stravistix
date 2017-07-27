@@ -1,10 +1,10 @@
-import {app} from "../App";
+
 
 export interface IAvoidInputKeysService {
     apply: (keyboardEvent: KeyboardEvent) => void;
 }
 
-app.factory('AvoidInputKeysService', () => {
+export let AvoidInputKeysService = () => {
 
     let avoidInputKeysService: IAvoidInputKeysService = {
         apply: (keyboardEvent: KeyboardEvent) => {
@@ -15,4 +15,5 @@ app.factory('AvoidInputKeysService', () => {
     }
 
     return avoidInputKeysService;
-});
+};
+

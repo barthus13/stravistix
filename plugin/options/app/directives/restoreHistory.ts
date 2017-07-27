@@ -2,9 +2,9 @@ import * as _ from "underscore";
 import * as angular from "angular";
 import {ChromeStorageService} from "../services/ChromeStorageService";
 import {IWindowService, IScope} from "angular";
-import {app} from "../App";
 
-class RestoreHistoryController {
+
+export class RestoreHistoryController {
 
     static $inject = ['ChromeStorageService', '$scope', '$window'];
     private _chromeStorageService: ChromeStorageService;
@@ -24,7 +24,7 @@ class RestoreHistoryController {
     }
 }
 
-app.directive('restoreHistory', [() => {
+export let restoreHistory = [() => {
 
     return <any>{
 
@@ -104,4 +104,4 @@ app.directive('restoreHistory', [() => {
             };
         }
     }
-}]);
+}];

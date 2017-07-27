@@ -3,12 +3,13 @@ import * as angular from "angular";
 import * as moment from "moment";
 import {ChromeStorageService} from "../services/ChromeStorageService";
 import {IIntervalService, ILocationService, IWindowService} from "angular";
-import {app} from "../App";
+
 import {ReleaseNotesService} from "../services/ReleaseNotesService";
 import Tab = chrome.tabs.Tab;
 import {IStorageUsage} from "../../../core/modules/StorageManager";
+import {routeMap, properties} from "../Config";
 
-class MainController {
+export class MainController {
 
     static $inject = ['$rootScope', 'ChromeStorageService', '$scope', '$location', '$mdSidenav', '$colors', '$mdDialog', '$window', '$interval', '$mdMedia'];
 
@@ -440,5 +441,3 @@ class MainController {
         };
     }
 }
-
-app.controller('MainController', MainController);

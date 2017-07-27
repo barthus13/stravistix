@@ -2,11 +2,11 @@ import * as _ from "underscore";
 import * as angular from "angular";;
 import {ChromeStorageService} from "../services/ChromeStorageService";
 import {ISwimCalculationMethod, SwimFTPCalculator} from "../directives/swimFTPCalculator";
-import {app} from "../App";
+
 import {IAvoidInputKeysService} from "../services/AvoidInputKeysService";
 import {IUserSettings} from "../../../core/scripts/UserSettings";
 
-interface IGenderList {
+export interface IGenderList {
     type: string;
 }
 
@@ -227,4 +227,3 @@ export class AthleteSettingsController {
 
 }
 
-app.controller("AthleteSettingsController", AthleteSettingsController);

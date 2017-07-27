@@ -2,7 +2,7 @@ import * as _ from "underscore";
 import {IControllerConstructor, Injectable} from "angular";
 import {FitnessDataService, IFitnessActivity} from "../services/FitnessDataService";
 import {ChromeStorageService} from "../services/ChromeStorageService";
-import {app} from "../App";
+
 import {IUserSettings} from "../../../core/scripts/UserSettings";
 
 export class FitnessTrendController {
@@ -63,4 +63,3 @@ export class FitnessTrendController {
         }
     }
 }
-app.controller("FitnessTrendController",  <Injectable<IControllerConstructor>> FitnessTrendController);

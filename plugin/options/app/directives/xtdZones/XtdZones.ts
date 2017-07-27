@@ -2,11 +2,11 @@ import * as _ from "underscore";
 import * as angular from "angular";;
 import {ChromeStorageService} from "../../services/ChromeStorageService";
 import {IAnchorScrollService, ILocationService} from "angular";
-import {app} from "../../App";
+
 import {IUserSettings, userSettings} from "../../../../core/scripts/UserSettings";
 import {IZone} from "../../../../core/scripts/interfaces/ActivityData";
 
-class XtdZones {
+export class XtdZones {
 
     public static maxZonesCount: number = 50;
     public static minZonesCount: number = 3;
@@ -332,7 +332,7 @@ class XtdZones {
     }
 }
 
-app.directive('xtdZones', [() => {
+export let xtdZones = [() => {
 
     return <any>{
         templateUrl: 'directives/xtdZones/templates/xtdZones.html',
@@ -343,4 +343,4 @@ app.directive('xtdZones', [() => {
         controller: XtdZones
     };
 
-}]);
+}];

@@ -6,8 +6,9 @@ import {ILocationService, IScope, IWindowService} from "angular";
 import {IFitnessActivity} from "../../services/FitnessDataService";
 import {FitnessTrendController} from "../../controllers/FitnessTrendController";
 import {app, IColors} from "../../App";
+import {routeMap} from "../../Config";
 
-interface IFitnessTrendGraphScope extends IScope {
+export interface IFitnessTrendGraphScope extends IScope {
     nvd3api: any;
     userFTP: number;
     userSwimFTP: number;
@@ -47,18 +48,18 @@ interface IFitnessTrendGraphScope extends IScope {
     loadFitnessData(): void;
 }
 
-interface IFitnessGraphData {
+export interface IFitnessGraphData {
     curves: {key: string, values: Array<any>, color: string, area?: boolean, classed?: string}[];
     yDomain: Array<number>;
 }
 
-interface ITrainingZone {
+export interface ITrainingZone {
     name: string;
     level: number;
     color: string;
 }
 
-class FitnessTrendGraph {
+export class FitnessTrendGraph {
 
     static $inject: string[] = ['$scope', '$colors', '$window', '$mdDialog', '$location'];
 
@@ -749,9 +750,10 @@ class FitnessTrendGraph {
     }
 }
 
-app.directive('fitnessTrendGraph', [() => {
+export let fitnessTrendGraph = [() => {
     return <any> {
         templateUrl: 'directives/fitnessTrend/templates/fitnessTrendGraph.html',
         controller: FitnessTrendGraph
     };
-}]);
+}];
+
