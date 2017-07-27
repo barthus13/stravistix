@@ -18,13 +18,11 @@ module.exports = function (config) {
             'specs/fixtures/**/*.json'
         ],
         exclude: [
-            'plugin/core/scripts/Main.js', // TODO Be deleted?
+            '**/*.map',
             'plugin/core/scripts/SystemJS.*.js',
-            'plugin/core/modules/jquery.appear.js',
             'plugin/core/scripts/interfaces/*.js',
             'plugin/core/scripts/Background.js',
-            'plugin/core/scripts/Content.js',
-            '**/*.map'
+            'plugin/core/scripts/Content.js'
         ],
         systemjs: {
             serveFiles: [], // Patterns for files that you want Karma to make available, but not loaded until a module requests them. eg. Third-party libraries.
@@ -38,43 +36,19 @@ module.exports = function (config) {
                     }
                 },
                 paths: {
-                    // 'npm:': './node_modules/',
-
-                    // '/': '/base/',
-
-                    // '/': '/base/'
-
+                    'npm@plugin:': './base/plugin/node_modules/'
+                },
+                map: {
+                    // Karma-systemjs required libs
                     'traceur': './node_modules/traceur/dist/commonjs/traceur.js',
                     'systemjs': './node_modules/systemjs/dist/system.js',
 
-                    // 'plugin-babel': './node_modules/systemjs-plugin-babel/plugin-babel.js', // TODO del?
-                    // 'systemjs-babel-build': './node_modules/systemjs-plugin-babel/systemjs-babel-browser.js', // TODO del?
-                    // 'system-polyfills': './node_modules/systemjs/dist/system-polyfills.js', // TODO del?
-                    // 'es6-module-loader': './node_modules/es6-module-loader/dist/es6-module-loader.js', // TODO del?
-
-                    'phantomjs-polyfill': './node_modules/phantomjs-polyfill/bind-polyfill.js'
-
-
-                },
-
-                map: {
-                    // 'plugin-babel': './base/node_modules/systemjs-plugin-babel/plugin-babel.js',
-                    // 'systemjs-babel-build': './base/node_modules/systemjs-plugin-babel/systemjs-babel-browser.js',
-                    // 'system-polyfills': './base/node_modules/systemjs/dist/system-polyfills.js',
-                    // 'es6-module-loader': './base/node_modules/es6-module-loader/dist/es6-module-loader.js',
-                    // 'json_fixtures': './base/node_modules/karma-json-fixtures-preprocessor/json_fixtures.js',
-
-                    // 'es6-promise': './base/node_modules/es6-promise/dist/es6-promise.js',
-                    // 'promise-polyfill': '/base/node_modules/promise-polyfill/promise.js',
-
-                    'phantomjs-polyfill': './base/node_modules/phantomjs-polyfill/bind-polyfill.js',
-
-                    // Npm
-                    'q': './base/plugin/node_modules/q/q.js',
-                    'jquery': './base/plugin/node_modules/jquery/dist/jquery.js',
-                    'underscore': './base/plugin/node_modules/underscore/underscore-min.js',
-                    'chart.js': './base/plugin/node_modules/chart.js/dist/Chart.bundle.js',
-                    'd3': './base/plugin/node_modules/d3/d3.js',
+                    // Core app required libs
+                    'q': 'npm@plugin:q/q.js',
+                    'jquery': 'npm@plugin:jquery/dist/jquery.js',
+                    'underscore': 'npm@plugin:underscore/underscore-min.js',
+                    'chart.js': 'npm@plugin:chart.js/dist/Chart.bundle.js',
+                    'd3': 'npm@plugin:d3/d3.js'
                 }
 
             }
