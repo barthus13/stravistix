@@ -14,6 +14,7 @@ import {
     ISyncRawStravaActivity
 } from "../../plugin/core/scripts/interfaces/Sync";
 import {IAnalysisData} from "../../plugin/core/scripts/interfaces/ActivityData";
+import {clone, editActivityFromArray, removeActivityFromArray} from "../SpecsTools";
 
 describe('ActivitiesSynchronizer syncing with stubs', () => {
 

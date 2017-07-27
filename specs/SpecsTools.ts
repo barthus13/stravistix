@@ -1,14 +1,16 @@
-let clone = (obj: any): any => {
+import * as _ from "underscore";
+
+export let clone = (obj: any): any => {
     return JSON.parse(JSON.stringify(obj));
 };
 
-let removeActivityFromArray = (activityId: number, fromArray: Array<any>): Array<any> => {
+export let removeActivityFromArray = (activityId: number, fromArray: Array<any>): Array<any> => {
     return _.without(fromArray, _.findWhere(fromArray, {
         id: activityId
     }));
 };
 
-let editActivityFromArray = (activityId: number, fromArray: Array<any>, newName: string, newType: string): Array<any> => {
+export let editActivityFromArray = (activityId: number, fromArray: Array<any>, newName: string, newType: string): Array<any> => {
     let a: any = _.findWhere(fromArray, {
         id: activityId
     });
