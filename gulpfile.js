@@ -2,7 +2,7 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * COMMANDS
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * gulp clean       // Clean dist/ folder
+ * gulp clean       // Clean dist/ folder & *.js *.map compiled sources
  * gulp build       // Generate dist/ folder. Use it for development
  * gulp specs       // Run unit tests & integration tests
  * gulp package     // Create .zip packaged archive to be published
@@ -11,10 +11,9 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * TASKS GRAPH
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * clean       : cleanPackage => cleanDistAll => cleanExtNodeModules
- * build       : writeManifest => tsCompile
- * specs       : buildSpecs
- * buildSpecs  : build
+ * clean       : cleanPackage => cleanDistAll => cleanInlineSources
+ * build       : writeManifest => tsCompileToDist
+ * specs       : tscCommand
  * makeArchive : build
  * package     : clean => makeArchive
  * wipe        : cleanRootNodeModules => cleanExtNodeModules => cleanPackage
@@ -25,6 +24,7 @@
  * Required node module for running gulp tasks
  */
 var fs = require('fs');
+var exec = require('child_process').exec;
 var _ = require('underscore');
 var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')();
@@ -50,8 +50,6 @@ var CURRENT_COMMIT = null;
  * Global folder variable
  */
 
-var PLUGIN_TYPESCRIPT_SCRIPTS = ['plugin/**/*.ts']; // CORE & OPTIONS
-
 var CORE_JAVASCRIPT_SCRIPTS = [
     'plugin/core/config/env.js',
     'plugin/core/modules/*.js',
@@ -67,7 +65,7 @@ var CORE_JAVASCRIPT_SCRIPTS = [
     'plugin/node_modules/qrcode-js-package/qrcode.min.js',
     'plugin/node_modules/fancybox/dist/js/jquery.fancybox.pack.js',
     'plugin/node_modules/underscore/underscore-min.js',
-    'plugin/node_modules/jquery/dist/jquery.js',
+    'plugin/node_modules/jquery/dist/jquery.js'
 ];
 
 var CORE_STYLESHEETS = [
@@ -103,22 +101,45 @@ var OPTIONS_FILES = [
     'plugin/node_modules/moment/moment.js',
     'plugin/node_modules/angular-moment/angular-moment.js',
     'plugin/node_modules/file-saver/FileSaver.min.js',
+
     'plugin/options/**/*',
     '!plugin/options/**/*.ts' // Do not copy TypeScripts script using "!". They are compiled to JS files which are already copied to destination folder. (@see PLUGIN_TYPESCRIPT_SCRIPTS var)
 ];
 
+var INLINE_SOURCES = [
+    'plugin/core/**/*.js',
+    'plugin/core/**/*.map',
+    'plugin/options/app/**/*.js',
+    'plugin/options/app/**/*.map',
+    'specs/**/*.map',
+    'specs/**/*.js'
+];
+
 /**
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Gulp Tasks
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  */
-gulp.task('tsCompile', function () { // Compile Typescript and copy them to DIST_FOLDER
+gulp.task('tsCompileToDist', function () { // Compile Typescript and copy them to DIST_FOLDER
     util.log('Start Remote TypeScript compilation... Compiled files will be copied to "dest/" folder.');
     var tsProject = typeScript.createProject("tsconfig.json", {rootDir: 'plugin/'});
     return tsProject.src().pipe(tsProject()).pipe(gulp.dest(DIST_FOLDER));
 
 });
 
+gulp.task('tscCommand', function (cmdDone) { // Compile Typescript then copy js/map files next to .ts files
+    util.log('Start Local TypeScript compilation (with command "tsc")... Compiled files will be copied next to .ts files');
+    exec('tsc', function (error, stdout, stderr) {
+        if (error) {
+            util.log(error);
+            util.log(stderr);
+        } else {
+            cmdDone();
+        }
+    });
+});
 
-gulp.task('writeManifest', ['tsCompile'], function (done) {
+gulp.task('writeManifest', ['tsCompileToDist'], function (done) {
 
     // Handle manifest file, if preview mode or not... if preview then: version name change to short sha1 HEAD commit and version = 0
     if (options.has('preview')) {
@@ -187,38 +208,24 @@ gulp.task('makeArchive', ['build'], function () {
 
 });
 
-gulp.task('buildSpecs', ['build'], function () {
-
-    util.log('Compile TypeScript specs to JS for Karma testing');
-
-    return gulp.src([SPECS_FOLDER + '/**/*.ts'], {
-        base: './'
-    }). pipe(typeScript.createProject("tsconfig.json")()).pipe(gulp.dest('./'));
-
-});
-
-gulp.task('specs', ['buildSpecs'], function () {
+gulp.task('specs', ['tscCommand'], function () {
     util.log('Running jasmine tests through Karma server');
     new karmaServer({
         configFile: __dirname + '/karma.conf.js'
     }, function (hasError) {
-
         if (!hasError) {
-            util.log('Cleaning compiled JS files inside ' + SPECS_FOLDER + ' folder');
-            return gulp.src([
-                SPECS_FOLDER + '/**/*.js'
-            ]).pipe(plugins.clean({
-                force: true
-            }));
         } else {
             process.exit(1);
         }
-
     }).start();
 });
 
-gulp.task('cleanDistAll', function () {
+gulp.task('cleanInlineSources', function () {
+    util.log('Cleaning plugin/**/[*.js|*.map] compiled sources');
+    return gulp.src(INLINE_SOURCES).pipe(plugins.clean({force: true}));
+});
 
+gulp.task('cleanDistAll', ['cleanInlineSources'], function () {
     util.log('Cleaning dist/ folder completly');
     return gulp.src(DIST_FOLDER)
         .pipe(plugins.clean({
@@ -234,9 +241,7 @@ gulp.task('cleanPackage', ['cleanDistAll'], function () {
 });
 
 gulp.task('cleanExtNodeModules', ['cleanDistAll'], function () {
-
     util.log('Cleaning extension node_modules/ folder');
-
     return gulp.src('plugin/node_modules/')
         .pipe(plugins.clean({
             force: true
@@ -244,18 +249,13 @@ gulp.task('cleanExtNodeModules', ['cleanDistAll'], function () {
 });
 
 gulp.task('cleanRootNodeModules', ['clean'], function () {
-
     util.log('Cleaning root extension node_modules/ folder');
-
     return gulp.src('node_modules/')
         .pipe(plugins.clean({
             force: true
         }));
 });
 
-/**
- * Defining tasks
- */
 // Do init install and build to dist/
 gulp.task('default', ['build']);
 
@@ -267,6 +267,7 @@ gulp.task('package', function (done) {
 });
 
 gulp.task('watch', function () {
+    util.log('Watching local sources and generate build to "dist/" folder');
     gulp.watch([
         'plugin/**/*',
         '!plugin/node_modules/**/*',

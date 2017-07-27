@@ -1,6 +1,6 @@
 import * as _ from "underscore";
-import {LinearTickOptions} from "chart.js";
 import * as Chart from "chart.js";
+import {LinearTickOptions} from "chart.js";
 import {Helper} from "../../../Helper";
 import {IAppResources} from "../../../interfaces/AppResources";
 import {ISpeedUnitData, IZone} from "../../../interfaces/ActivityData";
