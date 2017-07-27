@@ -1,5 +1,3 @@
-/// <reference path="../typings/specs.d.ts" />
-
 import {
     ActivitiesSynchronizer, IAthleteProfile,
     ISyncResult
@@ -14,7 +12,7 @@ import {
     ISyncRawStravaActivity
 } from "../../plugin/core/scripts/interfaces/Sync";
 import {IAnalysisData} from "../../plugin/core/scripts/interfaces/ActivityData";
-import {clone, editActivityFromArray, removeActivityFromArray} from "../SpecsTools";
+import {clone, editActivityFromArray, removeActivityFromArray} from "../tools/SpecsTools";
 
 describe('ActivitiesSynchronizer syncing with stubs', () => {
 

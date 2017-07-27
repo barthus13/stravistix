@@ -57,8 +57,8 @@ module.exports = function (config) {
             'plugin/core/**/*.js',
             // 'plugin/core/**/*.js',
             'specs/**/*.js',
+            // 'specs/**.js',
             'specs/fixtures/**/*.json'
-            // 'specs/Follow.*.js'
 
         ],
         exclude: [

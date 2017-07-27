@@ -1,5 +1,5 @@
 
-import {AthleteUpdate, IAthleteUpdate} from "../plugin/core/scripts/Follow";
+import {AthleteUpdate, IAthleteUpdate} from "../../plugin/core/scripts/Follow";
 
 describe('Generate Athlete Update', () => {
 

@@ -4,7 +4,7 @@ import {IUserSettings} from "../../plugin/core/scripts/UserSettings";
 import * as Q from "q";
 import {IAppResources} from "../../plugin/core/scripts/interfaces/AppResources";
 import {ISyncActivityComputed, ISyncRawStravaActivity} from "../../plugin/core/scripts/interfaces/Sync";
-import {clone, editActivityFromArray, removeActivityFromArray} from "../SpecsTools";
+import {clone, editActivityFromArray, removeActivityFromArray} from "../tools/SpecsTools";
 
 describe('ActivitiesSynchronizer', () => {
 
