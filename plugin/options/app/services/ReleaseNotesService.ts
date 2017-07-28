@@ -1,14 +1,14 @@
 
 import {IReleaseNote, releaseNotes} from "../../../core/scripts/ReleaseNotes";
 
-export interface ReleaseNotesService {
+export interface IReleaseNotesService {
     data: Array<IReleaseNote>;
 }
 
-export let ReleaseNotesService = () => {
-    let releaseNotesService: ReleaseNotesService = {
+export let releaseNotesService = () => {
+    let _releaseNotesService: IReleaseNotesService = {
         data: releaseNotes
     };
-    return releaseNotesService;
+    return _releaseNotesService;
 };
 

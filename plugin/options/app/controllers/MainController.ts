@@ -3,7 +3,7 @@ import * as angular from "angular";
 import * as moment from "moment";
 import {ChromeStorageService} from "../services/ChromeStorageService";
 import {IIntervalService, ILocationService, IWindowService} from "angular";
-import {ReleaseNotesService} from "../services/ReleaseNotesService";
+import {IReleaseNotesService} from "../services/ReleaseNotesService";
 import Tab = chrome.tabs.Tab;
 import {IStorageUsage} from "../../../core/modules/StorageManager";
 import {routeMap, properties} from "../Config";
@@ -322,7 +322,7 @@ export class MainController {
 
 
             $mdDialog.show({
-                controller: ($scope: any, ReleaseNotesService: ReleaseNotesService, $window: IWindowService) => {
+                controller: ($scope: any, ReleaseNotesService: IReleaseNotesService, $window: IWindowService) => {
 
                     $scope.releaseNotes = ReleaseNotesService.data;
 

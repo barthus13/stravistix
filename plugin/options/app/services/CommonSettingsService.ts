@@ -45,7 +45,7 @@ export interface IListItem {
     name: string;
 }
 
-export let CommonSettingsService = () => {
+export let commonSettingsService = () => {
 
     let commonSettingsService: ICommonSettingsService = {
         provideSections: null

@@ -4,7 +4,7 @@ export interface IAvoidInputKeysService {
     apply: (keyboardEvent: KeyboardEvent) => void;
 }
 
-export let AvoidInputKeysService = () => {
+export let avoidInputKeysService = () => {
 
     let avoidInputKeysService: IAvoidInputKeysService = {
         apply: (keyboardEvent: KeyboardEvent) => {

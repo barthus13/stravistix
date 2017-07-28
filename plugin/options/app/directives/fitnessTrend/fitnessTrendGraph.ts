@@ -5,7 +5,6 @@ import * as angular from "angular";
 import { ILocationService, IScope, IWindowService } from "angular";
 import { IFitnessActivity } from "../../services/FitnessDataService";
 import { FitnessTrendController } from "../../controllers/FitnessTrendController";
-import { app } from "../../App";
 import { routeMap } from "../../Config";
 import { IColors } from "../../Colors";
 

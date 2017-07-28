@@ -14,6 +14,11 @@ SystemJS.config({
         //     format: 'cjs',
         //     defaultExtension: 'js',
         // },
+
+        // TODO check angular moment loaded ('format amd';)
+        // TODO check moment loaded
+        // TODO check file-saver (saveAs)
+
         '../app': {
             format: 'cjs',
             defaultExtension: 'js',
@@ -37,7 +42,7 @@ SystemJS.config({
         'md.data.table': 'npm:angular-material-data-table/dist/md-data-table.min.js',
         'd3': 'npm:d3/d3.js',
         'nvd3': 'npm:angular-nvd3/dist/angular-nvd3.min.js',
-        'nvd3Src': 'npm:nvd3/build/nv.d3.min.js',
+        'nvd3-core': 'npm:nvd3/build/nv.d3.min.js',
         'moment': 'npm:moment/moment.js',
         'angularMoment': 'npm:angular-moment/angular-moment.js',
         'underscore': 'npm:underscore/underscore-min.js',
@@ -83,13 +88,24 @@ SystemJS.config({
             format: 'global',
             exports: 'angular'
         },
-
-        // 'ngRoute': {
+        // 'file-saver': {
         //     format: 'global',
-        //     exports: 'angular',
-        //     // 'deps': [
-        //     //     "angular"
-        //     // ]
+        //     exports: 'saveAs'
+        // },
+
+        // 'nvd3': {
+        //     format: 'cjs',
+        //     // exports: 'angular',
+        //     'deps': [
+        //         "nvd3-core"
+        //     ]
+        // }
+        // 'angularMoment': {
+        //     format: 'cjs',
+        //     // exports: 'angular',
+        //     'deps': [
+        //         "moment"
+        //     ]
         // }
 
 
