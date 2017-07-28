@@ -1,8 +1,22 @@
 SystemJS.config({
     baseURL: 'chrome-extension://' + chrome.runtime.id + '/',
     packages: {
-        '.': {
-            format: 'cjs'
+
+        // './App': {
+        //     format: 'cjs',
+        //     defaultExtension: 'js',
+        // },
+        // './Config': {
+        //     format: 'cjs',
+        //     defaultExtension: 'js',
+        // },
+        // './controllers': {
+        //     format: 'cjs',
+        //     defaultExtension: 'js',
+        // },
+        '../app': {
+            format: 'cjs',
+            defaultExtension: 'js',
         },
         '../../core/': {
             format: 'cjs'
@@ -28,6 +42,9 @@ SystemJS.config({
         'angularMoment': 'npm:angular-moment/angular-moment.js',
         'underscore': 'npm:underscore/underscore-min.js',
         'file-saver': 'npm:file-saver/FileSaver.min.js',
+
+        'q': 'npm:q/q.js', // For Helper.ts
+
 
         // // Npm
         // 'css': 'npm:systemjs-plugin-css/css.js',
@@ -66,6 +83,7 @@ SystemJS.config({
             format: 'global',
             exports: 'angular'
         },
+
         // 'ngRoute': {
         //     format: 'global',
         //     exports: 'angular',
@@ -73,6 +91,8 @@ SystemJS.config({
         //     //     "angular"
         //     // ]
         // }
+
+
     }
 
     // bundles: {
@@ -122,5 +142,10 @@ SystemJS.import('./App.js')
     .catch(function (err) {
         console.error(err);
     }).then(null, function (err) {
-    console.error("Oh no, error!", err);
-});
+        console.error("Oh no, error!", err);
+    });
+
+// System.registerDynamic(['./controllers/MainController'], true, function (require, exports, module) {
+//     module.exports = require('./App');
+// });
+// SystemJS.registerDynamic(['./controllers/MainController.js'], ['./App'], true)

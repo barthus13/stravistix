@@ -2,11 +2,12 @@ import * as _ from "underscore";
 import * as d3 from "d3";
 import * as moment from "moment";
 import * as angular from "angular";
-import {ILocationService, IScope, IWindowService} from "angular";
-import {IFitnessActivity} from "../../services/FitnessDataService";
-import {FitnessTrendController} from "../../controllers/FitnessTrendController";
-import {app, IColors} from "../../App";
-import {routeMap} from "../../Config";
+import { ILocationService, IScope, IWindowService } from "angular";
+import { IFitnessActivity } from "../../services/FitnessDataService";
+import { FitnessTrendController } from "../../controllers/FitnessTrendController";
+import { app } from "../../App";
+import { routeMap } from "../../Config";
+import { IColors } from "../../Colors";
 
 export interface IFitnessTrendGraphScope extends IScope {
     nvd3api: any;
@@ -38,9 +39,9 @@ export interface IFitnessTrendGraphScope extends IScope {
     updateFitnessChartGraph: (lastMonthPeriodChange: boolean, fromOrToDateChange: boolean) => void;
     toDateChanged: () => void;
     fromDateChanged: () => void;
-    lastMonthsPeriodChanged: (periodSelected: {days: number, label: string}) => void;
-    periodSelected: {days: Number, label: String};
-    periodsToWatch: {days: Number, label: String}[];
+    lastMonthsPeriodChanged: (periodSelected: { days: number, label: string }) => void;
+    periodSelected: { days: Number, label: String };
+    periodsToWatch: { days: Number, label: String }[];
     activityTypes: Array<string>;
     fitnessChartOptions: any;
     fitnessChartData: IFitnessGraphData;
@@ -49,7 +50,7 @@ export interface IFitnessTrendGraphScope extends IScope {
 }
 
 export interface IFitnessGraphData {
-    curves: {key: string, values: Array<any>, color: string, area?: boolean, classed?: string}[];
+    curves: { key: string, values: Array<any>, color: string, area?: boolean, classed?: string }[];
     yDomain: Array<number>;
 }
 
@@ -188,7 +189,7 @@ export class FitnessTrendGraph {
             $scope.periodSelected = $scope.periodsToWatch[6];
         }
 
-        $scope.lastMonthsPeriodChanged = (periodSelected: {days: number, label: string}) => {
+        $scope.lastMonthsPeriodChanged = (periodSelected: { days: number, label: string }) => {
             let index: number = _.indexOf($scope.periodsToWatch, periodSelected);
             if (index !== -1) {
                 localStorage.setItem('lastMonthPeriodSelected', index.toString()); // Store value
@@ -281,7 +282,7 @@ export class FitnessTrendGraph {
 
         $scope.makeTooltip = (d: any) => {
 
-            let fitnessObject: IFitnessActivity = <IFitnessActivity> (_.findWhere($scope.fitnessData, {
+            let fitnessObject: IFitnessActivity = <IFitnessActivity>(_.findWhere($scope.fitnessData, {
                 timestamp: d.value
             }));
 
@@ -436,7 +437,7 @@ export class FitnessTrendGraph {
                         dispatch: {
                             elementClick: function (d: any) {
                                 // Open activities on point click
-                                let fitnessObject: IFitnessActivity = <IFitnessActivity> (_.findWhere($scope.fitnessData, {
+                                let fitnessObject: IFitnessActivity = <IFitnessActivity>(_.findWhere($scope.fitnessData, {
                                     timestamp: d.point.x
                                 }));
 
@@ -751,7 +752,7 @@ export class FitnessTrendGraph {
 }
 
 export let fitnessTrendGraph = [() => {
-    return <any> {
+    return <any>{
         templateUrl: 'directives/fitnessTrend/templates/fitnessTrendGraph.html',
         controller: FitnessTrendGraph
     };

@@ -1,6 +1,7 @@
 import * as _ from "underscore";
 import * as angular from "angular";
 import * as moment from "moment";
+import {app} from '../App';
 import {ChromeStorageService} from "../services/ChromeStorageService";
 import {IIntervalService, ILocationService, IWindowService} from "angular";
 
