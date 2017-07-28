@@ -138,12 +138,21 @@ SystemJS.config({
     //   }
 });
 
-SystemJS.import('./App.js')
-    .catch(function (err) {
-        console.error(err);
-    }).then(null, function (err) {
-        console.error("Oh no, error!", err);
-    });
+// https://github.com/systemjs/systemjs/issues/1032
+//  System.import('scripts/app.js').then(function() {
+//           angular.bootstrap(document, ['AnvilConnectClient']);
+//         })
+
+SystemJS.import('./App.js').catch(function (err) {
+    console.error(err);
+}).then(function () {
+    console.log("BEFORE BOOTSTRAP");
+    angular.bootstrap(document, ['App']);
+    console.log(angular);
+    console.log("AFTER BOOTSTRAP");
+}).then(null, function (err) {
+    console.error("Oh no, error!", err);
+});
 
 // System.registerDynamic(['./controllers/MainController'], true, function (require, exports, module) {
 //     module.exports = require('./App');
